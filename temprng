@@ -1,0 +1,46 @@
+#!/usr/bin/python
+import MySQLdb
+import random
+import time
+
+db = MySQLdb.connect(host="localhost", # your host, usually localhost
+                     user="pi", # your username
+                      passwd="raspberry", # your password
+                      db="thermostat") # name of the data base
+
+# you must create a Cursor object. It will let
+#  you execute all the query you need
+cur = db.cursor() 
+
+while True:
+
+# to be replaced with thermometer readings
+###############################################################################################
+	#Generate 10 temperatures 
+	i=0
+	while (i<10):
+		genTemp=random.uniform(55,105)
+		cur.execute("""UPDATE Temperatures SET Temp=%s WHERE PID=%s""",(genTemp,i))
+		db.commit()
+		i=i+1
+		time.sleep(2)
+
+	# pull generated temperatures from db
+	cur.execute("SELECT * FROM Temperatures")
+###############################################################################################
+
+	# average all the temperture cells of all the rows
+	sumTemp=0
+	for row in cur.fetchall() :
+		sumTemp=sumTemp+row[1]
+	print sumTemp
+	avgTemp=sumTemp/10.0
+	
+	# store averaged temperture into the Conditions table
+	cur.execute("""UPDATE Conditions SET Temp=%s""",(avgTemp))
+	db.commit()
+
+	# read stored average
+	cur.execute("SELECT * FROM Conditions")
+	for row in cur.fetchall() :
+		print row[0]
