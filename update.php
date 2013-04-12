@@ -1,6 +1,6 @@
 <?php
 	include("login.php");
-	echo "<html>";
+	echo "<html>";//see firefox source error about doctype
 	$dbhandle=mysql_connect(localhost,$un,$pw) or die("Unable to connect!");	
 	echo "Connected <BR>";	
 	$selected=mysql_select_db($db) or die("Unable to select!");
