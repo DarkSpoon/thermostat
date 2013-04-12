@@ -16,7 +16,7 @@ Redirecting...
 	$result=mysql_query($query);
 
 	$target = mysql_real_escape_string($_POST['Target']);
-	$query = "INSERT INTO Schedule VALUES ('2','Mon', '00:00:00', '23:59:00', '$target')";
+	$query = "INSERT INTO Schedule (DOW, Start, End, Target) VALUES ('Mon', 00:00:00, 23:59:00, $target)";
 	$result=mysql_query($query);
 	
 	//echo $result;
