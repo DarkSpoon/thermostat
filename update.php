@@ -1,4 +1,4 @@
-"header("Location: pull.php");
+header("Location: pull.php");
 <?php
 	include("login.php");
 
