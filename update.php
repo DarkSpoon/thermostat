@@ -17,5 +17,8 @@
 	
 	echo $result;
 
+	
+	ob_start();
 	header("Location: pull.php");
+	ob_end_flush();
 ?>
