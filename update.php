@@ -3,9 +3,9 @@
 	$dbhandle=mysql_connect(localhost,$un,$pw) or die("Unable to connect!");	
 	echo "Connected <BR>";	
 	$selected=mysql_select_db($db) or die("Unable to select!");
-	
 
-	$query="DELETE FROM Schedule";
+
+	/*$query="DELETE FROM Schedule";
 	$result=mysql_query($query);
 
 	echo "Just before the real escape";
@@ -15,4 +15,5 @@
 	$result=mysql_query($query);
 	
 	//echo $result;
+	*/
 ?>
