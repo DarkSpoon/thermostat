@@ -1,3 +1,4 @@
+"header("Location: pull.php");
 <?php
 	include("login.php");
 
@@ -15,17 +16,5 @@
 	$result=mysql_query($query);
 	
 	echo $result;
-
-$redirect = 'pull.php';
-echo "<center><font face=\"tahoma\">Click <a href=\"$redirect\">here</a> if your browser does not automatically redirect you</font></center>";
-?>
-<SCRIPT LANGUAGE="JavaScript">
-redirTime = "2550";
-redirURL = "<?php echo $redirect ?>";
-function redirTimer() {
-self.setTimeout("self.location.href = redirURL;",redirTime);}
-</script>
-<BODY onLoad="redirTimer()">
-<?php
 
 ?>
