@@ -3,10 +3,6 @@
 
 	$dbhandle=mysql_connect(localhost,$un,$pw) or die("Unable to connect!");
 	
-	echo $un;
-	echo $pw;
-	echo $db;
-
 	echo "Connected <BR>";
 	
 	$selected=mysql_select_db($db) or die("Unable to select!");
@@ -19,5 +15,6 @@
 	$result=mysql_query($query);
 	
 	echo $result;
-
+	echo '<META HTTP-EQUIV="Refresh" Content="0; URL=pull.php">';    
+	exit
 ?>
