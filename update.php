@@ -6,7 +6,7 @@
 
 
 	//$query="DELETE FROM Schedule";
-	$query="DELETE FROM `thermostat`.`Schedule` WHERE `Schedule`.`PID` = 1";
+	$query="DELETE FROM `Schedule` WHERE `Schedule`.`PID` = 1";
 	$result=mysql_query($query);
 
 	$target = mysql_real_escape_string($_POST["Target"]);
