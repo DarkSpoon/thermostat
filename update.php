@@ -1,4 +1,8 @@
 
+<html>
+<body onload=setTimeout("location.href='­ http://www.google.com.au'",5000)>­
+Redirecting...
+</body>
 <?php
 	include("login.php");
 
@@ -16,11 +20,5 @@
 	$result=mysql_query($query);
 	
 	echo $result;
-
-	
-	echo "<html>";
-	echo "<body onload=setTimeout(\"location.href='­ http://www.google.com.au'\",5000)>­";
-	echo "Redirecting...";
-	echo "</body>";
-	echo "</html>";
 ?>
+</html>
