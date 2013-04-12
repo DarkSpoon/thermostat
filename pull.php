@@ -1,10 +1,10 @@
 <?php
 	include("login.php");
-	$dbhandle=mysql_connect(localhost,$un,$pw) or die("Unable to connect!");
-	
-	echo "Connected <BR>";
-	
+	$dbhandle=mysql_connect(localhost,$un,$pw) or die("Unable to connect!");	
+	echo "Connected <BR>";	
 	$selected=mysql_select_db($db) or die("Unable to select!");
+
+	
 	
 	$query="SELECT * from Conditions";
 	$result=mysql_query($query);

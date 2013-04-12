@@ -1,12 +1,9 @@
 <?php
 	include("login.php");
-	echo "before connection";
-
-	$dbhandle=mysql_connect(localhost,$un,$pw) or die("Unable to connect!");
-	
-	echo "Connected <BR>";
-	
+	$dbhandle=mysql_connect(localhost,$un,$pw) or die("Unable to connect!");	
+	echo "Connected <BR>";	
 	$selected=mysql_select_db($db) or die("Unable to select!");
+	
 
 	$query="DELETE FROM Schedule";
 	$result=mysql_query($query);
