@@ -10,7 +10,7 @@
 
 	$target = mysql_real_escape_string($_POST["Target"]);
 	echo "post escape test";
-	$query = "INSERT INTO `thermostat`.`Schedule` (`PID`, `DOW`, `Start`, `Stop`, `Target`) VALUES ('1', 'Mon', '00:01:00', '11:59:59', '55');";
+	$query = "INSERT INTO `Schedule` (`PID`, `DOW`, `Start`, `Stop`, `Target`) VALUES ('1', 'Mon', '00:01:00', '11:59:59', '$target');";
 	echo "query built";
 	$result=mysql_query($query);
 	echo "query ran";
