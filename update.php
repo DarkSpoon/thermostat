@@ -5,9 +5,9 @@
 	$selected=mysql_select_db($db) or die("Unable to select!");
 
 
-	/*$query="DELETE FROM Schedule";
+	$query="DELETE FROM Schedule";
 	$result=mysql_query($query);
-
+/*
 	echo "Just before the real escape";
 	$target =  mysqli::real_escape_string($_POST['Target']);
 	echo $target;
