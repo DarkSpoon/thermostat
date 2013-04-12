@@ -3,8 +3,12 @@
 
 	$dbhandle=mysql_connect(localhost,$un,$pw) or die("Unable to connect!");
 	
-	echo "Connected <BR>";
+	echo $un;
+	echo $pw;
 	echo $db;
+
+	echo "Connected <BR>";
+	
 	$selected=mysql_select_db($db) or die("Unable to select!");
 
 	$query="DELETE FROM tablename";
