@@ -1,6 +1,25 @@
 <?php
 include("login.php");
 
+
+//print some html for a button
+echo "<!DOCTYPE HTML PUBLIC \"-\/\/W3C\/\/DTD HTML 4.01\/\/EN\" \"http:\/\/www.w3.org/TR/html4/strict.dtd\">";
+echo "<html>";
+ echo "<head>";
+  echo "<meta http-equiv=\"Content-Type\" content=\"text/html; charset=utf-8\">";
+echo "  <title>Thermostat</title>";
+echo " </head>";
+echo " <body>";
+
+	echo "<form method=\"post\" action=\"pull.php\">";
+	echo "<p><input type=\"text\" name=\"Target\"></p>";
+	echo "<input type=\"submit\" value=\"Submit\">";
+	echo "</form>";
+
+echo " </body>";
+echo "</html>";
+
+
 $dbhandle=mysql_connect(localhost,$un,$pw) or die("Unable to connect!");	
 echo "Connected <BR>";	
 $selected=mysql_select_db($db) or die("Unable to select!");
