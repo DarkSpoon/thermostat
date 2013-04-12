@@ -24,10 +24,10 @@ while True:
 		db.commit()
 		i=i+1
 		time.sleep(2)
+###############################################################################################
 
 	# pull generated temperatures from db
 	cur.execute("SELECT * FROM Temperatures")
-###############################################################################################
 
 	# average all the temperture cells of all the rows
 	sumTemp=0
@@ -44,3 +44,5 @@ while True:
 	cur.execute("SELECT * FROM Conditions")
 	for row in cur.fetchall() :
 		print row[0]
+		$avgTemp=row[0];
+	
