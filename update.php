@@ -1,11 +1,10 @@
 <?php
 	include(login.php);
-	//$un="pi";
-	//$pw="raspberry";
+
 	$dbhandle=mysql_connect(localhost,$un,$pw) or die("Unable to connect!");
 	
 	echo "Connected <BR>";
-	
+	echo $db;
 	$selected=mysql_select_db($db) or die("Unable to select!");
 
 	$query="DELETE FROM tablename";
