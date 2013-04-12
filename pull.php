@@ -1,7 +1,5 @@
 <?php
 	include("login.php");
-	//$un="pi";
-	//$pw="raspberry";
 	$dbhandle=mysql_connect(localhost,$un,$pw) or die("Unable to connect!");
 	
 	echo "Connected <BR>";
