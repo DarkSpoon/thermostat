@@ -4,7 +4,7 @@
 	echo "Connected <BR>";	
 	$selected=mysql_select_db($db) or die("Unable to select!");
 
-	
+
 	
 	$query="SELECT * from Conditions";
 	$result=mysql_query($query);
@@ -27,7 +27,7 @@
 	$query="SELECT Target from Schedule";
 	$result=mysql_query($query);
 	while($row=mysql_fetch_array($result)){
-		echo "Target temp from query ".$row{'Target'}."F";
+		echo "Target temp from query ".$row{'Target'}."F<BR>";
 	}
 
 	mysql_close($dbhandle);
