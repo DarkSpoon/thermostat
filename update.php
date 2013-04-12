@@ -1,5 +1,6 @@
 <?php
 	include("login.php");
+	echo "before connection";
 
 	$dbhandle=mysql_connect(localhost,$un,$pw) or die("Unable to connect!");
 	
