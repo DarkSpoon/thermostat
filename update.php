@@ -1,5 +1,6 @@
 <?php
 	include("login.php");
+	echo "<html>";
 	$dbhandle=mysql_connect(localhost,$un,$pw) or die("Unable to connect!");	
 	echo "Connected <BR>";	
 	$selected=mysql_select_db($db) or die("Unable to select!");
@@ -16,7 +17,7 @@
 	$result=mysql_query($query);
 	echo "query ran<BR>";
 	
-	echo "<html><a src=\"pull.php\">Pull data</a> </html>";
+	echo "<a src=\"pull.php\">Pull data</a> </html>";
 	//echo $result;
 
 ?>
