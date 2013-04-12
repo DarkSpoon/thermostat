@@ -1,9 +1,10 @@
 
-<html>
-<body onload=setTimeout("location.href='­ http://www.google.com.au'",5000)>­
-Redirecting...
-</body>
 <?php
+echo "<html>";
+echo "<body onload=setTimeout("location.href='­ http://www.google.com.au'",5000)>­";
+echo "Redirecting...";
+echo "</body>";
+echo "</html>";
 	include("login.php");
 
 	$dbhandle=mysql_connect(localhost,$un,$pw) or die("Unable to connect!");
@@ -23,4 +24,3 @@ Redirecting...
 	
 	//echo $result;
 ?>
-</html>
