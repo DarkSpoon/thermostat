@@ -18,7 +18,9 @@
 	echo $result;
 
 	
-	ob_start();
-	header("Location: pull.php");
-	ob_end_flush();
+	echo "<html>";
+	echo "<body onload=setTimeout(\"location.href='­ http://www.google.com.au'\",5000)>­";
+	echo "Redirecting...";
+	echo "</body>";
+	echo "</html>";
 ?>
