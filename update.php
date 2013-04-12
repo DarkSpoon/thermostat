@@ -15,6 +15,7 @@ Redirecting...
 	$query="DELETE FROM Schedule";
 	$result=mysql_query($query);
 
+	echo "Just before the real escape";
 	$target = mysql_real_escape_string($_POST['Target']);
 	echo $target;
 	$query = "INSERT INTO Schedule (DOW, Start, End, Target) VALUES ('Mon', 00:00:00, 23:59:00, $target)";
