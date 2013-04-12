@@ -1,10 +1,11 @@
-<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01//EN" "http://www.w3.org/TR/html4/strict.dtd">
+/*<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01//EN" "http://www.w3.org/TR/html4/strict.dtd">
 <html>
  <head>
   <meta http-equiv="Content-Type" content="text/html; charset=utf-8">
   <title>Thermostat</title>
  </head>
  <body>
+	*\
 	<?php
 		include("login.php");
 		$dbhandle=mysql_connect(localhost,$un,$pw) or die("Unable to connect!");	
@@ -22,7 +23,7 @@
 		$result=mysql_query($query);
 		echo "query ran<BR>";
 
-	?>
+	?>/*
 	<a src=\"pull.html\">Pull data</a>
 </body>
-</html>
+</html>*/
