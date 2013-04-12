@@ -16,7 +16,7 @@
 	$result=mysql_query($query);
 	echo "query ran<BR>";
 	
-	echo "<a src=\"pull.php\">Pull data</a>";
+	echo "<html><a src=\"pull.php\">Pull data</a> </html>";
 	//echo $result;
 
 ?>
