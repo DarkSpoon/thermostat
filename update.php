@@ -25,7 +25,7 @@ $selected=mysql_select_db($db) or die("Unable to select!");
 
 
 $target = mysql_real_escape_string($_POST["Target"]);
-$dow = mysql_real_escape_string($_POST["Day"]);
+$dow = $_POST["Day"];
 $start = mysql_real_escape_string($_POST["Start"]);
 $end = mysql_real_escape_string($_POST["End"]);
 echo "post escape test<BR>";
