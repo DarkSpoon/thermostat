@@ -37,6 +37,8 @@ for row in cur.fetchall() :
 	#end=datetime.datetime.strptime(str(row[1]), '%H:%M:%S')
 	start=datetime.datetime.strptime(str(row[0]), '%H:%M:%S')
 	end=datetime.datetime.strptime(str(row[1]), '%H:%M:%S')
+	start=start.strftime("%H:%M:%S")
+	end=end.strftime("%H:%M:%S")
 	print (start)
 	print (end)
 	print (row[0])
