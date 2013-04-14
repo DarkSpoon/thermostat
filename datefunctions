@@ -42,7 +42,7 @@ for row in cur.fetchall() :
 	#start=start.strftime("%H:%M:%S")
 	#end=end.strftime("%H:%M:%S")
 	start=convertTime(row[0])
-	end=convertTime(row[0])
+	end=convertTime(row[1])
 	print (start)
 	print (end)
 	#print (row[0])
