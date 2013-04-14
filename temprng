@@ -53,5 +53,5 @@ while True:
 	cur.execute("SELECT Target FROM Schedule WHERE DOW=%s AND %s BETWEEN Start AND Stop ",(dow, currentTime))
 	for row in cur.fetchall() :
 		target=row[0]
-		print (target."F")
+		print (target,"F")
 	
