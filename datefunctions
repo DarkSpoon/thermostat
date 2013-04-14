@@ -4,7 +4,7 @@ import time
 import datetime
 def convertTime(a):
 	time=datetime.datetime.strptime(str(a), '%H:%M:%S')
-	time-time.strftime("%H:%M:%S")
+	time=time.strftime("%H:%M:%S")
 	return time
 
 db = MySQLdb.connect(host="localhost", # your host, usually localhost
