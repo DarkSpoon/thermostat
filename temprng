@@ -18,13 +18,13 @@ while True:
 # to be replaced with thermometer readings
 ###############################################################################################
 	#Generate 10 temperatures 
-	#i=0
-	#while (i<10):
-	#	genTemp=random.uniform(55,105)
-	#	cur.execute("""UPDATE Temperatures SET Temp=%s WHERE PID=%s""",(genTemp,i))
-	#	db.commit()
-	#	i=i+1
-	#	time.sleep(2)
+	i=0
+	while (i<10):
+		genTemp=random.uniform(55,105)
+		cur.execute("""UPDATE Temperatures SET Temp=%s WHERE PID=%s""",(genTemp,i))
+		db.commit()
+		i=i+1
+		time.sleep(2)
 ###############################################################################################
 	wiggle=2
 	# pull generated temperatures from db
