@@ -3,9 +3,9 @@ import MySQLdb
 import time
 import datetime
 def convertTime(a):
-	time=datetime.datetime.strptime(str(a), '%H:%M:%S')
-	time=time.strftime("%H:%M:%S")
-	return time
+	output=datetime.datetime.strptime(str(a), '%H:%M:%S')
+	output=output.strftime("%H:%M:%S")
+	return output
 
 db = MySQLdb.connect(host="localhost", # your host, usually localhost
                      user="pi", # your username
