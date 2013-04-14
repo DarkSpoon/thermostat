@@ -26,11 +26,12 @@ $selected=mysql_select_db($db) or die("Unable to select!");
 
 $target = mysql_real_escape_string($_POST["Target"]);
 $dow = $_POST["Day"];
+echo $dow;
 $start = mysql_real_escape_string($_POST["Start"]);
 $end = mysql_real_escape_string($_POST["End"]);
 echo "post escape test<BR>";
 #needs to check for overlaping schedules
-$query = "INSERT INTO `Schedule` (`DOW`, `Start`, `Stop`, `Target`) VALUES ('$dow', '$start', '$end', '$target');";
+#$query = "INSERT INTO `Schedule` (`DOW`, `Start`, `Stop`, `Target`) VALUES ('$dow', '$start', '$end', '$target');";
 echo "query built<BR>";
 $result=mysql_query($query);
 echo "query ran<BR>";
