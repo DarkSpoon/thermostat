@@ -60,7 +60,7 @@ while True:
 	maxTemp = target+wiggle
 	minTemp = target-wiggle
 
-	if avgTemp>=minTemp AND avgTemp<=maxTemp :
+	if avgTemp>=minTemp and avgTemp<=maxTemp :
 		print ("we're perfect at", avgTemp)
 
 		else if avgTemp<minTemp :
