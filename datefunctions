@@ -28,8 +28,10 @@ cur = db.cursor()
 
 dow=time.strftime("%a")
 print (dow)
+currentTime=time.localtime(time.time())
+print (currentTime)
 cur.execute("SELECT Start, Stop, Target FROM Schedule WHERE DOW=%s",(dow))
 for row in cur.fetchall() :
-	print (time.localtime(row[0]))
-	print (time.localtime(row[1]))
+	print (row[0])
+	print (row[1])
 	print (row[2])
