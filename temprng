@@ -44,5 +44,5 @@ while True:
 	cur.execute("SELECT * FROM Conditions")
 	for row in cur.fetchall() :
 		print row[0]
-		$avgTemp=row[0]
+		avgTemp=row[0]
 	
