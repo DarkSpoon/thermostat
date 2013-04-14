@@ -1,0 +1,32 @@
+import MySQLdb
+import time
+
+db = MySQLdb.connect(host="192.168.2.101", # your host, usually localhost
+                     user="pi", # your username
+                      passwd="raspberry", # your password
+                      db="thermostat") # name of the data base
+
+# you must create a Cursor object. It will let
+#  you execute all the query you need
+cur = db.cursor() 
+
+
+	# pull generated temperatures from db
+	#cur.execute("SELECT * FROM Temperatures")
+
+	
+	# store averaged temperture into the Conditions table
+	#cur.execute("""UPDATE Conditions SET Temp=%s""",(avgTemp))
+	#db.commit()
+
+	# read stored average
+	#cur.execute("SELECT * FROM Conditions")
+	#for row in cur.fetchall() :
+		#print row[0]
+		#$avgTemp=row[0];
+
+dow=time.strftime("%a")
+print (dow)
+cur.execute("SELECT Target FROM Schedule WHERE DOW=%s",(dow))
+for row in cur.fetchall() :
+	print (row)
