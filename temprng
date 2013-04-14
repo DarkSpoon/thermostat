@@ -18,13 +18,13 @@ while True:
 # to be replaced with thermometer readings
 ###############################################################################################
 	#Generate 10 temperatures 
-	i=0
-	while (i<10):
-		genTemp=random.uniform(55,105)
-		cur.execute("""UPDATE Temperatures SET Temp=%s WHERE PID=%s""",(genTemp,i))
-		db.commit()
-		i=i+1
-		time.sleep(2)
+	#i=0
+	#while (i<10):
+	#	genTemp=random.uniform(55,105)
+	#	cur.execute("""UPDATE Temperatures SET Temp=%s WHERE PID=%s""",(genTemp,i))
+	#	db.commit()
+	#	i=i+1
+	#	time.sleep(2)
 ###############################################################################################
 	wiggle=2
 	# pull generated temperatures from db
@@ -51,7 +51,21 @@ while True:
 	dow=time.strftime("%a")
 	currentTime=time.strftime("%H:%M:%S")
 	cur.execute("SELECT Target FROM Schedule WHERE DOW=%s AND %s BETWEEN Start AND Stop ",(dow, currentTime))
+	#insert error handling for conflicting schedules
 	for row in cur.fetchall() :
 		target=row[0]
 		print (target)
-	
+
+
+	maxTemp = target+wiggle
+	minTemp = target-wiggle
+
+	if avgTemp>=minTemp AND avgTemp<=maxTemp :
+		print ("we're perfect at", avgTemp)
+
+		else if avgTemp<minTemp :
+			print ("Heat is needed. Too cold at", avgTemp)
+
+			else if avgTemp>maxTemp :
+				print ("AC is needed. Too hot at", avgTemp)
+
