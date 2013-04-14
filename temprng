@@ -61,11 +61,11 @@ while True:
 	minTemp = target-wiggle
 
 	if avgTemp>=minTemp and avgTemp<=maxTemp :
-		print ("we're perfect at", avgTemp)
+		print ("we're perfect at" avgTemp)
 
 	elif avgTemp<minTemp :
-		print ("Heat is needed. Too cold at", avgTemp)
+		print ("Heat is needed. Too cold at" avgTemp)
 
 	elif avgTemp>maxTemp :
-		print ("AC is needed. Too hot at", avgTemp)
+		print ("AC is needed. Too hot at" avgTemp)
 
