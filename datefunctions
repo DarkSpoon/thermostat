@@ -30,6 +30,6 @@ dow=time.strftime("%a")
 print (dow)
 cur.execute("SELECT Start, Stop, Target FROM Schedule WHERE DOW=%s",(dow))
 for row in cur.fetchall() :
-	print (row[0])
-	print (row[1])
+	print (time.localtime(row[0]))
+	print (time.localtime(row[1]))
 	print (row[2])
