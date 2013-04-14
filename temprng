@@ -2,6 +2,7 @@
 import MySQLdb
 import random
 import time
+import datetime
 
 db = MySQLdb.connect(host="localhost", # your host, usually localhost
                      user="pi", # your username
@@ -25,7 +26,7 @@ while True:
 		i=i+1
 		time.sleep(2)
 ###############################################################################################
-
+	wiggle=2
 	# pull generated temperatures from db
 	cur.execute("SELECT * FROM Temperatures")
 
@@ -43,6 +44,14 @@ while True:
 	# read stored average
 	cur.execute("SELECT * FROM Conditions")
 	for row in cur.fetchall() :
-		print row[0]
 		avgTemp=row[0]
+		print ("%sF",avgTemp)
+
+	#Find target
+	dow=time.strftime("%a")
+	currentTime=time.strftime("%H:%M:%S")
+	cur.execute("SELECT Target FROM Schedule WHERE DOW=%s AND %s BETWEEN Start AND Stop ",(dow, currentTime))
+	for row in cur.fetchall() :
+		target=row[0]
+		print ("%sF",target)
 	
