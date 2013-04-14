@@ -35,8 +35,8 @@ cur.execute("SELECT Start, Stop, Target FROM Schedule WHERE DOW=%s",(dow))
 for row in cur.fetchall() :
 	start='%s',row[0]
 	start='%s',row[1]
-	start=datetime.strptime(start, '%H:%M:%S')
-	end=datetime.strptime(end, '%H:%M:%S')
+	start=datetime.datetime.strptime(start, '%H:%M:%S')
+	end=datetime.datetime.strptime(end, '%H:%M:%S')
 	print (start)
 	print (end)
 	print (row[0])
