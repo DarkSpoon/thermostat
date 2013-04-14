@@ -5,23 +5,19 @@
   <title>Thermostat</title>
  </head>
  <body>
-
 	<form method="post" action="update.php">
-	<label>Select list</label>
-	<select id = "Day">
-   		<option value="Mon">Monday</option>
-		<option value="Tues">Tuesday</option>
-		<option value="Wed">Wednesday</option>
-		<option value="Thu">Thursday</option>
-		<option value="Fri">Friday</option>
-		<option value="Sat">Saturday</option>
-		<option value="Sun">Sunday</option>
-    </select>
-    
-	
-	<p><input type="text" name="Start"></p>
-	<p><input type="text" name="End"></p>
-	<p><input type="text" name="Target"></p>
+	<select name="Day">
+	<option value="Mon">Monday</option>
+	<option value="Tues">Tuesday</option>
+	<option value="Wed">Wednesday</option>
+	<option value="Thu">Thursday</option>
+	<option value="Fri">Friday</option>
+	<option value="Sat">Saturday</option>
+	<option value="Sun">Sunday</option>
+	</select>	
+	<input type="text" name="Start">
+	<input type="text" name="End">
+	<input type="text" name="Target">
 	<input type="submit" value="Submit">
 	</form>
 
