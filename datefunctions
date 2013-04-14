@@ -35,14 +35,17 @@ dow=time.strftime("%a")
 print (dow)
 currentTime=time.strftime("%H:%M:%S")
 print (currentTime)
-cur.execute("SELECT Start, Stop, Target FROM Schedule WHERE DOW=%s AND %s BETWEEN Start AND Stop ",(dow, currentTime))
+cur.execute("SELECT Target FROM Schedule WHERE DOW=%s AND %s BETWEEN Start AND Stop ",(dow, currentTime))
 for row in cur.fetchall() :
-	start=convertTime(row[0])
-	end=convertTime(row[1])
-	print (start)
-	print (end)
+	print (row[0])
+#cur.execute("SELECT Start, Stop, Target FROM Schedule WHERE DOW=%s AND %s BETWEEN Start AND Stop ",(dow, currentTime))
+#for row in cur.fetchall() :
+#	start=convertTime(row[0])
+#	end=convertTime(row[1])
+#	print (start)
+#	print (end)
 	
-	if currentTime>=start and currentTime<=end :
-		print ("current time is in the schedule")
-	else :
-		print ("not in schedule")
+#	if currentTime>=start and currentTime<=end :
+#		print ("current time is in the schedule")
+#	else :
+#		print ("not in schedule")
