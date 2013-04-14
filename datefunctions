@@ -1,7 +1,7 @@
 import MySQLdb
 import time
 
-db = MySQLdb.connect(host="192.168.2.101", # your host, usually localhost
+db = MySQLdb.connect(host="localhost", # your host, usually localhost
                      user="pi", # your username
                       passwd="raspberry", # your password
                       db="thermostat") # name of the data base
