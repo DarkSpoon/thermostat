@@ -33,15 +33,17 @@ currentTime=time.strftime("%H:%M:%S")
 print (currentTime)
 cur.execute("SELECT Start, Stop, Target FROM Schedule WHERE DOW=%s",(dow))
 for row in cur.fetchall() :
-	start=datetime.datetime.strptime(str(row[0]), '%H:%M:%S')
-	end=datetime.datetime.strptime(str(row[1]), '%H:%M:%S')
+	#start=datetime.datetime.strptime(str(row[0]), '%H:%M:%S')
+	#end=datetime.datetime.strptime(str(row[1]), '%H:%M:%S')
+	start=time.strptime(str(row[0]), '%H:%M:%S')
+	end=time.strptime(str(row[1]), '%H:%M:%S')
 	print (start)
 	print (end)
-	print (row[0])
-	print (row[1])
-	print (row[2])
+	#print (row[0])
+	#print (row[1])
+	#print (row[2])
 	
-	#if currentTime>=start and currentTime<=end :
-	#	print ("current time is in the schedule")
-	#else :
-	#	print ("not in schedule")
+	if currentTime>=start and currentTime<=end :
+		print ("current time is in the schedule")
+	else :
+		print ("not in schedule")
