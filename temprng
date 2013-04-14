@@ -41,7 +41,7 @@ while True:
 	cur.execute("""UPDATE Conditions SET Temp=%s""",(avgTemp))
 	db.commit()
 
-	# read stored average
+	# read stored average, probably not necessary. look at removing
 	cur.execute("SELECT * FROM Conditions")
 	for row in cur.fetchall() :
 		avgTemp=row[0]
@@ -51,7 +51,7 @@ while True:
 	dow=time.strftime("%a")
 	currentTime=time.strftime("%H:%M:%S")
 	cur.execute("SELECT Target FROM Schedule WHERE DOW=%s AND %s BETWEEN Start AND Stop ",(dow, currentTime))
-	#insert error handling for conflicting schedules
+	#insert error handling for conflicting schedules, make php scheduling page check for overlap
 	for row in cur.fetchall() :
 		target=row[0]
 		print (target)
@@ -61,11 +61,16 @@ while True:
 	minTemp = target-wiggle
 
 	if avgTemp>=minTemp and avgTemp<=maxTemp :
+		#do nothing
 		print ("we're perfect at", avgTemp)
 
 	elif avgTemp<minTemp :
+		#check to see if heater and fan are running
+		#if not, turn them on
 		print ("Heat is needed. Too cold at", avgTemp)
 
 	elif avgTemp>maxTemp :
+		#check to see if AC and fan are running
+		#if not, turn them on
 		print ("AC is needed. Too hot at", avgTemp)
 
