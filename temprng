@@ -63,9 +63,9 @@ while True:
 	if avgTemp>=minTemp and avgTemp<=maxTemp :
 		print ("we're perfect at", avgTemp)
 
-		else if avgTemp<minTemp :
+		elif avgTemp<minTemp :
 			print ("Heat is needed. Too cold at", avgTemp)
 
-			else if avgTemp>maxTemp :
+			elif avgTemp>maxTemp :
 				print ("AC is needed. Too hot at", avgTemp)
 
