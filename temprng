@@ -68,9 +68,13 @@ while True:
 		#check to see if heater and fan are running
 		#if not, turn them on
 		print ("Heat is needed. Too cold at", avgTemp)
+		cur.execute("""UPDATE Conditions SET Heat=1, AC=0, Fan=1""")
+		db.commit()
 
 	elif avgTemp>maxTemp :
 		#check to see if AC and fan are running
 		#if not, turn them on
 		print ("AC is needed. Too hot at", avgTemp)
+		cur.execute("""UPDATE Conditions SET Heat=0, AC=1, Fan=1""")
+		db.commit()
 
