@@ -11,9 +11,12 @@ echo "  <title>Thermostat</title>";
 echo " </head>";
 echo " <body>";
 	echo "<form method=\"post\" action=\"pull.php\">";
-	echo "<input type=\"submit\" value=\"Pull.php\">";
+	echo "<input type=\"submit\" value=\"Pull\">";
 	echo "</form>";
-	echo "<form method=\"post\" action=\"schedule.php\">";
+	echo "<form method=\"post\" action=\"index.php?w=0\">";
+	echo "<input type=\"submit\" value=\"Index\">";
+	echo "</form>";
+	echo "<form method=\"post\" action=\"schedule.php?w=1\">";
 	echo "<select name=\"Day\">";
 	echo "<option value=\"Mon\">Monday</option>";
 	echo "<option value=\"Tue\">Tuesday</option>";
@@ -31,7 +34,7 @@ echo " <body>";
 echo " </body>";
 echo "</html>";
 
-if (isset($_POST['SchedTarget'])){
+if ($_GET['w']){
 	$dbhandle=mysql_connect(localhost,$un,$pw) or die("Unable to connect!");	
 	echo "Connected <BR>";	
 	$selected=mysql_select_db($db) or die("Unable to select!");

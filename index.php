@@ -11,11 +11,13 @@ echo "  <title>Thermostat</title>";
 echo " </head>";
 echo " <body>";
 	echo "<form method=\"post\" action=\"pull.php\">";
-	echo "<input type=\"submit\" value=\"Pull.php\">";
+	echo "<input type=\"submit\" value=\"Pull\">";
+	echo "<form method=\"post\" action=\"schedule.php?w=0\">";
+	echo "<input type=\"submit\" value=\"Schedule\">";
 	echo "</form>";
 
 	echo "<p>";
-	echo "<form method=\"post\" action=\"index.php?write=1\">";
+	echo "<form method=\"post\" action=\"index.php?w=1\">";
 	echo "<input type=\"text\" name=\"Target\">";
 	echo "<input type=\"submit\" value=\"Submit\">";
 	echo "</p>";
@@ -24,12 +26,7 @@ echo " <body>";
 echo " </body>";
 echo "</html>";
 
-//$writeChanges = $_GET['write'];
-//echo $writeChanges;
-
-//if ($writeChanges==1) {
-//if (isset($_POST['Target'])){
- if ($_GET['write']){
+ if ($_GET['w']){
 	$dbhandle=mysql_connect(localhost,$un,$pw) or die("Unable to connect!");	
 	echo "Connected <BR>";	
 	$selected=mysql_select_db($db) or die("Unable to select!");
