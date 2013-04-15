@@ -55,6 +55,7 @@ Released   : 20081230
 				$Heat=$row{'Heat'};
 				$Fan=$row{'Fan'};
 
+				#Check for nothing running
 				if($AC==1)
 				echo "AC is running<BR>";
 				else if($Heat==1)
