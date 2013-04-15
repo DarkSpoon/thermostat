@@ -59,11 +59,11 @@
                 
      </div>
         
-<? php
+<? //php
     if ($_GET['w']){
         include("login.php");
         $dbhandle=mysql_connect(localhost,$un,$pw) or die("Unable to connect!");    
-        #echo "Connected <BR>";  
+        #echo "Connected <BR>";s  
         $selected=mysql_select_db($db) or die("Unable to select!");
 
         #Set manual overrides
