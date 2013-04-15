@@ -76,8 +76,8 @@ Released   : 20081230
           $heater=1;
           $ac=0;
         }
-        echo $_POST['HVAC'];
-        echo $_POST['fan'];
+        //echo $_POST['HVAC'];
+        //echo $_POST['fan'];
         echo "heater: ".$heater."<br>";
         echo "ac: ".$ac."<br>";
         echo "fan: ".$fan."<br>";
