@@ -79,6 +79,7 @@ Released   : 20081230
         echo "heater: ".$heater."<br>";
         echo "ac: ".$ac."<br>";
         echo "fan: ".$fan."<br>";
+        echo "target: ".$target."<br>";
         //$query = "UPDATE User_Req SET Heater=$heat, AC=$ac, Fan=$fan Temp=$target";
         //$result=mysql_query($query);
 
