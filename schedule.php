@@ -10,21 +10,33 @@ echo "<html>";
 echo "  <title>Thermostat</title>";
 echo " </head>";
 echo " <body>";
-
 	echo "<form method=\"post\" action=\"pull.php\">";
 	echo "<input type=\"submit\" value=\"Pull.php\">";
 	echo "</form>";
-
+	echo "<form method=\"post\" action=\"schedule.php\">";
+	echo "<select name=\"Day\">";
+	echo "<option value=\"Mon\">Monday</option>";
+	echo "<option value=\"Tue\">Tuesday</option>";
+	echo "<option value=\"Wed\">Wednesday</option>";
+	echo "<option value=\"Thu\">Thursday</option>";
+	echo "<option value=\"Fri\">Friday</option>";
+	echo "<option value=\"Sat\">Saturday</option>";
+	echo "<option value=\"Sun\">Sunday</option>";
+	echo "</select>	";
+	echo "<input type=\"text\" name=\"Start\">";
+	echo "<input type=\"text\" name=\"End\">";
+	echo "<input type=\"text\" name=\"SchedTarget\">";
+	echo "<input type=\"submit\" value=\"Submit\">";
+	echo "</form>";
 echo " </body>";
 echo "</html>";
-
 
 $dbhandle=mysql_connect(localhost,$un,$pw) or die("Unable to connect!");	
 echo "Connected <BR>";	
 $selected=mysql_select_db($db) or die("Unable to select!");
 
 
-$target = mysql_real_escape_string($_POST["Target"]);
+$target = mysql_real_escape_string($_POST["SchedTarget"]);
 $dow = mysql_real_escape_string($_POST["Day"]);
 $start = mysql_real_escape_string($_POST["Start"]);
 $end = mysql_real_escape_string($_POST["End"]);
@@ -34,5 +46,4 @@ $query = "INSERT INTO `Schedule` (`DOW`, `Start`, `Stop`, `Target`) VALUES ('$do
 echo "query built<BR>";
 $result=mysql_query($query);
 echo "query ran<BR>";
-
 ?>
