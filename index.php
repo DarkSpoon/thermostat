@@ -34,7 +34,7 @@ Released   : 20081230
             <div class="link"><a href="pull.php">Pull</a></div>
             
       </div>
-        <div class="contentTitle"><h1>Template Usage</h1></div>
+        <div class="contentTitle"><h1>Set Temperature</h1></div>
         <div class="contentText">
           <form method="post" action="index.php?w=1">
           <input type="text" name="Target">
