@@ -69,9 +69,7 @@ Released   : 20081230
 					echo "post escape test<BR>";
 					#needs to check for overlaping schedules
 					$query = "INSERT INTO `Schedule` (`DOW`, `Start`, `Stop`, `Target`) VALUES ('$dow', '$start', '$end', '$target');";
-					echo "query built<BR>";
 					$result=mysql_query($query);
-					echo "query ran<BR>";
 				}
 				mysql_close($dbhandle);
 			?>
