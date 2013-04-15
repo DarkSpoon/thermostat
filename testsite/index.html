@@ -59,8 +59,8 @@
                 
      </div>
         
-<?php
-    //if ($_GET['w']){
+<? php
+    if ($_GET['w']){
         include("login.php");
         $dbhandle=mysql_connect(localhost,$un,$pw) or die("Unable to connect!");    
         #echo "Connected <BR>";  
@@ -71,7 +71,7 @@
         $query = "UPDATE User_Req SET Temp=$target";
         $result=mysql_query($query);
         echo "query ran<BR>";
-    //}
+    }
 ?>
   
         
