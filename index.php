@@ -53,7 +53,6 @@ Released   : 20081230
           <hr>
           <input type="text" name="Target">
           <input type="submit" value="Submit">
-          </p>
           </form>
   </div>        
 </div>
@@ -76,7 +75,7 @@ Released   : 20081230
           $heater=0;
           $ac=1;
         }
-        $query = "UPDATE User_Req SET Heater=$heat, AC=$ac, Fan=$fan Temp=$target";
+        $query = "UPDATE User_Req SET Heater=$heat, AC=$ac, Fan=$fan, Temp=$target";
         $result=mysql_query($query);
 
         mysql_close($dbhandle);
