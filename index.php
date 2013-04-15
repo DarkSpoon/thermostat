@@ -15,7 +15,7 @@ echo " <body>";
 	echo "</form>";
 
 	echo "<p>";
-	echo "<form method=\"post\" action=\"index.php?write=TRUE\">";
+	echo "<form method=\"post\" action=\"index.php?write=1\">";
 	echo "<input type=\"text\" name=\"Target\">";
 	echo "<input type=\"submit\" value=\"Submit\">";
 	echo "</p>";
@@ -24,7 +24,7 @@ echo " <body>";
 echo " </body>";
 echo "</html>";
 
-if ($_GET("write")) {
+if ($_GET("write")==1) {
 //if (isset($_POST['Target'])){
  	
 	$dbhandle=mysql_connect(localhost,$un,$pw) or die("Unable to connect!");	
