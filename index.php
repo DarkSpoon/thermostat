@@ -24,12 +24,12 @@ echo " <body>";
 echo " </body>";
 echo "</html>";
 
-$writeChanges = $_GET['write'];
-echo $writeChanges;
+//$writeChanges = $_GET['write'];
+//echo $writeChanges;
 
-if ($writeChanges==1) {
+//if ($writeChanges==1) {
 //if (isset($_POST['Target'])){
- 	
+ if ($_GET['write']){
 	$dbhandle=mysql_connect(localhost,$un,$pw) or die("Unable to connect!");	
 	echo "Connected <BR>";	
 	$selected=mysql_select_db($db) or die("Unable to select!");
