@@ -24,8 +24,8 @@ echo " <body>";
 echo " </body>";
 echo "</html>";
 echo isset($_POST['Target']; 
-//echo isset($_POST["Target"];
-/*if (isset($_POST['Target'])){
+echo isset($_POST["Target"];
+if (isset($_POST['Target'])){
  
 	$dbhandle=mysql_connect(localhost,$un,$pw) or die("Unable to connect!");	
 	echo "Connected <BR>";	
@@ -38,5 +38,5 @@ echo isset($_POST['Target'];
 	echo "query built<BR>";
 	$result=mysql_query($query);
 	echo "query ran<BR>";
-}*/
+}
 ?>
