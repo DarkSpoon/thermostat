@@ -23,7 +23,7 @@ echo " <body>";
 echo " </body>";
 echo "</html>";
 
-
+/*
 $dbhandle=mysql_connect(localhost,$un,$pw) or die("Unable to connect!");	
 echo "Connected <BR>";	
 $selected=mysql_select_db($db) or die("Unable to select!");
@@ -35,5 +35,5 @@ $query = "UPDATE `User_Req` (`Temp`) VALUES ('$target');";
 echo "query built<BR>";
 $result=mysql_query($query);
 echo "query ran<BR>";
-
+*/
 ?>
