@@ -69,7 +69,6 @@
         $target = mysql_real_escape_string($_POST["Target"]);
         $query = "UPDATE User_Req SET Temp=$target";
         $result=mysql_query($query);
-        echo "query ran<BR>";
     }
 ?>
   
