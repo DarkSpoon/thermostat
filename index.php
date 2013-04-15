@@ -21,10 +21,12 @@ echo " <body>";
 	echo "</p>";
 	echo "</form>";
 
-echo " </body>";
-echo "</html>";
+
 echo isset($_POST['Target']); 
 echo isset($_POST["Target"]);
+
+echo " </body>";
+echo "</html>";
 /*if (isset($_POST['Target'])){
  
 	$dbhandle=mysql_connect(localhost,$un,$pw) or die("Unable to connect!");	
