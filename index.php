@@ -42,6 +42,7 @@ Released   : 20081230
           <br>
           <h2>HVAC</h2>
           <hr>
+          <form method="post" action="index.php?w=1">
           <input type="radio" name="HVAC" value="heat"> Heater<br>
           <input type="radio" name="HVAC" value="ac" checked> AC<br>
           <h2>Fan</h2>
@@ -50,7 +51,6 @@ Released   : 20081230
           <input type="radio" name="fan" value="0" checked> Auto<br>
           <h2>Temperature</h2>
           <hr>
-          <form method="post" action="index.php?w=1">
           <input type="text" name="Target">
           <input type="submit" value="Submit">
           </p>
