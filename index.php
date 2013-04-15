@@ -55,7 +55,7 @@ Released   : 20081230
           <input type="submit" value="Submit">
           </p>
           </form>
-          
+  </div>        
 </div>
         <div id="footer"></div>
   <?php
