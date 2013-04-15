@@ -76,6 +76,7 @@ Released   : 20081230
           $ac=1;
         }
         $query = "UPDATE User_Req SET Heater=$heat, AC=$ac, Fan=$fan, Temp=$target";
+        echo $query;
         $result=mysql_query($query);
 
         mysql_close($dbhandle);
