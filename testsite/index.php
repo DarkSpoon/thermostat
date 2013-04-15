@@ -41,7 +41,7 @@
                             </form>
 
                             <p>
-                            <form method="post" action="index.html?w=1">
+                            <form method="post" action="index.php?w=1">
                             <input type="text" name="Target">
                             <input type="submit" value="Submit">
                             </p>
@@ -59,7 +59,7 @@
                 
      </div>
         
-<? //php
+<?php
     if ($_GET['w']){
         $var=true;
         echo $var;
