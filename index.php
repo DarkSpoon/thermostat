@@ -38,6 +38,8 @@ Released   : 20081230
         
         <div class="contentText">
           <hr>
+          <br>
+          <br>
           <h2>HVAC</h2>
           <hr>
           <input type="radio" name="HVAC" value="heat"> Heater<br>
