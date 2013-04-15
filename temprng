@@ -53,10 +53,7 @@ while True:
 	cur.execute("SELECT Target FROM Schedule WHERE DOW=%s AND %s BETWEEN Start AND Stop ",(dow, currentTime))
 	#insert error handling for conflicting schedules, make php scheduling page check for overlap
 	for row in cur.fetchall() :
-		target=row[0]
-		print (target)
-	cur.execute("UPDATE Conditions SET Target=%s",(target))
-	db.commit()
+		target=row[0]	
 
 	#check for manual overrides
 	#need to work on resetting manual temp at schedule change
@@ -70,6 +67,10 @@ while True:
 	if manualTemp>0 :
 		target=manualTemp
 
+	print (target)
+	cur.execute("UPDATE Conditions SET Target=%s",(target))
+	db.commit()
+	
 	maxTemp = target+wiggle
 	minTemp = target-wiggle
 
