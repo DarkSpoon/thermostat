@@ -37,41 +37,42 @@ Released   : 20081230
         <div align="center" class="contentTitle"><h1>Current Status</h1></div>
         
         <div class="contentText">
-          <?php
-			include("login.php");
-			$dbhandle=mysql_connect(localhost,$un,$pw) or die("Unable to connect!");	
-			echo "Connected <BR>";	
-			$selected=mysql_select_db($db) or die("Unable to select!");
+        	<hr>
+          	<?php
+				include("login.php");
+				$dbhandle=mysql_connect(localhost,$un,$pw) or die("Unable to connect!");	
+				echo "Connected <BR>";	
+				$selected=mysql_select_db($db) or die("Unable to select!");
 
 
 
-			$query="SELECT * from Conditions";
-			$result=mysql_query($query);
+				$query="SELECT * from Conditions";
+				$result=mysql_query($query);
 
-			while($row=mysql_fetch_array($result)){
-			echo "<BR>Average temp from query ".$row{'Temp'}."F<BR>";
-			$AC=$row{'AC'};
-			$Heat=$row{'Heat'};
-			$Fan=$row{'Fan'};
+				while($row=mysql_fetch_array($result)){
+				echo "<BR>Average temp from query ".$row{'Temp'}."F<BR>";
+				$AC=$row{'AC'};
+				$Heat=$row{'Heat'};
+				$Fan=$row{'Fan'};
 
-			if($AC==1)
-			echo "AC is running<BR>";
-			else if($Heat==1)
-			echo "Heat is running<BR>";
-			if ($Fan==1)
-			echo "Fan is running<BR>";
+				if($AC==1)
+				echo "AC is running<BR>";
+				else if($Heat==1)
+				echo "Heat is running<BR>";
+				if ($Fan==1)
+				echo "Fan is running<BR>";
 
-			}
+				}
 
-			$query="SELECT Target from Conditions";
-			$result=mysql_query($query);
-			while($row=mysql_fetch_array($result)){
-			echo "Target temp from query ".$row{'Target'}."F<BR>";
-			}
+				$query="SELECT Target from Conditions";
+				$result=mysql_query($query);
+				while($row=mysql_fetch_array($result)){
+				echo "Target temp from query ".$row{'Target'}."F<BR>";
+				}
 
-			mysql_close($dbhandle);
+				mysql_close($dbhandle);
 
-		?>
+			?>
   </div>        
 </div>
         <div id="footer"></div>
