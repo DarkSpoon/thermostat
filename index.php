@@ -21,13 +21,9 @@ echo " <body>";
 	echo "</p>";
 	echo "</form>";
 
-
-echo isset($_POST['SchedTarget']); 
-echo isset($_POST["SchedTarget"]);
-
 echo " </body>";
 echo "</html>";
-/*if (isset($_POST['Target'])){
+if (isset($_POST['SchedTarget'])){
  
 	$dbhandle=mysql_connect(localhost,$un,$pw) or die("Unable to connect!");	
 	echo "Connected <BR>";	
@@ -40,5 +36,5 @@ echo "</html>";
 	echo "query built<BR>";
 	$result=mysql_query($query);
 	echo "query ran<BR>";
-}*/
+}
 ?>
