@@ -55,6 +55,8 @@ while True:
 	for row in cur.fetchall() :
 		target=row[0]
 		print (target)
+	cur.execute("UPDATE Conditions SET Target=%s",(target))
+	db.commit()
 
 
 	maxTemp = target+wiggle

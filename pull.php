@@ -24,7 +24,7 @@ echo "Fan is running<BR>";
 
 }
 
-$query="SELECT Target from Schedule";
+$query="SELECT Target from Conditions";
 $result=mysql_query($query);
 while($row=mysql_fetch_array($result)){
 echo "Target temp from query ".$row{'Target'}."F<BR>";
