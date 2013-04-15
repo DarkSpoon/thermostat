@@ -32,7 +32,7 @@ if (isset($_POST['SchedTarget'])){
 
 	$target = mysql_real_escape_string($_POST["Target"]);
 	echo "post escape test<BR>";
-	$query = "UPDATE `User_Req` (`Temp`) VALUES ('$target');";
+	$query = "UPDATE User_Req SET Temp=$target";
 	echo "query built<BR>";
 	$result=mysql_query($query);
 	echo "query ran<BR>";
