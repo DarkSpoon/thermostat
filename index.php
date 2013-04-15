@@ -46,8 +46,8 @@ Released   : 20081230
           <input type="radio" name="HVAC" value="ac" checked> AC<br>
           <h2>Fan</h2>
           <hr>
-          <input type="radio" name="fan" value="on"> On<br>
-          <input type="radio" name="fan" value="auto" checked> Auto<br>
+          <input type="radio" name="fan" value="1"> On<br>
+          <input type="radio" name="fan" value="0" checked> Auto<br>
           <h2>Temperature</h2>
           <hr>
           <form method="post" action="index.php?w=1">
@@ -65,9 +65,22 @@ Released   : 20081230
         $selected=mysql_select_db($db) or die("Unable to select!");
 
         #Set manual overrides
+        $hvac=mysql_real_escape_string($_POST["HVAC"]);
+        $fan=mysql_real_escape_string($_POST["fan"]);
         $target = mysql_real_escape_string($_POST["Target"]);
-        $query = "UPDATE User_Req SET Temp=$target";
-        $result=mysql_query($query);
+        if ($hvac=="heat"){
+          $heater=1;
+          $ac=0;
+        }
+        elseif ($hvac=="ac"){
+          $heater=1;
+          $ac=0;
+        }
+        echo "heater: ".$heater."<br>";
+        echo "ac: ".$ac."<br>";
+        echo "fan: ".$fan."<br>";
+        //$query = "UPDATE User_Req SET Heater=$heat, AC=$ac, Fan=$fan Temp=$target";
+        //$result=mysql_query($query);
 
         mysql_close($dbhandle);
     }
