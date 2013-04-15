@@ -24,17 +24,18 @@ echo " <body>";
 echo " </body>";
 echo "</html>";
 
-/*
-$dbhandle=mysql_connect(localhost,$un,$pw) or die("Unable to connect!");	
-echo "Connected <BR>";	
-$selected=mysql_select_db($db) or die("Unable to select!");
+if (isset($_POST['submit'])){
+ 
+	$dbhandle=mysql_connect(localhost,$un,$pw) or die("Unable to connect!");	
+	echo "Connected <BR>";	
+	$selected=mysql_select_db($db) or die("Unable to select!");
 
 
-$target = mysql_real_escape_string($_POST["Target"]);
-echo "post escape test<BR>";
-$query = "UPDATE `User_Req` (`Temp`) VALUES ('$target');";
-echo "query built<BR>";
-$result=mysql_query($query);
-echo "query ran<BR>";
-*/
+	$target = mysql_real_escape_string($_POST["Target"]);
+	echo "post escape test<BR>";
+	$query = "UPDATE `User_Req` (`Temp`) VALUES ('$target');";
+	echo "query built<BR>";
+	$result=mysql_query($query);
+	echo "query ran<BR>";
+}
 ?>
