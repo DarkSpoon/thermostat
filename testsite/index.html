@@ -61,6 +61,8 @@
         
 <? //php
     if ($_GET['w']){
+        $var=true;
+        echo $var;
         include("login.php");
         $dbhandle=mysql_connect(localhost,$un,$pw) or die("Unable to connect!");      
         $selected=mysql_select_db($db) or die("Unable to select!");
