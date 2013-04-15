@@ -35,8 +35,9 @@ Released   : 20081230
             
       </div>
         <div align="center" class="contentTitle"><h1>Manual Settings</h1></div>
-        <hr>
+        
         <div class="contentText">
+          <hr>
           <h2>HVAC</h2>
           <hr>
           <input type="radio" name="HVAC" value="heat"> Heater<br>
