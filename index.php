@@ -13,16 +13,14 @@ echo " <body>";
 	echo "<form method=\"post\" action=\"pull.php\">";
 	echo "<input type=\"submit\" value=\"Pull.php\">";
 	echo "</form>";
-/*
-	echo "<form method=\"post\" action=\"pull.php\">";
-	echo "<input type=\"submit\" value=\"Pull.php\">";
-	echo "</form>";
-	echo "<p>"
+
+	echo "<p>";
 	echo "<form method=\"post\" action=\"index.php\">";
 	echo "<input type=\"text\" name=\"SchedTarget\">";
 	echo "<input type=\"submit\" value=\"Submit\">";
+	echo "</p>";
 	echo "</form>";
-*/
+
 echo " </body>";
 echo "</html>";
 
