@@ -1,0 +1,8 @@
+git add README
+git commit -m 'insert comment'
+git push -u origin master
+
+
+
+git fetch origin master
+git reset --hard FETCH_HEAD
