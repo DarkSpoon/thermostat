@@ -32,10 +32,7 @@ Released   : 20081230
         	<div class="link"><a href="index.php?w=0">Index</a></div>
             <div class="link"><a href="schedule.php?w=0">Schedule</a></div>
             <div class="link"><a href="pull.php">Pull</a></div>
-            <div class="link"><a href="#">prices</a></div>
-            <div class="link"><a href="#">products</a></div>
-            <div class="link"><a href="#">faq</a></div>
-            <div class="link"><a href="#">contact</a></div>
+            
       </div>
         <div class="contentTitle"><h1>Template Usage</h1></div>
         <div class="contentText">
