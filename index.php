@@ -76,14 +76,8 @@ Released   : 20081230
           $heater=0;
           $ac=1;
         }
-        //echo $_POST['HVAC'];
-        //echo $_POST['fan'];
-        echo "heater: ".$heater."<br>";
-        echo "ac: ".$ac."<br>";
-        echo "fan: ".$fan."<br>";
-        echo "target: ".$target."<br>";
-        //$query = "UPDATE User_Req SET Heater=$heat, AC=$ac, Fan=$fan Temp=$target";
-        //$result=mysql_query($query);
+        $query = "UPDATE User_Req SET Heater=$heat, AC=$ac, Fan=$fan Temp=$target";
+        $result=mysql_query($query);
 
         mysql_close($dbhandle);
     }
