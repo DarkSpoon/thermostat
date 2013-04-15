@@ -24,6 +24,8 @@ echo " <body>";
 echo " </body>";
 echo "</html>";
 
+echo $_GET("write");
+
 if ($_GET("write")==1) {
 //if (isset($_POST['Target'])){
  	
