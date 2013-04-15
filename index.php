@@ -73,8 +73,8 @@ Released   : 20081230
           $ac=0;
         }
         elseif ($hvac=="ac"){
-          $heater=1;
-          $ac=0;
+          $heater=0;
+          $ac=1;
         }
         //echo $_POST['HVAC'];
         //echo $_POST['fan'];
