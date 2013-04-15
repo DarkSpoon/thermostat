@@ -24,7 +24,7 @@ echo " <body>";
 echo " </body>";
 echo "</html>";
 
-if (isset($_POST['submit'])){
+if (isset($_POST['Target'])){
  
 	$dbhandle=mysql_connect(localhost,$un,$pw) or die("Unable to connect!");	
 	echo "Connected <BR>";	
