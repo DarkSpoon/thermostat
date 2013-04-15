@@ -24,9 +24,10 @@ echo " <body>";
 echo " </body>";
 echo "</html>";
 
-echo $_GET("write");
+$writeChanges = $_GET['write'];
+echo $writeChanges;
 
-if ($_GET("write")==1) {
+if ($writeChanges==1) {
 //if (isset($_POST['Target'])){
  	
 	$dbhandle=mysql_connect(localhost,$un,$pw) or die("Unable to connect!");	
