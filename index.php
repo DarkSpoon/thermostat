@@ -23,7 +23,7 @@ echo " <body>";
 
 echo " </body>";
 echo "</html>";
-echo isset($_POST['Target']; 
+//echo isset($_POST['Target']; 
 echo isset($_POST["Target"];
 /*if (isset($_POST['Target'])){
  
