@@ -58,25 +58,71 @@ while True:
 	cur.execute("UPDATE Conditions SET Target=%s",(target))
 	db.commit()
 
+	#check for manual overrides
+	#need to work on resetting manual temp at schedule change
+	cur.execute("SELECT * FROM User_Req")
+	for row in cur.fetchall() :
+		userReqHeat=row[0]
+		userReqAC=row[1]
+		userReqFan=row[2]
+		manualTemp=row[3]
+
+	if manualTemp>0 :
+		target=manualTemp
 
 	maxTemp = target+wiggle
 	minTemp = target-wiggle
 
+	#Check if user wants AC or Heat running and if fan is in Auto/On
 	if avgTemp>=minTemp and avgTemp<=maxTemp :
-		#do nothing
+		#Turn off Heat, AC, Fan unless Fan is set to Auto
 		print ("we're perfect at", avgTemp)
+		if userReqFan==0 :#Auto fan
+			cur.execute("""UPDATE Conditions SET Heat=0, AC=0, Fan=0""")
+			db.commit()
+			cur.execute("""UPDATE User_Req SET Temp=0""")
+			db.commit()
+		else : #User wants fan on
+			cur.execute("""UPDATE Conditions SET Heat=0, AC=0, Fan=1""")
+			db.commit()
+			cur.execute("""UPDATE User_Req SET Temp=0""")
+			db.commit()
 
+	#home is cooler than target
 	elif avgTemp<minTemp :
-		#check to see if heater and fan are running
-		#if not, turn them on
 		print ("Heat is needed. Too cold at", avgTemp)
-		cur.execute("""UPDATE Conditions SET Heat=1, AC=0, Fan=1""")
-		db.commit()
-
+		if userReqAC==1 : #we're cool enough, let house warm naturally
+			if userReqFan==0 : #auto fan
+				cur.execute("""UPDATE Conditions SET Heat=0, AC=0, Fan=0""")
+				db.commit()
+				cur.execute("""UPDATE User_Req SET Temp=0""")
+				db.commit()
+			else : #user wants fan on
+				cur.execute("""UPDATE Conditions SET Heat=0, AC=0, Fan=1""")
+				db.commit()
+				cur.execute("""UPDATE User_Req SET Temp=0""")
+				db.commit()
+		elif userReqHeat==1 : #user wants home heated to target and we're too cold
+			cur.execute("""UPDATE Conditions SET Heat=1, AC=0, Fan=1""")
+			db.commit()
+			cur.execute("""UPDATE User_Req SET Temp=0""")
+			db.commit()
+	#Home is warmer than target
 	elif avgTemp>maxTemp :
-		#check to see if AC and fan are running
-		#if not, turn them on
 		print ("AC is needed. Too hot at", avgTemp)
-		cur.execute("""UPDATE Conditions SET Heat=0, AC=1, Fan=1""")
-		db.commit()
-
+		if userReqAC==1 : #House is too warm, cool it
+			cur.execute("""UPDATE Conditions SET Heat=0, AC=1, Fan=1""")
+			db.commit()
+			cur.execute("""UPDATE User_Req SET Temp=0""")
+			db.commit()
+		elif userReqHeat==1 : #we're warm enough, let house cool naturally
+			if userReqFan==0 : #auto fan
+				cur.execute("""UPDATE Conditions SET Heat=0, AC=0, Fan=0""")
+				db.commit()
+				cur.execute("""UPDATE User_Req SET Temp=0""")
+				db.commit()
+			else : #user wants fan on
+				cur.execute("""UPDATE Conditions SET Heat=0, AC=0, Fan=1""")
+				db.commit()
+				cur.execute("""UPDATE User_Req SET Temp=0""")
+				db.commit()
