@@ -24,8 +24,8 @@ Released   : 20081230
     <div id="page">
 		
         <div id="header">
-        	<h1>A Farewell to Color</h1>
-            <h2>An old school, black and white template created by Bryant Smith.</h2>
+        	<h1>Thermostat</h1>
+            <h2>Control you HVAC with RaspberryPi</h2>
             
       </div>
   <div id="bar">
@@ -34,8 +34,14 @@ Released   : 20081230
             <div class="link"><a href="pull.php">Pull</a></div>
             
       </div>
-        <div class="contentTitle"><h1>Template Usage</h1></div>
+        <div align="center" class="contentTitle"><h1>Temporary Temperature</h1></div>
         <div class="contentText">
+          <input type="radio" name="HVAC" value="heat"> Heater<br>
+          <input type="radio" name="HVAC" value="ac" checked> AC<br>
+          <hr>
+          Fan
+          <input type="radio" name="fan" value="on"> On<br>
+          <input type="radio" name="fan" value="auto" checked> Auto<br>
           <form method="post" action="index.php?w=1">
           <input type="text" name="Target">
           <input type="submit" value="Submit">
