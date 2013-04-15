@@ -12,6 +12,7 @@ echo " </head>";
 echo " <body>";
 	echo "<form method=\"post\" action=\"pull.php\">";
 	echo "<input type=\"submit\" value=\"Pull\">";
+	echo "</form>";
 	echo "<form method=\"post\" action=\"schedule.php?w=0\">";
 	echo "<input type=\"submit\" value=\"Schedule\">";
 	echo "</form>";
