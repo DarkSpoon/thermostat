@@ -15,27 +15,25 @@ echo " <body>";
 	echo "</form>";
 
 	echo "<p>";
-	echo "<form method=\"post\" action=\"index.php\">";
-	echo "<input type=\"text\" name=\"SchedTarget\">";
+	echo "<form method=\"post\" action=\"index.php?write=1\">";
+	echo "<input type=\"text\" name=\"Target\">";
 	echo "<input type=\"submit\" value=\"Submit\">";
 	echo "</p>";
 	echo "</form>";
 
 echo " </body>";
 echo "</html>";
-if (isset($_POST['SchedTarget'])){
- 
+
+if ($_get("write")) {
+//if (isset($_POST['Target'])){
+ 	
 	$dbhandle=mysql_connect(localhost,$un,$pw) or die("Unable to connect!");	
 	echo "Connected <BR>";	
 	$selected=mysql_select_db($db) or die("Unable to select!");
 
-
-	$target = mysql_real_escape_string($_POST["SchedTarget"]);
-	//$_GET["name"]
-	echo "post escape test<BR>";
-	echo $target;
+	#Set manual overrides
+	$target = mysql_real_escape_string($_POST["Target"]);
 	$query = "UPDATE User_Req SET Temp=$target";
-	echo "query built<BR>";
 	$result=mysql_query($query);
 	echo "query ran<BR>";
 }

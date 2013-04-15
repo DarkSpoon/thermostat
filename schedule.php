@@ -31,19 +31,21 @@ echo " <body>";
 echo " </body>";
 echo "</html>";
 
-$dbhandle=mysql_connect(localhost,$un,$pw) or die("Unable to connect!");	
-echo "Connected <BR>";	
-$selected=mysql_select_db($db) or die("Unable to select!");
+if (isset($_POST['SchedTarget'])){
+	$dbhandle=mysql_connect(localhost,$un,$pw) or die("Unable to connect!");	
+	echo "Connected <BR>";	
+	$selected=mysql_select_db($db) or die("Unable to select!");
 
 
-$target = mysql_real_escape_string($_POST["SchedTarget"]);
-$dow = mysql_real_escape_string($_POST["Day"]);
-$start = mysql_real_escape_string($_POST["Start"]);
-$end = mysql_real_escape_string($_POST["End"]);
-echo "post escape test<BR>";
-#needs to check for overlaping schedules
-$query = "INSERT INTO `Schedule` (`DOW`, `Start`, `Stop`, `Target`) VALUES ('$dow', '$start', '$end', '$target');";
-echo "query built<BR>";
-$result=mysql_query($query);
-echo "query ran<BR>";
+	$target = mysql_real_escape_string($_POST["SchedTarget"]);
+	$dow = mysql_real_escape_string($_POST["Day"]);
+	$start = mysql_real_escape_string($_POST["Start"]);
+	$end = mysql_real_escape_string($_POST["End"]);
+	echo "post escape test<BR>";
+	#needs to check for overlaping schedules
+	$query = "INSERT INTO `Schedule` (`DOW`, `Start`, `Stop`, `Target`) VALUES ('$dow', '$start', '$end', '$target');";
+	echo "query built<BR>";
+	$result=mysql_query($query);
+	echo "query ran<BR>";
+}
 ?>
