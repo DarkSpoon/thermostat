@@ -34,7 +34,7 @@ Released   : 20081230
             <div class="link"><a href="pull.php">Pull</a></div>
             
       </div>
-        <div align="center" class="contentTitle"><h1>Manual Settings</h1></div>
+        <div align="center" class="contentTitle"><h1>Current Status</h1></div>
         
         <div class="contentText">
           <?php
