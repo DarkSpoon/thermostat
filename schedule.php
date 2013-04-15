@@ -57,8 +57,7 @@ Released   : 20081230
 			<?php
 				include("login.php");
 				if ($_GET['w']){
-					$dbhandle=mysql_connect(localhost,$un,$pw) or die("Unable to connect!");	
-					echo "Connected <BR>";	
+					$dbhandle=mysql_connect(localhost,$un,$pw) or die("Unable to connect!");		
 					$selected=mysql_select_db($db) or die("Unable to select!");
 
 
@@ -66,7 +65,6 @@ Released   : 20081230
 					$dow = mysql_real_escape_string($_POST["Day"]);
 					$start = mysql_real_escape_string($_POST["Start"]);
 					$end = mysql_real_escape_string($_POST["End"]);
-					echo "post escape test<BR>";
 					#needs to check for overlaping schedules
 					$query = "INSERT INTO `Schedule` (`DOW`, `Start`, `Stop`, `Target`) VALUES ('$dow', '$start', '$end', '$target');";
 					$result=mysql_query($query);
