@@ -34,9 +34,11 @@ Released   : 20081230
             <div class="link"><a href="pull.php">Pull</a></div>
             
       </div>
-        <div align="center" class="contentTitle"><h1>Temporary Temperature</h1></div>
+        <div align="center" class="contentTitle"><h1>Manual Settings</h1></div>
         <div class="contentText">
-          <h2>HVAC</h2>
+          <div id="header">
+            <h2>HVAC</h2>
+          </div>
           <input type="radio" name="HVAC" value="heat"> Heater<br>
           <input type="radio" name="HVAC" value="ac" checked> AC<br>
           <hr>
