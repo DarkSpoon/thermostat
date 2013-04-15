@@ -22,8 +22,8 @@ echo " <body>";
 	echo "</form>";
 
 
-echo isset($_POST['Target']); 
-echo isset($_POST["Target"]);
+echo isset($_POST['SchedTarget']); 
+echo isset($_POST["SchedTarget"]);
 
 echo " </body>";
 echo "</html>";
