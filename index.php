@@ -35,16 +35,18 @@ Released   : 20081230
             
       </div>
         <div align="center" class="contentTitle"><h1>Manual Settings</h1></div>
+        <hr>
         <div class="contentText">
           <h2>HVAC</h2>
+          <hr>
           <input type="radio" name="HVAC" value="heat"> Heater<br>
           <input type="radio" name="HVAC" value="ac" checked> AC<br>
-          <hr>
           <h2>Fan</h2>
+          <hr>
           <input type="radio" name="fan" value="on"> On<br>
           <input type="radio" name="fan" value="auto" checked> Auto<br>
-          <hr>
           <h2>Temperature</h2>
+          <hr>
           <form method="post" action="index.php?w=1">
           <input type="text" name="Target">
           <input type="submit" value="Submit">
