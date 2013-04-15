@@ -40,7 +40,7 @@ Released   : 20081230
         	
 
 					<form method="post" action=\"schedule.php?w=1\">";
-					<select name="Day">";
+					<select name="Day">
 					<option value="Mon">Monday</option>
 					<option value="Tue">Tuesday</option>
 					<option value="Wed">Wednesday</option>
