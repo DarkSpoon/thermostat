@@ -30,7 +30,8 @@ if (isset($_POST['SchedTarget'])){
 	$selected=mysql_select_db($db) or die("Unable to select!");
 
 
-	$target = mysql_real_escape_string($_POST["Target"]);
+	$target = mysql_real_escape_string($_POST["SchedTarget"]);
+	//$_GET["name"]
 	echo "post escape test<BR>";
 	echo $target;
 	$query = "UPDATE User_Req SET Temp=$target";
