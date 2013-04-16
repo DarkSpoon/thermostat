@@ -49,7 +49,7 @@ Released   : 20081230
 			<option value="Sun">Sunday</option>
 			</select>
 			<input type="text" name="Start">
-			<input type="text" name="End">
+			<input type="text" name="Stop">
 			<input type="text" name="SchedTarget">
 			<input type="submit" value="Submit">
 			</form>
@@ -69,14 +69,24 @@ Released   : 20081230
 					//mysql_close($dbhandle);
 				}
 
+				#update entry of passed PID
+				if ($_GET['u']){
+					$pid=mysql_real_escape_string($_GET['d'])
+					$target = mysql_real_escape_string($_POST["SchedTarget"]);
+					$dow = mysql_real_escape_string($_POST["Day"]);
+					$start = mysql_real_escape_string($_POST["Start"]);
+					$stop = mysql_real_escape_string($_POST["Stop"]);
+					$query = "UPDATE Schedule SET DOW=$dow, Start=$start, Stop=$stop, Target=$target WHERE PID=$pid";
+        			$result=mysql_query($query);
+
 				#write the new entry
 				if ($_GET['w']){
 					$target = mysql_real_escape_string($_POST["SchedTarget"]);
 					$dow = mysql_real_escape_string($_POST["Day"]);
 					$start = mysql_real_escape_string($_POST["Start"]);
-					$end = mysql_real_escape_string($_POST["End"]);
+					$stop = mysql_real_escape_string($_POST["Stop"]);
 					#needs to check for overlaping schedules
-					$query = "INSERT INTO `Schedule` (`DOW`, `Start`, `Stop`, `Target`) VALUES ('$dow', '$start', '$end', '$target');";
+					$query = "INSERT INTO `Schedule` (`DOW`, `Start`, `Stop`, `Target`) VALUES ('$dow', '$start', '$stop', '$target');";
 					$result=mysql_query($query);
 					//mysql_close($dbhandle);
 				}
@@ -88,7 +98,7 @@ Released   : 20081230
 					$pid=$row{'PID'};
 					$dow=$row{'DOW'};
 					$start=$row{'Start'};
-					$end=$row{'Stop'};
+					$stop=$row{'Stop'};
 					$target=$row{'Target'};
 
 					#echo html
@@ -162,11 +172,11 @@ Released   : 20081230
 					    }
 					echo "</select>";
 					echo "<input type=\"text\" value=\"$start\" name=\"Start\">";
-					echo "<input type=\"text\" value=\"$end\" name=\"End\">";
+					echo "<input type=\"text\" value=\"$stop\" name=\"Stop\">";
 					echo "<input type=\"text\" value=\"$target\" name=\"SchedTarget\">";
-					//echo "<input type=\"submit\" value=\"Delete\">";
-					echo "<a href=\"schedule.php?d=$pid\"><img border=\"0\" src=\"delete.png\" alt=\"Delete entry\" width=\"23\" height=\"20\">";
-					echo "<a href=\"schedule.php?u=$pid\"><img border=\"0\" src=\"save.png\" alt=\"Update entry\" width=\"23\" height=\"20\">";
+					echo "<input type=\"submit\" value=\"Save\">";
+					echo "<a href=\"schedule.php?d=$pid\"><img border=\"0\" src=\"delete.png\" align=\"middle\" alt=\"Delete entry\" width=\"23\" height=\"20\">";
+					//echo "<a href=\"schedule.php?u=$pid\"><img border=\"0\" src=\"save.png\" align=\"middle\" alt=\"Update entry\" width=\"23\" height=\"20\">";
 					echo "</form>";
 					echo "<BR>";
 				}
