@@ -53,7 +53,9 @@ Released   : 20081230
 			<input type="text" name="SchedTarget">
 			<input type="submit" value="Submit">
 			</form>
-			
+			<BR>
+			<BR>
+			<hr>
 			<?php
 				include("login.php");
 				$dbhandle=mysql_connect(localhost,$un,$pw) or die("Unable to connect!");		
@@ -66,7 +68,7 @@ Released   : 20081230
 					$pid=$row{'PID'};
 					$dow=$row{'DOW'};
 					$start=$row{'Start'};
-					$end=$row{'End'};
+					$end=$row{'Stop'};
 					$target=$row{'Target'};
 
 					#echo html
