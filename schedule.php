@@ -56,8 +56,8 @@ Released   : 20081230
 			
 			<?php
 				include("login.php");
-				/*if ($_GET['w']){
-					$dbhandle=mysql_connect(localhost,$un,$pw) or die("Unable to connect!");		
+				if ($_GET['w']){
+				/*	$dbhandle=mysql_connect(localhost,$un,$pw) or die("Unable to connect!");		
 					$selected=mysql_select_db($db) or die("Unable to select!");
 
 
@@ -68,8 +68,8 @@ Released   : 20081230
 					#needs to check for overlaping schedules
 					$query = "INSERT INTO `Schedule` (`DOW`, `Start`, `Stop`, `Target`) VALUES ('$dow', '$start', '$end', '$target');";
 					$result=mysql_query($query);
-					mysql_close($dbhandle);
-				}*/
+					mysql_close($dbhandle);*/
+				}
 			?>
           
   </div>        
