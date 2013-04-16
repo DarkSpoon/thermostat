@@ -37,6 +37,22 @@ Released   : 20081230
         <div align="center" class="contentTitle"><h1>Schedule</h1></div>
         
         <div class="contentText">
+			<hr>
+			<form method="post" action="schedule.php?w=1">
+			<select name="Day">
+			<option value="Mon">Monday</option>
+			<option value="Tue">Tuesday</option>
+			<option value="Wed">Wednesday</option>
+			<option value="Thu">Thursday</option>
+			<option value="Fri">Friday</option>
+			<option value="Sat">Saturday</option>
+			<option value="Sun">Sunday</option>
+			</select>
+			<input type="text" name="Start">
+			<input type="text" name="End">
+			<input type="text" name="SchedTarget">
+			<input type="submit" value="Submit">
+			</form>
 			
   </div>        
 </div>
