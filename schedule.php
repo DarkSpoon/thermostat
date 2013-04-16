@@ -164,7 +164,9 @@ Released   : 20081230
 					echo "<input type=\"text\" value=\"$start\" name=\"Start\">";
 					echo "<input type=\"text\" value=\"$end\" name=\"End\">";
 					echo "<input type=\"text\" value=\"$target\" name=\"SchedTarget\">";
-					echo "<input type=\"submit\" value=\"Delete\">";
+					//echo "<input type=\"submit\" value=\"Delete\">";
+					echo "<a href=\"schedule.php?d=$pid\"><img border=\"0\" src=\"delete.png\" alt=\"Delete entry\" width=\"32\" height=\"32\">";
+					echo "<a href=\"schedule.php?u=$pid\"><img border=\"0\" src=\"save.png\" alt=\"Update entry\" width=\"32\" height=\"32\">";
 					echo "</form>";
 				}
 				mysql_close($dbhandle);
