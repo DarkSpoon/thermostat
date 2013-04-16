@@ -79,7 +79,6 @@ Released   : 20081230
         
         <div class="contentText">
           <hr>
-          <br>
           <h2>HVAC</h2>
           <hr>
           <form method="post" action="index.php?w=1">
