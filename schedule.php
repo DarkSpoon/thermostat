@@ -57,10 +57,10 @@ Released   : 20081230
 			<?php
 				include("login.php");
 				if ($_GET['w']){
-				/*	$dbhandle=mysql_connect(localhost,$un,$pw) or die("Unable to connect!");		
+					$dbhandle=mysql_connect(localhost,$un,$pw) or die("Unable to connect!");		
 					$selected=mysql_select_db($db) or die("Unable to select!");
 
-
+					/*
 					$target = mysql_real_escape_string($_POST["SchedTarget"]);
 					$dow = mysql_real_escape_string($_POST["Day"]);
 					$start = mysql_real_escape_string($_POST["Start"]);
