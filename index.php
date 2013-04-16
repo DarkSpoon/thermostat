@@ -29,7 +29,7 @@ Released   : 20081230
             
       </div>
   <div id="bar">
-        	<div class="link"><a href="index.php?w=0">Index</a></div>
+        	<div class="link"><a href="index.php?w=0">Home</a></div>
             <div class="link"><a href="schedule.php?w=0">Schedule</a></div>
             <div class="link"><a href="pull.php">Pull</a></div>
             
@@ -71,7 +71,7 @@ Released   : 20081230
 
         }
 
-        mysql_close($dbhandle);
+        //mysql_close($dbhandle);
 
       ?>
   </div>
@@ -79,7 +79,6 @@ Released   : 20081230
         
         <div class="contentText">
           <hr>
-          <br>
           <br>
           <h2>HVAC</h2>
           <hr>
@@ -100,9 +99,9 @@ Released   : 20081230
         <div id="footer"></div>
   <?php
     if ($_GET['w']){
-        include("login.php");
-        $dbhandle=mysql_connect(localhost,$un,$pw) or die("Unable to connect!");      
-        $selected=mysql_select_db($db) or die("Unable to select!");
+        //include("login.php");
+        //$dbhandle=mysql_connect(localhost,$un,$pw) or die("Unable to connect!");      
+        //$selected=mysql_select_db($db) or die("Unable to select!");
 
         #Set manual overrides
         $hvac=mysql_real_escape_string($_POST["HVAC"]);
