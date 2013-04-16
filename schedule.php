@@ -69,6 +69,7 @@ Released   : 20081230
 					//mysql_close($dbhandle);
 				}
 
+
 				#update entry of passed PID
 				if ($_GET['u']){
 					$pid=mysql_real_escape_string($_GET['u']);
@@ -78,6 +79,7 @@ Released   : 20081230
 					$stop = mysql_real_escape_string($_POST["Stop"]);
 					$query = "UPDATE Schedule SET DOW=$dow, Start=$start, Stop=$stop, Target=$target WHERE PID=$pid";
         			$result=mysql_query($query);
+        		}
 
 				#write the new entry
 				if ($_GET['w']){
