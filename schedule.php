@@ -53,9 +53,10 @@ Released   : 20081230
 			<input type="text" name="SchedTarget">
 			<input type="submit" value="Submit">
 			</form>
-			<?php#we need a way to view and delete scheduling
+			
+			<?php
 				include("login.php");
-				if ($_GET['w']){
+				/*if ($_GET['w']){
 					$dbhandle=mysql_connect(localhost,$un,$pw) or die("Unable to connect!");		
 					$selected=mysql_select_db($db) or die("Unable to select!");
 
@@ -68,7 +69,7 @@ Released   : 20081230
 					$query = "INSERT INTO `Schedule` (`DOW`, `Start`, `Stop`, `Target`) VALUES ('$dow', '$start', '$end', '$target');";
 					$result=mysql_query($query);
 					mysql_close($dbhandle);
-				}
+				}*/
 			?>
           
   </div>        
