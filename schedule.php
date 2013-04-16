@@ -71,7 +71,7 @@ Released   : 20081230
 
 				#update entry of passed PID
 				if ($_GET['u']){
-					$pid=mysql_real_escape_string($_GET['d'])
+					$pid=mysql_real_escape_string($_GET['u']);
 					$target = mysql_real_escape_string($_POST["SchedTarget"]);
 					$dow = mysql_real_escape_string($_POST["Day"]);
 					$start = mysql_real_escape_string($_POST["Start"]);
@@ -102,7 +102,7 @@ Released   : 20081230
 					$target=$row{'Target'};
 
 					#echo html
-					echo "<form method=\"post\" action=\"schedule.php?d=$pid\">";
+					echo "<form method=\"post\" action=\"schedule.php?u=$pid\">";
 					echo "<select name=\"Day\">";
 					#decide which is default selection
 					switch ($dow) {
