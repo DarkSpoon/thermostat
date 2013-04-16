@@ -67,7 +67,7 @@ Released   : 20081230
 					$end = mysql_real_escape_string($_POST["End"]);
 					#needs to check for overlaping schedules
 					$query = "INSERT INTO `Schedule` (`DOW`, `Start`, `Stop`, `Target`) VALUES ('$dow', '$start', '$end', '$target');";
-					//$result=mysql_query($query);
+					$result=mysql_query($query);
 					mysql_close($dbhandle);
 				}
 			?>
