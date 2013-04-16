@@ -20,7 +20,7 @@ cur.execute("SELECT Target, Start, Stop FROM Schedule WHERE DOW=%s AND %s BETWEE
 for row in cur.fetchall() :
 	target=row[0]	
 	start=row[1]
-	stop=time.strptime(row[2], '%H:%M:%S')
+	stop=time.strptime(str(row[2]), '%H:%M:%S')
 
 	#print ("target: " + str(target))
 	#print ("start: " + str(start))
