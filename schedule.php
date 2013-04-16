@@ -77,6 +77,17 @@ Released   : 20081230
 					$dow = mysql_real_escape_string($_POST["Day$pid"]);
 					$start = mysql_real_escape_string($_POST["Star$pid"]);
 					$stop = mysql_real_escape_string($_POST["Stop$pid"]);
+					echo $pid;
+					echo "<BR>";
+					echo $dow;
+					echo "<BR>";
+					echo $start;
+					echo "<BR>";
+					echo $stop;
+					echo "<BR>";
+					echo $target;
+					echo "<BR>";
+
 					$query = "UPDATE Schedule SET DOW=$dow, Start=$start, Stop=$stop, Target=$target WHERE PID=$pid";
         			$result=mysql_query($query);
         		}
