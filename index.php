@@ -91,13 +91,13 @@ Released   : 20081230
           <h2>Temperature</h2>
           <hr>
           <input type="text" name="Target">
-          <input type="submit" value="Submit"><form method="post" action="index.php?w=2"><input type="submit" value="Reset"></form>
-          </form>
+          <input type="submit" value="Submit"></form><form method="post" action="index.php?w=2"><input type="submit" value="Reset"></form>
+          
   </div>        
 </div>
         <div id="footer"></div>
   <?php
-    if ($_GET['w']){
+    if ($_GET['w']==1){
         //include("login.php");
         //$dbhandle=mysql_connect(localhost,$un,$pw) or die("Unable to connect!");      
         //$selected=mysql_select_db($db) or die("Unable to select!");
@@ -115,6 +115,12 @@ Released   : 20081230
           $ac=1;
         }
         $query = "UPDATE User_Req SET Heater=$heater, AC=$ac, Fan=$fan, Temp=$target";
+        $result=mysql_query($query);
+
+        mysql_close($dbhandle);
+    }
+    if ($_GET['w']==2){
+        $query = "UPDATE User_Req SET Temp=0";
         $result=mysql_query($query);
 
         mysql_close($dbhandle);
