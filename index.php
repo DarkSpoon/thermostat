@@ -96,7 +96,7 @@ Released   : 20081230
   </div>        
 </div>
         <div id="footer"></div>
-  <?php
+  <?php#need another button that clears overrides and goes back to schedule
     if ($_GET['w']){
         //include("login.php");
         //$dbhandle=mysql_connect(localhost,$un,$pw) or die("Unable to connect!");      
