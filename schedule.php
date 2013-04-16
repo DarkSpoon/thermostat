@@ -161,11 +161,14 @@ Released   : 20081230
 					mysql_close($dbhandle);
 				}
 
+				#delete entry of passed PID
 				if ($_GET['d']){
 					$pid=mysql_real_escape_string($_GET['d']);
 					$query="DELETE FROM Schedule WHERE PID=$pid";
 					$result=mysql_query($query);
 					mysql_close($dbhandle);
+					#refresh page
+					echo "location.reload();";
 				}
 			?>
           
