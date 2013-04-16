@@ -168,7 +168,7 @@ Released   : 20081230
 					$result=mysql_query($query);
 					mysql_close($dbhandle);
 					#refresh page
-					echo "location.reload();";
+					location.reload();
 				}
 			?>
           
