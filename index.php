@@ -22,14 +22,14 @@ Released   : 20081230
 
 <body>
     <div id="page">
-		
+    
         <div id="header">
-        	<h1>Thermostat</h1>
+          <h1>Thermostat</h1>
             <h2>Control you HVAC with RaspberryPi</h2>
             
       </div>
   <div id="bar">
-        	<div class="link"><a href="index.php?w=0">Home</a></div>
+          <div class="link"><a href="index.php?w=0">Home</a></div>
             <div class="link"><a href="schedule.php?w=0">Schedule</a></div>
             <div class="link"><a href="pull.php">Pull</a></div>
             
@@ -40,40 +40,40 @@ Released   : 20081230
         <div class="contentText">
           <hr>
             <?php
-              include("login.php");
-              $dbhandle=mysql_connect(localhost,$un,$pw) or die("Unable to connect!");  
-              $selected=mysql_select_db($db) or die("Unable to select!");
+        include("login.php");
+        $dbhandle=mysql_connect(localhost,$un,$pw) or die("Unable to connect!");  
+        $selected=mysql_select_db($db) or die("Unable to select!");
 
 
 
-              $query="SELECT * from Conditions";
-              $result=mysql_query($query);
+        $query="SELECT * from Conditions";
+        $result=mysql_query($query);
 
-              while($row=mysql_fetch_array($result)){
-              echo "Currently: ".$row{'Temp'}."F<BR>";
-              $AC=$row{'AC'};
-              $Heat=$row{'Heat'};
-              $Fan=$row{'Fan'};
-              
-              #Display what is currently running. 
-              #The below values will be used to trigger relays and should reflect an accurate status
-              if($AC==1)
-                echo "AC is running<BR>";
-              else if($Heat==1)
-                echo "Heat is running<BR>";
-              else if($AC==0 && $Heat==0)
-                echo "System is idle<BR>";
-              if ($Fan==1)
-                echo "Fan is running<BR>";
-              if ($Fan==0)
-                echo "Fan is on auto<BR>";
-              echo "Target: ".$row{'Target'}."F<BR>";
+        while($row=mysql_fetch_array($result)){
+        echo "Currently: ".$row{'Temp'}."F<BR>";
+        $AC=$row{'AC'};
+        $Heat=$row{'Heat'};
+        $Fan=$row{'Fan'};
+        
+        #Display what is currently running. 
+        #The below values will be used to trigger relays and should reflect an accurate status
+        if($AC==1)
+          echo "AC is running<BR>";
+        else if($Heat==1)
+          echo "Heat is running<BR>";
+        else if($AC==0 && $Heat==0)
+          echo "System is idle<BR>";
+        if ($Fan==1)
+          echo "Fan is running<BR>";
+        if ($Fan==0)
+          echo "Fan is on auto<BR>";
+        echo "Target: ".$row{'Target'}."F<BR>";
 
-              }
+        }
 
-              //mysql_close($dbhandle);
+        //mysql_close($dbhandle);
 
-            ?>
+      ?>
   </div>
         <div align="center" class="contentTitle"><h1>Manual Settings</h1></div>
         
@@ -93,21 +93,14 @@ Released   : 20081230
           <input type="text" name="Target">
           <input type="submit" value="Submit">
           </form>
-<<<<<<< HEAD
-          
-=======
->>>>>>> parent of bc88f2c... added reset button and logic
   </div>        
 </div>
         <div id="footer"></div>
   <?php#need another button that clears overrides and goes back to schedule
     if ($_GET['w']){
-<<<<<<< HEAD
-=======
         //include("login.php");
         //$dbhandle=mysql_connect(localhost,$un,$pw) or die("Unable to connect!");      
         //$selected=mysql_select_db($db) or die("Unable to select!");
->>>>>>> parent of bc88f2c... added reset button and logic
 
         #Set manual overrides
         $hvac=mysql_real_escape_string($_POST["HVAC"]);
@@ -126,15 +119,6 @@ Released   : 20081230
 
         mysql_close($dbhandle);
     }
-<<<<<<< HEAD
-    #reset to current schedule.
-    #elseif ($_GET['w']==2){
-      #$query = "UPDATE User_Req SET Temp=0";
-      #$result=mysql_query($query);
-      #mysql_close($dbhandle);
-    }
-=======
->>>>>>> parent of bc88f2c... added reset button and logic
   ?>
 </body>
 </html>
