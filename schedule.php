@@ -89,6 +89,7 @@ Released   : 20081230
 					echo "<BR>";
 
 					$query = "UPDATE Schedule SET DOW=$dow, Start=$start, Stop=$stop, Target=$target WHERE PID=$pid";
+					$query = "UPDATE `Schedule` SET `DOW`=$dow,`Start`=$start,`Stop`=$stop,`Target`=$target WHERE `PID`=$pid";
 					echo $query;
 					echo "<BR>";
         			$result=mysql_query($query);
