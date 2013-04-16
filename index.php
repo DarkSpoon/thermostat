@@ -120,7 +120,7 @@ Released   : 20081230
         mysql_close($dbhandle);
     }
     #reset to current schedule.
-    elseif ($_GET==2){
+    elseif ($_GET['w']==2){
       $query = "UPDATE User_Req SET Temp=0";
       $result=mysql_query($query);
       mysql_close($dbhandle);
