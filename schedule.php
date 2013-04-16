@@ -73,10 +73,10 @@ Released   : 20081230
 				#update entry of passed PID
 				if ($_GET['u']){
 					$pid=mysql_real_escape_string($_GET['u']);
-					$target = mysql_real_escape_string($_POST["SchedTarget"]);
-					$dow = mysql_real_escape_string($_POST["Day"]);
-					$start = mysql_real_escape_string($_POST["Start"]);
-					$stop = mysql_real_escape_string($_POST["Stop"]);
+					$target = mysql_real_escape_string($_POST["SchedTarget$pid"]);
+					$dow = mysql_real_escape_string($_POST["Day$pid"]);
+					$start = mysql_real_escape_string($_POST["Star$pid"]);
+					$stop = mysql_real_escape_string($_POST["Stop$pid"]);
 					$query = "UPDATE Schedule SET DOW=$dow, Start=$start, Stop=$stop, Target=$target WHERE PID=$pid";
         			$result=mysql_query($query);
         		}
@@ -105,7 +105,7 @@ Released   : 20081230
 
 					#echo html
 					echo "<form method=\"post\" action=\"schedule.php?u=$pid\"> ";
-					echo "<select name=\"Day\"> ";
+					echo "<select name=\"Day$pid\"> ";
 					#decide which is default selection
 					switch ($dow) {
 					    case "Mon":
@@ -173,9 +173,9 @@ Released   : 20081230
 					        break;
 					    }
 					echo "</select> ";
-					echo "<input type=\"text\" value=\"$start\" name=\"Start\"> ";
-					echo "<input type=\"text\" value=\"$stop\" name=\"Stop\"> ";
-					echo "<input type=\"text\" value=\"$target\" name=\"SchedTarget\"> ";
+					echo "<input type=\"text\" value=\"$start\" name=\"Start$pid\"> ";
+					echo "<input type=\"text\" value=\"$stop\" name=\"Stop$pid\"> ";
+					echo "<input type=\"text\" value=\"$target\" name=\"SchedTarget$pid\"> ";
 					echo "<input type=\"submit\" value=\"Save\"> ";
 					echo "<a href=\"schedule.php?d=$pid\"><img border=\"0\" src=\"delete.png\" align=\"absmiddle\" alt=\"Delete entry\" width=\"23\" height=\"20\"> </a>";
 					//echo "<a href=\"schedule.php?u=$pid\"><img border=\"0\" src=\"save.png\" align=\"middle\" alt=\"Update entry\" width=\"23\" height=\"20\">";
