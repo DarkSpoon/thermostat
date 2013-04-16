@@ -53,7 +53,24 @@ Released   : 20081230
 			<input type="text" name="SchedTarget">
 			<input type="submit" value="Submit">
 			</form>
-			
+			<?php#we need a way to view and delete scheduling
+				include("login.php");
+				if ($_GET['w']){
+					$dbhandle=mysql_connect(localhost,$un,$pw) or die("Unable to connect!");		
+					$selected=mysql_select_db($db) or die("Unable to select!");
+
+
+					$target = mysql_real_escape_string($_POST["SchedTarget"]);
+					$dow = mysql_real_escape_string($_POST["Day"]);
+					$start = mysql_real_escape_string($_POST["Start"]);
+					$end = mysql_real_escape_string($_POST["End"]);
+					#needs to check for overlaping schedules
+					$query = "INSERT INTO `Schedule` (`DOW`, `Start`, `Stop`, `Target`) VALUES ('$dow', '$start', '$end', '$target');";
+					$result=mysql_query($query);
+					mysql_close($dbhandle);
+				}
+			?>
+          
   </div>        
 </div>
         <div id="footer"></div>
