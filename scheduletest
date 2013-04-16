@@ -22,6 +22,6 @@ for row in cur.fetchall() :
 	start=row[1]
 	stop=row[2]
 
-	print ("target: ", target)
-	print ("start: ", start)
-	print ("stop: ", stop)
+	print ("target: " + str(target))
+	print ("start: " + str(start))
+	print ("stop: " + str(stop))
