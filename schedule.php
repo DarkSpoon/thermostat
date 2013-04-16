@@ -160,6 +160,13 @@ Released   : 20081230
 					$result=mysql_query($query);
 					mysql_close($dbhandle);
 				}
+
+				if ($_GET['d']){
+					$pid=mysql_real_escape_string($_GET['d']);
+					$query="DELETE FROM Schedule WHERE PID=$pid";
+					$result=mysql_query($query);
+					mysql_close($dbhandle);
+				}
 			?>
           
   </div>        
