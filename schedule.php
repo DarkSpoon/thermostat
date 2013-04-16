@@ -37,40 +37,7 @@ Released   : 20081230
         <div align="center" class="contentTitle"><h1>Schedule</h1></div>
         
         <div class="contentText">
-			<hr>
-			<form method="post" action="schedule.php?w=1">
-			<select name="Day">
-			<option value="Mon">Monday</option>
-			<option value="Tue">Tuesday</option>
-			<option value="Wed">Wednesday</option>
-			<option value="Thu">Thursday</option>
-			<option value="Fri">Friday</option>
-			<option value="Sat">Saturday</option>
-			<option value="Sun">Sunday</option>
-			</select>
-			<input type="text" name="Start">
-			<input type="text" name="End">
-			<input type="text" name="SchedTarget">
-			<input type="submit" value="Submit">
-			</form>
-			<?php#we need a way to view and delete scheduling
-				include("login.php");
-				if ($_GET['w']){
-					$dbhandle=mysql_connect(localhost,$un,$pw) or die("Unable to connect!");		
-					$selected=mysql_select_db($db) or die("Unable to select!");
-
-
-					$target = mysql_real_escape_string($_POST["SchedTarget"]);
-					$dow = mysql_real_escape_string($_POST["Day"]);
-					$start = mysql_real_escape_string($_POST["Start"]);
-					$end = mysql_real_escape_string($_POST["End"]);
-					#needs to check for overlaping schedules
-					$query = "INSERT INTO `Schedule` (`DOW`, `Start`, `Stop`, `Target`) VALUES ('$dow', '$start', '$end', '$target');";
-					$result=mysql_query($query);
-				}
-				mysql_close($dbhandle);
-			?>
-          
+			
   </div>        
 </div>
         <div id="footer"></div>
