@@ -61,9 +61,6 @@ Released   : 20081230
 				$dbhandle=mysql_connect(localhost,$un,$pw) or die("Unable to connect!");		
 				$selected=mysql_select_db($db) or die("Unable to select!");
 
-				$query="SELECT * from Schedule";
-				$result=mysql_query($query);
-
 				#delete entry of passed PID
 				if ($_GET['d']){
 					$pid=mysql_real_escape_string($_GET['d']);
@@ -85,6 +82,8 @@ Released   : 20081230
 				}
 
 				#show schedule via dynamic html 
+				$query="SELECT * from Schedule";
+				$result=mysql_query($query);
 				while($row=mysql_fetch_array($result)){
 					$pid=$row{'PID'};
 					$dow=$row{'DOW'};
