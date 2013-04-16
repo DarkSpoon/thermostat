@@ -93,12 +93,21 @@ Released   : 20081230
           <input type="text" name="Target">
           <input type="submit" value="Submit">
           </form>
+<<<<<<< HEAD
           
+=======
+>>>>>>> parent of bc88f2c... added reset button and logic
   </div>        
 </div>
         <div id="footer"></div>
   <?php#need another button that clears overrides and goes back to schedule
     if ($_GET['w']){
+<<<<<<< HEAD
+=======
+        //include("login.php");
+        //$dbhandle=mysql_connect(localhost,$un,$pw) or die("Unable to connect!");      
+        //$selected=mysql_select_db($db) or die("Unable to select!");
+>>>>>>> parent of bc88f2c... added reset button and logic
 
         #Set manual overrides
         $hvac=mysql_real_escape_string($_POST["HVAC"]);
@@ -117,12 +126,15 @@ Released   : 20081230
 
         mysql_close($dbhandle);
     }
+<<<<<<< HEAD
     #reset to current schedule.
     #elseif ($_GET['w']==2){
       #$query = "UPDATE User_Req SET Temp=0";
       #$result=mysql_query($query);
       #mysql_close($dbhandle);
     }
+=======
+>>>>>>> parent of bc88f2c... added reset button and logic
   ?>
 </body>
 </html>
