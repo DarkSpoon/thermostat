@@ -64,6 +64,27 @@ Released   : 20081230
 				$query="SELECT * from Schedule";
 				$result=mysql_query($query);
 
+				#delete entry of passed PID
+				if ($_GET['d']){
+					$pid=mysql_real_escape_string($_GET['d']);
+					$query="DELETE FROM Schedule WHERE PID=$pid";
+					$result=mysql_query($query);
+					mysql_close($dbhandle);
+				}
+
+				#write the new entry
+				if ($_GET['w']){
+					$target = mysql_real_escape_string($_POST["SchedTarget"]);
+					$dow = mysql_real_escape_string($_POST["Day"]);
+					$start = mysql_real_escape_string($_POST["Start"]);
+					$end = mysql_real_escape_string($_POST["End"]);
+					#needs to check for overlaping schedules
+					$query = "INSERT INTO `Schedule` (`DOW`, `Start`, `Stop`, `Target`) VALUES ('$dow', '$start', '$end', '$target');";
+					$result=mysql_query($query);
+					mysql_close($dbhandle);
+				}
+
+				#show schedule via dynamic html 
 				while($row=mysql_fetch_array($result)){
 					$pid=$row{'PID'};
 					$dow=$row{'DOW'};
@@ -146,29 +167,6 @@ Released   : 20081230
 					echo "<input type=\"text\" value=\"$target\" name=\"SchedTarget\">";
 					echo "<input type=\"submit\" value=\"Delete\">";
 					echo "</form>";
-				}
-			?>
-
-			<?php
-				if ($_GET['w']){
-					$target = mysql_real_escape_string($_POST["SchedTarget"]);
-					$dow = mysql_real_escape_string($_POST["Day"]);
-					$start = mysql_real_escape_string($_POST["Start"]);
-					$end = mysql_real_escape_string($_POST["End"]);
-					#needs to check for overlaping schedules
-					$query = "INSERT INTO `Schedule` (`DOW`, `Start`, `Stop`, `Target`) VALUES ('$dow', '$start', '$end', '$target');";
-					$result=mysql_query($query);
-					mysql_close($dbhandle);
-				}
-
-				#delete entry of passed PID
-				if ($_GET['d']){
-					$pid=mysql_real_escape_string($_GET['d']);
-					$query="DELETE FROM Schedule WHERE PID=$pid";
-					$result=mysql_query($query);
-					mysql_close($dbhandle);
-					#refresh page
-					location.reload();
 				}
 			?>
           
