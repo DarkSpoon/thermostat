@@ -54,7 +54,7 @@ Released   : 20081230
 			<input type="text" name="SchedTarget">
 			<input type="submit" value="Submit">
 			</form>
-			<?php
+			<?php#we need a way to view and delete scheduling
 				include("login.php");
 				if ($_GET['w']){
 					$dbhandle=mysql_connect(localhost,$un,$pw) or die("Unable to connect!");		

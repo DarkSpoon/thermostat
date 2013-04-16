@@ -53,8 +53,9 @@ Released   : 20081230
 				$AC=$row{'AC'};
 				$Heat=$row{'Heat'};
 				$Fan=$row{'Fan'};
-
-				#Check for nothing running
+				
+				#Display what is currently running. 
+				#The below values will be used to trigger relays and should reflect an accurate status
 				if($AC==1)
 					echo "AC is running<BR>";
 				else if($Heat==1)
@@ -65,13 +66,8 @@ Released   : 20081230
 					echo "Fan is running<BR>";
 				if ($Fan==0)
 					echo "Fan is on auto<BR>";
-
-				}
-
-				$query="SELECT Target from Conditions";
-				$result=mysql_query($query);
-				while($row=mysql_fetch_array($result)){
 				echo "Target: ".$row{'Target'}."F<BR>";
+
 				}
 
 				mysql_close($dbhandle);
