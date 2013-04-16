@@ -168,6 +168,7 @@ Released   : 20081230
 					echo "<a href=\"schedule.php?d=$pid\"><img border=\"0\" src=\"delete.png\" alt=\"Delete entry\" width=\"23\" height=\"20\">";
 					echo "<a href=\"schedule.php?u=$pid\"><img border=\"0\" src=\"save.png\" alt=\"Update entry\" width=\"23\" height=\"20\">";
 					echo "</form>";
+					echo "<BR>;"
 				}
 				mysql_close($dbhandle);
 			?>
