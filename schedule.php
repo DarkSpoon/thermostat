@@ -137,6 +137,7 @@ Released   : 20081230
 							echo "<option value=\"Sat\">Saturday</option>";
 							echo "<option value=\"Sun\"selected=\"selected\">Sunday</option>";
 					        break;
+					    }
 					echo "</select>";
 					echo "<input type=\"text\" value=\"$start\" name=\"Start\">";
 					echo "<input type=\"text\" value=\"$end\" name=\"End\">";
