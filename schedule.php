@@ -75,7 +75,7 @@ Released   : 20081230
 					$pid=mysql_real_escape_string($_GET['u']);
 					$target = mysql_real_escape_string($_POST["SchedTarget$pid"]);
 					$dow = mysql_real_escape_string($_POST["Day$pid"]);
-					$start = mysql_real_escape_string($_POST["Star$pid"]);
+					$start = mysql_real_escape_string($_POST["Start$pid"]);
 					$stop = mysql_real_escape_string($_POST["Stop$pid"]);
 					echo $pid;
 					echo "<BR>";
