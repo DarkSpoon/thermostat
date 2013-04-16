@@ -25,4 +25,4 @@ for row in cur.fetchall() :
 	print ("target: " + str(target))
 	print ("start: " + str(start))
 	print ("stop: " + str(stop))
-	print ("difference current and stop: " + str(stop-currentTime))
+	print ("difference current and stop: " + currentTime<=stop)
