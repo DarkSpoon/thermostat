@@ -91,7 +91,7 @@ Released   : 20081230
           <h2>Temperature</h2>
           <hr>
           <input type="text" name="Target">
-          <input type="submit" value="Submit"><input type="submit" value="Reset">
+          <input type="submit" value="Submit">
           </form>
           
   </div>        
