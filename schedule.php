@@ -180,7 +180,7 @@ Released   : 20081230
 					echo "<a href=\"schedule.php?d=$pid\"><img border=\"0\" src=\"delete.png\" align=\"absmiddle\" alt=\"Delete entry\" width=\"23\" height=\"20\"> </a>";
 					//echo "<a href=\"schedule.php?u=$pid\"><img border=\"0\" src=\"save.png\" align=\"middle\" alt=\"Update entry\" width=\"23\" height=\"20\">";
 					echo "</form> ";
-					echo "<BR>";
+					//echo "<BR>";
 				}
 				mysql_close($dbhandle);
 			?>
