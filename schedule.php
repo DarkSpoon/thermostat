@@ -104,8 +104,8 @@ Released   : 20081230
 					$target=$row{'Target'};
 
 					#echo html
-					echo "<form method=\"post\" action=\"schedule.php?u=$pid\">";
-					echo "<select name=\"Day\">";
+					echo "<form method=\"post\" action=\"schedule.php?u=$pid\"> ";
+					echo "<select name=\"Day\"> ";
 					#decide which is default selection
 					switch ($dow) {
 					    case "Mon":
@@ -172,14 +172,14 @@ Released   : 20081230
 							echo "<option value=\"Sun\"selected=\"selected\">Sunday</option> ";
 					        break;
 					    }
-					echo "</select>";
-					echo "<input type=\"text\" value=\"$start\" name=\"Start\">";
-					echo "<input type=\"text\" value=\"$stop\" name=\"Stop\">";
-					echo "<input type=\"text\" value=\"$target\" name=\"SchedTarget\">";
-					echo "<input type=\"submit\" value=\"Save\">";
-					echo "<a href=\"schedule.php?d=$pid\"><img border=\"0\" src=\"delete.png\" align=\"middle\" alt=\"Delete entry\" width=\"23\" height=\"20\">";
+					echo "</select> ";
+					echo "<input type=\"text\" value=\"$start\" name=\"Start\"> ";
+					echo "<input type=\"text\" value=\"$stop\" name=\"Stop\"> ";
+					echo "<input type=\"text\" value=\"$target\" name=\"SchedTarget\"> ";
+					echo "<input type=\"submit\" value=\"Save\"> ";
+					echo "<a href=\"schedule.php?d=$pid\"><img border=\"0\" src=\"delete.png\" alt=\"Delete entry\" width=\"23\" height=\"20\"> ";
 					//echo "<a href=\"schedule.php?u=$pid\"><img border=\"0\" src=\"save.png\" align=\"middle\" alt=\"Update entry\" width=\"23\" height=\"20\">";
-					echo "</form>";
+					echo "</form> ";
 					echo "<BR>";
 				}
 				mysql_close($dbhandle);
