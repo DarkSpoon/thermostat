@@ -119,7 +119,7 @@ Released   : 20081230
 					        break;
 					    case "Tue":
 							echo "<option value=\"Mon\">Monday</option> ";
-							echo "<option value=\"Tue\"selected=\"selected\">Tuesday</option> ";
+							echo "<option value=\"Tue\" selected=\"selected\">Tuesday</option> ";
 							echo "<option value=\"Wed\">Wednesday</option> ";
 							echo "<option value=\"Thu\">Thursday</option> ";
 							echo "<option value=\"Fri\">Friday</option> ";
@@ -129,7 +129,7 @@ Released   : 20081230
 				        case "Wed":
 							echo "<option value=\"Mon\">Monday</option> ";
 							echo "<option value=\"Tue\">Tuesday</option> ";
-							echo "<option value=\"Wed\"selected=\"selected\">Wednesday</option> ";
+							echo "<option value=\"Wed\" selected=\"selected\">Wednesday</option> ";
 							echo "<option value=\"Thu\">Thursday</option> ";
 							echo "<option value=\"Fri\">Friday</option> ";
 							echo "<option value=\"Sat\">Saturday</option> ";
@@ -139,7 +139,7 @@ Released   : 20081230
 							echo "<option value=\"Mon\">Monday</option> ";
 							echo "<option value=\"Tue\">Tuesday</option> ";
 							echo "<option value=\"Wed\">Wednesday</option> ";
-							echo "<option value=\"Thu\"selected=\"selected\">Thursday</option> ";
+							echo "<option value=\"Thu\" selected=\"selected\">Thursday</option> ";
 							echo "<option value=\"Fri\">Friday</option> ";
 							echo "<option value=\"Sat\">Saturday</option> ";
 							echo "<option value=\"Sun\">Sunday</option> ";
@@ -149,7 +149,7 @@ Released   : 20081230
 							echo "<option value=\"Tue\">Tuesday</option> ";
 							echo "<option value=\"Wed\">Wednesday</option> ";
 							echo "<option value=\"Thu\">Thursday</option> ";
-							echo "<option value=\"Fri\"selected=\"selected\">Friday</option> ";
+							echo "<option value=\"Fri\" selected=\"selected\">Friday</option> ";
 							echo "<option value=\"Sat\">Saturday</option> ";
 							echo "<option value=\"Sun\">Sunday</option> ";
 					        break;
@@ -159,7 +159,7 @@ Released   : 20081230
 							echo "<option value=\"Wed\">Wednesday</option> ";
 							echo "<option value=\"Thu\">Thursday</option> ";
 							echo "<option value=\"Fri\">Friday</option> ";
-							echo "<option value=\"Sat\"selected=\"selected\">Saturday</option> ";
+							echo "<option value=\"Sat\" selected=\"selected\">Saturday</option> ";
 							echo "<option value=\"Sun\">Sunday</option> ";
 					        break;
 				        case "Sun":
@@ -169,7 +169,7 @@ Released   : 20081230
 							echo "<option value=\"Thu\">Thursday</option> ";
 							echo "<option value=\"Fri\">Friday</option> ";
 							echo "<option value=\"Sat\">Saturday</option> ";
-							echo "<option value=\"Sun\"selected=\"selected\">Sunday</option> ";
+							echo "<option value=\"Sun\" selected=\"selected\">Sunday</option> ";
 					        break;
 					    }
 					echo "</select> ";
