@@ -38,7 +38,6 @@ Released   : 20081230
         
         <div class="contentText">
 			<hr>
-
 			<form method="post" action="schedule.php?w=1">
 			<select name="Day">
 			<option value="Mon">Monday</option>
