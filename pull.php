@@ -17,7 +17,7 @@ Released   : 20081230
 <head>
 <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
 <link rel="stylesheet" type="text/css" href="style.css" />
-<title>A Farewell to Colors by Bryant Smith</title>
+<title>Thermostat</title>
 </head>
 
 <body>

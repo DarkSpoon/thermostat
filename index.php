@@ -17,7 +17,7 @@ Released   : 20081230
 <head>
 <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
 <link rel="stylesheet" type="text/css" href="style.css" />
-<title>A Farewell to Colors by Bryant Smith</title>
+<title>Thermostat</title>
 </head>
 
 <body>
@@ -34,6 +34,47 @@ Released   : 20081230
             <div class="link"><a href="pull.php">Pull</a></div>
             
       </div>
+
+        <div align="center" class="contentTitle"><h1>Current Status</h1></div>
+        
+        <div class="contentText">
+          <hr>
+            <?php
+        include("login.php");
+        $dbhandle=mysql_connect(localhost,$un,$pw) or die("Unable to connect!");  
+        $selected=mysql_select_db($db) or die("Unable to select!");
+
+
+
+        $query="SELECT * from Conditions";
+        $result=mysql_query($query);
+
+        while($row=mysql_fetch_array($result)){
+        echo "Currently: ".$row{'Temp'}."F<BR>";
+        $AC=$row{'AC'};
+        $Heat=$row{'Heat'};
+        $Fan=$row{'Fan'};
+        
+        #Display what is currently running. 
+        #The below values will be used to trigger relays and should reflect an accurate status
+        if($AC==1)
+          echo "AC is running<BR>";
+        else if($Heat==1)
+          echo "Heat is running<BR>";
+        else if($AC==0 && $Heat==0)
+          echo "System is idle<BR>";
+        if ($Fan==1)
+          echo "Fan is running<BR>";
+        if ($Fan==0)
+          echo "Fan is on auto<BR>";
+        echo "Target: ".$row{'Target'}."F<BR>";
+
+        }
+
+        mysql_close($dbhandle);
+
+      ?>
+  </div>
         <div align="center" class="contentTitle"><h1>Manual Settings</h1></div>
         
         <div class="contentText">
