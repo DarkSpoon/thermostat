@@ -109,67 +109,67 @@ Released   : 20081230
 					#decide which is default selection
 					switch ($dow) {
 					    case "Mon":
-					        echo "<option value=\"Mon\" selected=\"selected\">Monday</option>";
-							echo "<option value=\"Tue\">Tuesday</option>";
-							echo "<option value=\"Wed\">Wednesday</option>";
-							echo "<option value=\"Thu\">Thursday</option>";
-							echo "<option value=\"Fri\">Friday</option>";
-							echo "<option value=\"Sat\">Saturday</option>";
-							echo "<option value=\"Sun\">Sunday</option>";
+					        echo "<option value=\"Mon\" selected=\"selected\">Monday</option> ";
+							echo "<option value=\"Tue\">Tuesday</option> ";
+							echo "<option value=\"Wed\">Wednesday</option> ";
+							echo "<option value=\"Thu\">Thursday</option> ";
+							echo "<option value=\"Fri\">Friday</option> ";
+							echo "<option value=\"Sat\">Saturday</option> ";
+							echo "<option value=\"Sun\">Sunday</option> ";
 					        break;
 					    case "Tue":
-							echo "<option value=\"Mon\">Monday</option>";
-							echo "<option value=\"Tue\"selected=\"selected\">Tuesday</option>";
-							echo "<option value=\"Wed\">Wednesday</option>";
-							echo "<option value=\"Thu\">Thursday</option>";
-							echo "<option value=\"Fri\">Friday</option>";
-							echo "<option value=\"Sat\">Saturday</option>";
-							echo "<option value=\"Sun\">Sunday</option>";
+							echo "<option value=\"Mon\">Monday</option> ";
+							echo "<option value=\"Tue\"selected=\"selected\">Tuesday</option> ";
+							echo "<option value=\"Wed\">Wednesday</option> ";
+							echo "<option value=\"Thu\">Thursday</option> ";
+							echo "<option value=\"Fri\">Friday</option> ";
+							echo "<option value=\"Sat\">Saturday</option> ";
+							echo "<option value=\"Sun\">Sunday</option> ";
 					        break;
 				        case "Wed":
-							echo "<option value=\"Mon\">Monday</option>";
-							echo "<option value=\"Tue\">Tuesday</option>";
-							echo "<option value=\"Wed\"selected=\"selected\">Wednesday</option>";
-							echo "<option value=\"Thu\">Thursday</option>";
-							echo "<option value=\"Fri\">Friday</option>";
-							echo "<option value=\"Sat\">Saturday</option>";
-							echo "<option value=\"Sun\">Sunday</option>";
+							echo "<option value=\"Mon\">Monday</option> ";
+							echo "<option value=\"Tue\">Tuesday</option> ";
+							echo "<option value=\"Wed\"selected=\"selected\">Wednesday</option> ";
+							echo "<option value=\"Thu\">Thursday</option> ";
+							echo "<option value=\"Fri\">Friday</option> ";
+							echo "<option value=\"Sat\">Saturday</option> ";
+							echo "<option value=\"Sun\">Sunday</option> ";
 					        break;
 				        case "Thu":
-							echo "<option value=\"Mon\">Monday</option>";
-							echo "<option value=\"Tue\">Tuesday</option>";
-							echo "<option value=\"Wed\">Wednesday</option>";
-							echo "<option value=\"Thu\"selected=\"selected\">Thursday</option>";
-							echo "<option value=\"Fri\">Friday</option>";
-							echo "<option value=\"Sat\">Saturday</option>";
-							echo "<option value=\"Sun\">Sunday</option>";
+							echo "<option value=\"Mon\">Monday</option> ";
+							echo "<option value=\"Tue\">Tuesday</option> ";
+							echo "<option value=\"Wed\">Wednesday</option> ";
+							echo "<option value=\"Thu\"selected=\"selected\">Thursday</option> ";
+							echo "<option value=\"Fri\">Friday</option> ";
+							echo "<option value=\"Sat\">Saturday</option> ";
+							echo "<option value=\"Sun\">Sunday</option> ";
 					        break;
 				        case "Fri":
-							echo "<option value=\"Mon\">Monday</option>";
-							echo "<option value=\"Tue\">Tuesday</option>";
-							echo "<option value=\"Wed\">Wednesday</option>";
-							echo "<option value=\"Thu\">Thursday</option>";
-							echo "<option value=\"Fri\"selected=\"selected\">Friday</option>";
-							echo "<option value=\"Sat\">Saturday</option>";
-							echo "<option value=\"Sun\">Sunday</option>";
+							echo "<option value=\"Mon\">Monday</option> ";
+							echo "<option value=\"Tue\">Tuesday</option> ";
+							echo "<option value=\"Wed\">Wednesday</option> ";
+							echo "<option value=\"Thu\">Thursday</option> ";
+							echo "<option value=\"Fri\"selected=\"selected\">Friday</option> ";
+							echo "<option value=\"Sat\">Saturday</option> ";
+							echo "<option value=\"Sun\">Sunday</option> ";
 					        break;
 				        case "Sat":
-							echo "<option value=\"Mon\">Monday</option>";
-							echo "<option value=\"Tue\">Tuesday</option>";
-							echo "<option value=\"Wed\">Wednesday</option>";
-							echo "<option value=\"Thu\">Thursday</option>";
-							echo "<option value=\"Fri\">Friday</option>";
-							echo "<option value=\"Sat\"selected=\"selected\">Saturday</option>";
-							echo "<option value=\"Sun\">Sunday</option>";
+							echo "<option value=\"Mon\">Monday</option> ";
+							echo "<option value=\"Tue\">Tuesday</option> ";
+							echo "<option value=\"Wed\">Wednesday</option> ";
+							echo "<option value=\"Thu\">Thursday</option> ";
+							echo "<option value=\"Fri\">Friday</option> ";
+							echo "<option value=\"Sat\"selected=\"selected\">Saturday</option> ";
+							echo "<option value=\"Sun\">Sunday</option> ";
 					        break;
 				        case "Sun":
-					        echo "<option value=\"Mon\">Monday</option>";
-							echo "<option value=\"Tue\">Tuesday</option>";
-							echo "<option value=\"Wed\">Wednesday</option>";
-							echo "<option value=\"Thu\">Thursday</option>";
-							echo "<option value=\"Fri\">Friday</option>";
-							echo "<option value=\"Sat\">Saturday</option>";
-							echo "<option value=\"Sun\"selected=\"selected\">Sunday</option>";
+					        echo "<option value=\"Mon\">Monday</option> ";
+							echo "<option value=\"Tue\">Tuesday</option> ";
+							echo "<option value=\"Wed\">Wednesday</option> ";
+							echo "<option value=\"Thu\">Thursday</option> ";
+							echo "<option value=\"Fri\">Friday</option> ";
+							echo "<option value=\"Sat\">Saturday</option> ";
+							echo "<option value=\"Sun\"selected=\"selected\">Sunday</option> ";
 					        break;
 					    }
 					echo "</select>";
