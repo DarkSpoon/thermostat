@@ -56,11 +56,98 @@ Released   : 20081230
 			
 			<?php
 				include("login.php");
+				$dbhandle=mysql_connect(localhost,$un,$pw) or die("Unable to connect!");		
+				$selected=mysql_select_db($db) or die("Unable to select!");
+
+				$query="SELECT * from Schedule";
+				$result=mysql_query($query);
+
+				while($row=mysql_fetch_array($result)){
+					$pid=$row{'PID'};
+					$dow=$row{'DOW'};
+					$start=$row{'Start'};
+					$end=$row{'End'};
+					$target=$row{'Target'};
+
+					#echo html
+					echo "<form method=\"post\" action=\"schedule.php?d=$pid\">";
+					echo "<select name=\"Day\">";
+					#decide which is default selection
+					switch ($dow) {
+					    case "Mon":
+					        echo "<option value=\"Mon\" selected=\"selected\">Monday</option>";
+							echo "<option value=\"Tue\">Tuesday</option>";
+							echo "<option value=\"Wed\">Wednesday</option>";
+							echo "<option value=\"Thu\">Thursday</option>";
+							echo "<option value=\"Fri\">Friday</option>";
+							echo "<option value=\"Sat\">Saturday</option>";
+							echo "<option value=\"Sun\">Sunday</option>";
+					        break;
+					    case "Tue":
+							echo "<option value=\"Mon\">Monday</option>";
+							echo "<option value=\"Tue\"selected=\"selected\">Tuesday</option>";
+							echo "<option value=\"Wed\">Wednesday</option>";
+							echo "<option value=\"Thu\">Thursday</option>";
+							echo "<option value=\"Fri\">Friday</option>";
+							echo "<option value=\"Sat\">Saturday</option>";
+							echo "<option value=\"Sun\">Sunday</option>";
+					        break;
+				        case "Wed":
+							echo "<option value=\"Mon\">Monday</option>";
+							echo "<option value=\"Tue\">Tuesday</option>";
+							echo "<option value=\"Wed\"selected=\"selected\">Wednesday</option>";
+							echo "<option value=\"Thu\">Thursday</option>";
+							echo "<option value=\"Fri\">Friday</option>";
+							echo "<option value=\"Sat\">Saturday</option>";
+							echo "<option value=\"Sun\">Sunday</option>";
+					        break;
+				        case "Thu":
+							echo "<option value=\"Mon\">Monday</option>";
+							echo "<option value=\"Tue\">Tuesday</option>";
+							echo "<option value=\"Wed\">Wednesday</option>";
+							echo "<option value=\"Thu\"selected=\"selected\">Thursday</option>";
+							echo "<option value=\"Fri\">Friday</option>";
+							echo "<option value=\"Sat\">Saturday</option>";
+							echo "<option value=\"Sun\">Sunday</option>";
+					        break;
+				        case "Fri":
+							echo "<option value=\"Mon\">Monday</option>";
+							echo "<option value=\"Tue\">Tuesday</option>";
+							echo "<option value=\"Wed\">Wednesday</option>";
+							echo "<option value=\"Thu\">Thursday</option>";
+							echo "<option value=\"Fri\"selected=\"selected\">Friday</option>";
+							echo "<option value=\"Sat\">Saturday</option>";
+							echo "<option value=\"Sun\">Sunday</option>";
+					        break;
+				        case "Sat":
+							echo "<option value=\"Mon\">Monday</option>";
+							echo "<option value=\"Tue\">Tuesday</option>";
+							echo "<option value=\"Wed\">Wednesday</option>";
+							echo "<option value=\"Thu\">Thursday</option>";
+							echo "<option value=\"Fri\">Friday</option>";
+							echo "<option value=\"Sat\"selected=\"selected\">Saturday</option>";
+							echo "<option value=\"Sun\">Sunday</option>";
+					        break;
+				        case "Sun":
+					        echo "<option value=\"Mon\">Monday</option>";
+							echo "<option value=\"Tue\">Tuesday</option>";
+							echo "<option value=\"Wed\">Wednesday</option>";
+							echo "<option value=\"Thu\">Thursday</option>";
+							echo "<option value=\"Fri\">Friday</option>";
+							echo "<option value=\"Sat\">Saturday</option>";
+							echo "<option value=\"Sun\"selected=\"selected\">Sunday</option>";
+					        break;
+					echo "</select>";
+					echo "<input type=\"text\" value=\"$start\" name=\"Start\">";
+					echo "<input type=\"text\" value=\"$end\" name=\"End\">";
+					echo "<input type=\"text\" value=\"$target\" name=\"SchedTarget\">";
+					echo "<input type=\"submit\" value=\"Delete\">";
+					echo "</form>";
+				}
+			?>
+
+			<?php
 				if ($_GET['w']){
-					$dbhandle=mysql_connect(localhost,$un,$pw) or die("Unable to connect!");		
-					$selected=mysql_select_db($db) or die("Unable to select!");
-
-
 					$target = mysql_real_escape_string($_POST["SchedTarget"]);
 					$dow = mysql_real_escape_string($_POST["Day"]);
 					$start = mysql_real_escape_string($_POST["Start"]);
