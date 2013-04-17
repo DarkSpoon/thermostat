@@ -56,35 +56,35 @@ Released   : 20081230
                 $Fan=$row{'Fan'};
 
                 if($AC==1)
-                  $output=$output+"Cool, ";
+                  $output=$output."Cool, ";
                 else if($Heat==1)
-                  $output=$output+"Heat, ";
+                  $output=$output."Heat, ";
                 if($Fan==0)
-                  $output=$output+"Auto <BR>";
+                  $output=$output."Auto <BR>";
                 else if($Fan==1)
-                  $output=$output+"On <BR>";
+                  $output=$output."On <BR>";
               }
 
               $query="SELECT * from Conditions";
               $result=mysql_query($query);
               while($row=mysql_fetch_array($result)){
-                $output=$output + "Currently: ".$row{'Temp'}."F<BR>";
+                $output=$output."Currently: ".$row{'Temp'}."F<BR>";
                 $AC=$row{'AC'};
                 $Heat=$row{'Heat'};
                 $Fan=$row{'Fan'};
                 
                 #The below values will be used to trigger relays in server code and should reflect an accurate status
                 if($AC==1)
-                  $output=$output + "AC is running<BR>";
+                  $output=$output."AC is running<BR>";
                 else if($Heat==1)
-                  $output=$output + "Heat is running<BR>";
+                  $output=$output."Heat is running<BR>";
                 else if($AC==0 && $Heat==0)
-                  $output=$output + "System is idle<BR>";
+                  $output=$output."System is idle<BR>";
                 if ($Fan==1)
-                  $output=$output + "Fan is running<BR>";
+                  $output=$output."Fan is running<BR>";
                 else if ($Fan==0)
-                  $output=$output + "Fan is on auto<BR>";
-                $output=$output + "Target: ".$row{'Target'}."F<BR>";
+                  $output=$output."Fan is on auto<BR>";
+                $output=$output."Target: ".$row{'Target'}."F<BR>";
               }
               echo $output;
               //mysql_close($dbhandle);
