@@ -85,14 +85,14 @@ Released   : 20081230
                 $Heatrunning=$row{'Heater'};
                 $Fanrunning=$row{'Fan'};
 
-                if($ACrunning==1)
+                /*if($ACrunning==1)
                   echo "Cool, ";
                 else if($Heatrunning==1)
                   echo "Heat, ";
                 if($Fanrunning==0)
                   echo "Auto <BR>";
                 else if($Fanrunning==1)
-                  echo "On <BR>";
+                  echo "On <BR>";*/
               }
 
               $query="SELECT * from Conditions";
@@ -115,7 +115,7 @@ Released   : 20081230
                 else if ($Fan==0)
                   echo "Fan is not running<BR>";                
                 $target=$row{'Target'};
-                echo "Target: ".$target."F<BR>";
+                //echo "Target: ".$target."F<BR>";
               }
             ?>
   </div>
