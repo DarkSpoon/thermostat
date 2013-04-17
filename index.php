@@ -50,7 +50,7 @@ Released   : 20081230
               #Build strings to display what is currently running. 
               while($row=mysql_fetch_array($result)){
                 $AC=$row{'AC'};
-                $Heat=$row{'Heat'};
+                $Heat=$row{'Heater'};
                 $Fan=$row{'Fan'};
 
                 if($AC==1)
