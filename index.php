@@ -24,36 +24,6 @@ Released   : 20081230
 <link rel="stylesheet" type="text/css" href="style.css" />
 <title>Thermostat</title>
 </head>
-<?php
-  if ($_GET['w']==1){
-      #Set manual overrides
-      $hvac=mysql_real_escape_string($_POST["HVAC"]);
-      $fan=mysql_real_escape_string($_POST["fan"]);
-      echo $_POST["Target"];
-      echo isset($_POST["Target"]);
-      if(isset($_POST["Target"])){
-        $target = mysql_real_escape_string($_POST["Target"]);
-      } 
-      else {
-        $target=0;
-      }
-      
-      if ($hvac=="heat"){
-        $heater=1;
-        $ac=0;
-      }
-      elseif ($hvac=="ac"){
-        $heater=0;
-        $ac=1;
-      }
-      $query = "UPDATE User_Req SET Heater=$heater, AC=$ac, Fan=$fan, Temp=$target";
-      $result=mysql_query($query);
-  }
-  if ($_GET['w']==2){
-      $query = "UPDATE User_Req SET Temp=0";
-      $result=mysql_query($query);
-  }
-?>
 <body>
     <div id="page">
     
@@ -68,6 +38,36 @@ Released   : 20081230
             <div class="link"><a href="pull.php">Pull</a></div>
             
       </div>
+      <?php
+        if ($_GET['w']==1){
+            #Set manual overrides
+            $hvac=mysql_real_escape_string($_POST["HVAC"]);
+            $fan=mysql_real_escape_string($_POST["fan"]);
+            echo $_POST["Target"];
+            echo isset($_POST["Target"]);
+            if(isset($_POST["Target"])){
+              $target = mysql_real_escape_string($_POST["Target"]);
+            } 
+            else {
+              $target=0;
+            }
+            
+            if ($hvac=="heat"){
+              $heater=1;
+              $ac=0;
+            }
+            elseif ($hvac=="ac"){
+              $heater=0;
+              $ac=1;
+            }
+            $query = "UPDATE User_Req SET Heater=$heater, AC=$ac, Fan=$fan, Temp=$target";
+            $result=mysql_query($query);
+        }
+        if ($_GET['w']==2){
+            $query = "UPDATE User_Req SET Temp=0";
+            $result=mysql_query($query);
+        }
+      ?>
 
         <div align="center" class="contentTitle"><h1>Current Status</h1></div>
         
