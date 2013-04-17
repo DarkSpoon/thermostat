@@ -44,13 +44,15 @@ Released   : 20081230
             $hvac=mysql_real_escape_string($_POST["HVAC"]);
             $fan=mysql_real_escape_string($_POST["fan"]);
             
-            if(isset($_POST["Target"])){
-              echo "was set<br>";
+            if(isset($_POST["Target"])){              
               $target = mysql_real_escape_string($_POST["Target"]);
+              echo $target;
+              echo "was set<br>";
             } 
             else {
-              echo "was not set<br>";
               $target=0;
+              echo $target;
+              echo "was not set<br>";
             }
             
             if ($hvac=="heat"){
