@@ -51,7 +51,7 @@ Released   : 20081230
       $query = "UPDATE User_Req SET Temp=0";
       $result=mysql_query($query);
 
-      mysql_close($dbhandle);
+      //mysql_close($dbhandle);
   }
 ?>
 <body>
@@ -121,7 +121,7 @@ Released   : 20081230
               #build output string
               #$output=$heatcool.$fanauto.$running.$fanrunning.$currenttarget;
               #echo $output;
-              //mysql_close($dbhandle);
+              mysql_close($dbhandle);
 
             ?>
   </div>
