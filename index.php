@@ -45,10 +45,10 @@ Released   : 20081230
               $selected=mysql_select_db($db) or die("Unable to select!");
 
 
-              /*$query="SELECT * from User_Req";
+              $query="SELECT * from User_Req";
               $result=mysql_query($query);
               #Build strings to display what is currently running. 
-              while$row=mysql_fetch_array($result)){
+              while($row=mysql_fetch_array($result)){
                 $AC=$row{'AC'};
                 $Heat=$row{'Heat'};
                 $Fan=$row{'Fan'};
@@ -61,7 +61,7 @@ Released   : 20081230
                   echo "Auto <BR>";
                 else if($Fan==1)
                   echo "On <BR>";
-              }*/
+              }
 
               $query="SELECT * from Conditions";
               $result=mysql_query($query);
