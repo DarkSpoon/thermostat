@@ -46,9 +46,11 @@ Released   : 20081230
             
             if(empty($_POST["Target"])){              
               $target = 0;
+              echo $target;
             } 
             else {
               $target = mysql_real_escape_string($_POST["Target"]);
+              echo $target;
             }
             
             if ($hvac=="heat"){
