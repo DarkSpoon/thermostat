@@ -38,10 +38,10 @@ Released   : 20081230
             <div class="link"><a href="schedule.php?w=0">Schedule</a></div>
               <?php
                 if(login_check($mysqli) == true) {
-                  echo "<div class=\"logout\"><a href=\"logout.php\">Logout</a></div>";
+                  echo "<div class=\"link\"><a href=\"logout.php\">Logout</a></div>";
                 }
                 else {
-                  echo "<div class=\"logout\"><a href=\"login.php\">Login</a></div>";
+                  echo "<div class=\"link\"><a href=\"login.php\">Login</a></div>";
                 }
               ?>
             
