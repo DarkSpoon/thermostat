@@ -82,7 +82,7 @@ Released   : 20081230
                   echo "Fan is running<BR>";
                 else if ($Fan==0)
                   echo "Fan is on auto<BR>";                
-                echo "Target: ".$row{'Target'}."F<BR>"
+                echo "Target: ".$row{'Target'}."F<BR>";
               }
               #build output string
               #$output=$heatcool.$fanauto.$running.$fanrunning.$currenttarget;
