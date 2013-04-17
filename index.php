@@ -60,6 +60,7 @@ Released   : 20081230
               $ac=1;
             }
             $query = "UPDATE User_Req SET Heater=$heater, AC=$ac, Fan=$fan, Temp=$target";
+            echo $query;
             $result=mysql_query($query);
         }
         if ($_GET['w']==2){
