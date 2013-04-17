@@ -19,7 +19,42 @@ Released   : 20081230
 <link rel="stylesheet" type="text/css" href="style.css" />
 <title>Thermostat</title>
 </head>
+<?php
+    if ($_GET['w']==1){
+        include("login.php");
+        $dbhandle=mysql_connect(localhost,$un,$pw) or die("Unable to connect!");      
+        $selected=mysql_select_db($db) or die("Unable to select!");
 
+        #Set manual overrides
+        $hvac=mysql_real_escape_string($_POST["HVAC"]);
+        $fan=mysql_real_escape_string($_POST["fan"]);
+        if(isset($_POST["Target"])){
+          $target = mysql_real_escape_string($_POST["Target"]);
+        } 
+        else {
+          $target=0;
+        }
+        
+        if ($hvac=="heat"){
+          $heater=1;
+          $ac=0;
+        }
+        elseif ($hvac=="ac"){
+          $heater=0;
+          $ac=1;
+        }
+        $query = "UPDATE User_Req SET Heater=$heater, AC=$ac, Fan=$fan, Temp=$target";
+        $result=mysql_query($query);
+
+        mysql_close($dbhandle);
+    }
+    if ($_GET['w']==2){
+        $query = "UPDATE User_Req SET Temp=0";
+        $result=mysql_query($query);
+
+        mysql_close($dbhandle);
+    }
+  ?>
 <body>
     <div id="page">
     
@@ -40,9 +75,9 @@ Released   : 20081230
         <div class="contentText">
           <hr>
             <?php
-              include("login.php");
-              $dbhandle=mysql_connect(localhost,$un,$pw) or die("Unable to connect!");  
-              $selected=mysql_select_db($db) or die("Unable to select!");
+              //include("login.php");
+              //$dbhandle=mysql_connect(localhost,$un,$pw) or die("Unable to connect!");  
+              //$selected=mysql_select_db($db) or die("Unable to select!");
 
 
               $query="SELECT * from User_Req";
@@ -114,41 +149,5 @@ Released   : 20081230
   </div>        
 </div>
         <div id="footer"></div>
-  <?php
-    if ($_GET['w']==1){
-        //include("login.php");
-        //$dbhandle=mysql_connect(localhost,$un,$pw) or die("Unable to connect!");      
-        //$selected=mysql_select_db($db) or die("Unable to select!");
-
-        #Set manual overrides
-        $hvac=mysql_real_escape_string($_POST["HVAC"]);
-        $fan=mysql_real_escape_string($_POST["fan"]);
-        if(isset($_POST["Target"])){
-          $target = mysql_real_escape_string($_POST["Target"]);
-        } 
-        else {
-          $target=0;
-        }
-        
-        if ($hvac=="heat"){
-          $heater=1;
-          $ac=0;
-        }
-        elseif ($hvac=="ac"){
-          $heater=0;
-          $ac=1;
-        }
-        $query = "UPDATE User_Req SET Heater=$heater, AC=$ac, Fan=$fan, Temp=$target";
-        $result=mysql_query($query);
-
-        mysql_close($dbhandle);
-    }
-    if ($_GET['w']==2){
-        $query = "UPDATE User_Req SET Temp=0";
-        $result=mysql_query($query);
-
-        mysql_close($dbhandle);
-    }
-  ?>
 </body>
 </html>
