@@ -165,7 +165,7 @@ Released   : 20081230
 							echo "<option value=6 selected=\"selected\">Saturday</option> ";
 							echo "<option value=0>Sunday</option> ";
 					        break;
-				        case 7:
+				        case 0:
 					        echo "<option value=1>Monday</option> ";
 							echo "<option value=2>Tuesday</option> ";
 							echo "<option value=3>Wednesday</option> ";
