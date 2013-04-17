@@ -53,9 +53,9 @@ Released   : 20081230
         <div class="contentText">
           <hr>
           <?php###############################################
-            if(isset($_GET['error'])) { 
-               echo 'Error Logging In!';
-            }
+            #if(isset($_GET['error'])) { 
+            #   echo 'Error Logging In!';
+            #}
           ?>    
             <form action="process_login.php" method="post" name="login_form">
                Email: <input type="text" name="email" /><br />
