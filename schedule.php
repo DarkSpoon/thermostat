@@ -97,7 +97,7 @@ Released   : 20081230
 				#show schedule via dynamic html 
 				#$query="SELECT * from Schedule";
 				$query="SELECT * from Schedule ORDER BY DOW, Start";
-				SELECT x, y FROM table_name ORDER BY x, y
+				
 				$result=mysql_query($query);
 				while($row=mysql_fetch_array($result)){
 					$pid=$row{'PID'};
