@@ -45,9 +45,7 @@ Released   : 20081230
               $selected=mysql_select_db($db) or die("Unable to select!");
 
 
-              $output="";#output string to be echoed
-
-              $query="SELECT * from User_Req";
+                            $query="SELECT * from User_Req";
               $result=mysql_query($query);
               #Build strings to display what is currently running. 
               while$row=mysql_fetch_array($result)){
@@ -56,13 +54,13 @@ Released   : 20081230
                 $Fan=$row{'Fan'};
 
                 if($AC==1)
-                  $output=$output."Cool, ";
+                  $heatcool="Cool, ";
                 else if($Heat==1)
-                  $output=$output."Heat, ";
+                  $heatcool="Heat, ";
                 if($Fan==0)
-                  $output=$output."Auto <BR>";
+                  $fanauto="Auto <BR>";
                 else if($Fan==1)
-                  $output=$output."On <BR>";
+                  $fanauto="On <BR>";
               }
 
               $query="SELECT * from Conditions";
@@ -75,17 +73,19 @@ Released   : 20081230
                 
                 #The below values will be used to trigger relays in server code and should reflect an accurate status
                 if($AC==1)
-                  $output=$output."AC is running<BR>";
+                  $running="AC is running<BR>";
                 else if($Heat==1)
-                  $output=$output."Heat is running<BR>";
+                  $running="Heat is running<BR>";
                 else if($AC==0 && $Heat==0)
-                  $output=$output."System is idle<BR>";
+                  $running="System is idle<BR>";
                 if ($Fan==1)
-                  $output=$output."Fan is running<BR>";
+                  $fanrunning="Fan is running<BR>";
                 else if ($Fan==0)
-                  $output=$output."Fan is on auto<BR>";
-                $output=$output."Target: ".$row{'Target'}."F<BR>";
+                  $fanrunning="Fan is on auto<BR>";                
+                $currenttarget="Target: ".$row{'Target'}."F<BR>"
               }
+              #build output string
+              $output=$heatcool.$fanauto.$running.$fanrunning.$currenttarget;
               echo $output;
               //mysql_close($dbhandle);
 
