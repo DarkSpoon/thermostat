@@ -114,7 +114,8 @@ Released   : 20081230
                   echo "Fan is running<BR>";
                 else if ($Fan==0)
                   echo "Fan is not running<BR>";                
-                echo "Target: ".$row{'Target'}."F<BR>";
+                $target=$row{'Target'};
+                echo "Target: ".$target."F<BR>";
               }
             ?>
   </div>
@@ -135,7 +136,7 @@ Released   : 20081230
           <h2>Temperature</h2>
           <hr>
           <form method="post" action="index.php?w=3">
-          <input type="text" name="Target">
+          <input type="text" value=<?php echo $target; ?>name="Target">
           <input type="submit" value="Submit"></form><form method="post" action="index.php?w=2"><input type="submit" value="Reset"></form>
           
   </div>        
