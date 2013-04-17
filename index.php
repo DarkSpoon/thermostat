@@ -40,16 +40,9 @@ Released   : 20081230
       </div>
       <?php
         if ($_GET['w']==1){
-            #Set manual overrides
+            #Set manual overrides for Heat, AC, and Fan
             $hvac=mysql_real_escape_string($_POST["HVAC"]);
-            $fan=mysql_real_escape_string($_POST["fan"]);
-            
-            if(empty($_POST["Target"])){              
-              $target = 0;
-            } 
-            else {
-              $target = mysql_real_escape_string($_POST["Target"]);
-            }
+            $fan=mysql_real_escape_string($_POST["fan"]);            
             
             if ($hvac=="heat"){
               $heater=1;
@@ -59,11 +52,21 @@ Released   : 20081230
               $heater=0;
               $ac=1;
             }
-            $query = "UPDATE User_Req SET Heater=$heater, AC=$ac, Fan=$fan, Temp=$target";
-            echo $query;
+            $query = "UPDATE User_Req SET Heater=$heater, AC=$ac, Fan=$fan";
             $result=mysql_query($query);
         }
-        if ($_GET['w']==2){
+        if ($_GET['w']==2){#reset temp to scheduled temp
+            $query = "UPDATE User_Req SET Temp=0";
+            $result=mysql_query($query);
+        }
+
+        if ($_GET['w']==3){#set manual override for temp
+            if(empty($_POST["Target"])){              
+              $target = 0;
+            } 
+            else {
+              $target = mysql_real_escape_string($_POST["Target"]);
+            }
             $query = "UPDATE User_Req SET Temp=0";
             $result=mysql_query($query);
         }
@@ -131,7 +134,7 @@ Released   : 20081230
           <input type="submit" value="Submit"></form>
           <h2>Temperature</h2>
           <hr>
-          <form method="post" action="index.php?w=1">
+          <form method="post" action="index.php?w=3">
           <input type="text" name="Target">
           <input type="submit" value="Submit"></form><form method="post" action="index.php?w=2"><input type="submit" value="Reset"></form>
           
