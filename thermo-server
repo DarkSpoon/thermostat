@@ -76,7 +76,8 @@ while True:
 		print (avgTemp)
 
 	#Find target
-	dow=time.strftime("%a")
+	#dow=time.strftime("%a")#as three letter
+	dow=time.strftime("%w")#as int starting sun=0
 	currentTime=time.strftime("%H:%M:%S")
 	cur.execute("SELECT Target FROM Schedule WHERE DOW=%s AND %s BETWEEN Start AND Stop ",(dow, currentTime))
 	#insert error handling for conflicting schedules, make php scheduling page check for overlap
