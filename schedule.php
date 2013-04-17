@@ -1,3 +1,9 @@
+ <?php 
+  include("includes.php"); 
+  include("db_connect.php");
+  include("functions.php");
+  sec_session_start();
+?>
  <!--
 Design by Bryant Smith
 http://www.bryantsmith.com
@@ -14,6 +20,7 @@ Released   : 20081230
 
 <!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd">
 <html xmlns="http://www.w3.org/1999/xhtml">
+<?php include "includes.php" ?>
 <head>
 <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
 <link rel="stylesheet" type="text/css" href="style.css" />
@@ -56,135 +63,135 @@ Released   : 20081230
 			<BR>
 			<hr>
 			<?php
-				include("login.php");
-				$dbhandle=mysql_connect(localhost,$un,$pw) or die("Unable to connect!");		
-				$selected=mysql_select_db($db) or die("Unable to select!");
+				if(login_check($mysqli) == true) {
+					#delete entry of passed PID
+					if ($_GET['d']){
+						$pid=mysql_real_escape_string($_GET['d']);
+						$query="DELETE FROM Schedule WHERE PID=$pid";
+						$result=mysql_query($query);
+						//mysql_close($dbhandle);
+					}
 
-				#delete entry of passed PID
-				if ($_GET['d']){
-					$pid=mysql_real_escape_string($_GET['d']);
-					$query="DELETE FROM Schedule WHERE PID=$pid";
+
+					#update entry of passed PID
+					if ($_GET['u']){
+						$pid=mysql_real_escape_string($_GET['u']);
+						$target = mysql_real_escape_string($_POST["SchedTarget$pid"]);
+						$dow = mysql_real_escape_string($_POST["Day$pid"]);
+						$start = mysql_real_escape_string($_POST["Start$pid"]);
+						$stop = mysql_real_escape_string($_POST["Stop$pid"]);
+
+						$query = "UPDATE `Schedule` SET `DOW`='$dow',`Start`='$start',`Stop`='$stop',`Target`='$target' WHERE `PID`='$pid'";
+	        			$result=mysql_query($query);
+	        		}
+
+					#write the new entry
+					if ($_GET['w']){
+						$target = mysql_real_escape_string($_POST["SchedTarget"]);
+						$dow = mysql_real_escape_string($_POST["Day"]);
+						$start = mysql_real_escape_string($_POST["Start"]);
+						$stop = mysql_real_escape_string($_POST["Stop"]);
+						#needs to check for overlaping schedules
+						$query = "INSERT INTO `Schedule` (`DOW`, `Start`, `Stop`, `Target`) VALUES ('$dow', '$start', '$stop', '$target');";
+						$result=mysql_query($query);
+						//mysql_close($dbhandle);
+					}
+
+					#show schedule via dynamic html 
+					#$query="SELECT * from Schedule";
+					$query="SELECT * from Schedule ORDER BY DOW, Start";
+					
 					$result=mysql_query($query);
-					//mysql_close($dbhandle);
+					while($row=mysql_fetch_array($result)){
+						$pid=$row{'PID'};
+						$dow=$row{'DOW'};
+						$start=$row{'Start'};
+						$stop=$row{'Stop'};
+						$target=$row{'Target'};
+
+						#echo html
+						echo "<form method=\"post\" action=\"schedule.php?u=$pid\"> ";
+						echo "<select name=\"Day$pid\"> ";
+						#decide which is default selection
+						switch ($dow) {
+						    case 1:
+						        echo "<option value=1 selected=\"selected\">Monday</option> ";
+								echo "<option value=2>Tuesday</option> ";
+								echo "<option value=3>Wednesday</option> ";
+								echo "<option value=4>Thursday</option> ";
+								echo "<option value=5>Friday</option> ";
+								echo "<option value=6>Saturday</option> ";
+								echo "<option value=0>Sunday</option> ";
+						        break;
+						    case 2:
+								echo "<option value=1>Monday</option> ";
+								echo "<option value=2 selected=\"selected\">Tuesday</option> ";
+								echo "<option value=3>Wednesday</option> ";
+								echo "<option value=4>Thursday</option> ";
+								echo "<option value=5>Friday</option> ";
+								echo "<option value=6>Saturday</option> ";
+								echo "<option value=0>Sunday</option> ";
+						        break;
+					        case 3:
+								echo "<option value=1>Monday</option> ";
+								echo "<option value=2>Tuesday</option> ";
+								echo "<option value=3 selected=\"selected\">Wednesday</option> ";
+								echo "<option value=4>Thursday</option> ";
+								echo "<option value=5>Friday</option> ";
+								echo "<option value=6>Saturday</option> ";
+								echo "<option value=0>Sunday</option> ";
+						        break;
+					        case 4:
+								echo "<option value=1>Monday</option> ";
+								echo "<option value=2>Tuesday</option> ";
+								echo "<option value=3>Wednesday</option> ";
+								echo "<option value=4 selected=\"selected\">Thursday</option> ";
+								echo "<option value=5>Friday</option> ";
+								echo "<option value=6>Saturday</option> ";
+								echo "<option value=0>Sunday</option> ";
+						        break;
+					        case 5:
+								echo "<option value=1>Monday</option> ";
+								echo "<option value=2>Tuesday</option> ";
+								echo "<option value=3>Wednesday</option> ";
+								echo "<option value=4>Thursday</option> ";
+								echo "<option value=5 selected=\"selected\">Friday</option> ";
+								echo "<option value=6>Saturday</option> ";
+								echo "<option value=0>Sunday</option> ";
+						        break;
+					        case 6:
+								echo "<option value=1>Monday</option> ";
+								echo "<option value=2>Tuesday</option> ";
+								echo "<option value=3>Wednesday</option> ";
+								echo "<option value=4>Thursday</option> ";
+								echo "<option value=5>Friday</option> ";
+								echo "<option value=6 selected=\"selected\">Saturday</option> ";
+								echo "<option value=0>Sunday</option> ";
+						        break;
+					        case 0:
+						        echo "<option value=1>Monday</option> ";
+								echo "<option value=2>Tuesday</option> ";
+								echo "<option value=3>Wednesday</option> ";
+								echo "<option value=4>Thursday</option> ";
+								echo "<option value=5>Friday</option> ";
+								echo "<option value=6>Saturday</option> ";
+								echo "<option value=0 selected=\"selected\">Sunday</option> ";
+						        break;
+						    }
+						echo "</select> ";
+						echo "<input type=\"text\" value=\"$start\" name=\"Start$pid\"> ";
+						echo "<input type=\"text\" value=\"$stop\" name=\"Stop$pid\"> ";
+						echo "<input type=\"text\" value=\"$target\" name=\"SchedTarget$pid\"> ";
+						echo "<input type=\"submit\" value=\"Save\"> ";
+						#echo "<button type=\"submit\" name=\"Save\" value=\"Save\" border=\"0\"> <img src=\"images/save.png\" alt=\"Save\"></button>";
+						echo "<a href=\"schedule.php?d=$pid\"><img border=\"0\" src=\"images/delete.png\" align=\"absmiddle\" alt=\"Delete entry\" width=\"23\" height=\"20\"> </a>";
+						echo "</form> ";
+						//echo "<BR>";
+					}
+					mysql_close($dbhandle);
+				} else {
+   					echo 'You are not authorized to access this page, please login. <br/>';
 				}
-
-
-				#update entry of passed PID
-				if ($_GET['u']){
-					$pid=mysql_real_escape_string($_GET['u']);
-					$target = mysql_real_escape_string($_POST["SchedTarget$pid"]);
-					$dow = mysql_real_escape_string($_POST["Day$pid"]);
-					$start = mysql_real_escape_string($_POST["Start$pid"]);
-					$stop = mysql_real_escape_string($_POST["Stop$pid"]);
-
-					$query = "UPDATE `Schedule` SET `DOW`='$dow',`Start`='$start',`Stop`='$stop',`Target`='$target' WHERE `PID`='$pid'";
-        			$result=mysql_query($query);
-        		}
-
-				#write the new entry
-				if ($_GET['w']){
-					$target = mysql_real_escape_string($_POST["SchedTarget"]);
-					$dow = mysql_real_escape_string($_POST["Day"]);
-					$start = mysql_real_escape_string($_POST["Start"]);
-					$stop = mysql_real_escape_string($_POST["Stop"]);
-					#needs to check for overlaping schedules
-					$query = "INSERT INTO `Schedule` (`DOW`, `Start`, `Stop`, `Target`) VALUES ('$dow', '$start', '$stop', '$target');";
-					$result=mysql_query($query);
-					//mysql_close($dbhandle);
-				}
-
-				#show schedule via dynamic html 
-				#$query="SELECT * from Schedule";
-				$query="SELECT * from Schedule ORDER BY DOW, Start";
-				
-				$result=mysql_query($query);
-				while($row=mysql_fetch_array($result)){
-					$pid=$row{'PID'};
-					$dow=$row{'DOW'};
-					$start=$row{'Start'};
-					$stop=$row{'Stop'};
-					$target=$row{'Target'};
-
-					#echo html
-					echo "<form method=\"post\" action=\"schedule.php?u=$pid\"> ";
-					echo "<select name=\"Day$pid\"> ";
-					#decide which is default selection
-					switch ($dow) {
-					    case 1:
-					        echo "<option value=1 selected=\"selected\">Monday</option> ";
-							echo "<option value=2>Tuesday</option> ";
-							echo "<option value=3>Wednesday</option> ";
-							echo "<option value=4>Thursday</option> ";
-							echo "<option value=5>Friday</option> ";
-							echo "<option value=6>Saturday</option> ";
-							echo "<option value=0>Sunday</option> ";
-					        break;
-					    case 2:
-							echo "<option value=1>Monday</option> ";
-							echo "<option value=2 selected=\"selected\">Tuesday</option> ";
-							echo "<option value=3>Wednesday</option> ";
-							echo "<option value=4>Thursday</option> ";
-							echo "<option value=5>Friday</option> ";
-							echo "<option value=6>Saturday</option> ";
-							echo "<option value=0>Sunday</option> ";
-					        break;
-				        case 3:
-							echo "<option value=1>Monday</option> ";
-							echo "<option value=2>Tuesday</option> ";
-							echo "<option value=3 selected=\"selected\">Wednesday</option> ";
-							echo "<option value=4>Thursday</option> ";
-							echo "<option value=5>Friday</option> ";
-							echo "<option value=6>Saturday</option> ";
-							echo "<option value=0>Sunday</option> ";
-					        break;
-				        case 4:
-							echo "<option value=1>Monday</option> ";
-							echo "<option value=2>Tuesday</option> ";
-							echo "<option value=3>Wednesday</option> ";
-							echo "<option value=4 selected=\"selected\">Thursday</option> ";
-							echo "<option value=5>Friday</option> ";
-							echo "<option value=6>Saturday</option> ";
-							echo "<option value=0>Sunday</option> ";
-					        break;
-				        case 5:
-							echo "<option value=1>Monday</option> ";
-							echo "<option value=2>Tuesday</option> ";
-							echo "<option value=3>Wednesday</option> ";
-							echo "<option value=4>Thursday</option> ";
-							echo "<option value=5 selected=\"selected\">Friday</option> ";
-							echo "<option value=6>Saturday</option> ";
-							echo "<option value=0>Sunday</option> ";
-					        break;
-				        case 6:
-							echo "<option value=1>Monday</option> ";
-							echo "<option value=2>Tuesday</option> ";
-							echo "<option value=3>Wednesday</option> ";
-							echo "<option value=4>Thursday</option> ";
-							echo "<option value=5>Friday</option> ";
-							echo "<option value=6 selected=\"selected\">Saturday</option> ";
-							echo "<option value=0>Sunday</option> ";
-					        break;
-				        case 0:
-					        echo "<option value=1>Monday</option> ";
-							echo "<option value=2>Tuesday</option> ";
-							echo "<option value=3>Wednesday</option> ";
-							echo "<option value=4>Thursday</option> ";
-							echo "<option value=5>Friday</option> ";
-							echo "<option value=6>Saturday</option> ";
-							echo "<option value=0 selected=\"selected\">Sunday</option> ";
-					        break;
-					    }
-					echo "</select> ";
-					echo "<input type=\"text\" value=\"$start\" name=\"Start$pid\"> ";
-					echo "<input type=\"text\" value=\"$stop\" name=\"Stop$pid\"> ";
-					echo "<input type=\"text\" value=\"$target\" name=\"SchedTarget$pid\"> ";
-					echo "<input type=\"submit\" value=\"Save\"> ";
-					#echo "<button type=\"submit\" name=\"Save\" value=\"Save\" border=\"0\"> <img src=\"images/save.png\" alt=\"Save\"></button>";
-					echo "<a href=\"schedule.php?d=$pid\"><img border=\"0\" src=\"images/delete.png\" align=\"absmiddle\" alt=\"Delete entry\" width=\"23\" height=\"20\"> </a>";
-					echo "</form> ";
-					//echo "<BR>";
-				}
-				mysql_close($dbhandle);
 			?>
           
   </div>        

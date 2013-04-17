@@ -1,3 +1,9 @@
+<?php 
+  include("includes.php"); 
+  include("db_connect.php");
+  include("functions.php");
+  sec_session_start();
+?>
  <!--
 Design by Bryant Smith
 http://www.bryantsmith.com
@@ -14,11 +20,6 @@ Released   : 20081230
 
 <!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd">
 <html xmlns="http://www.w3.org/1999/xhtml">
-<?php 
-  include("login.php");
-  $dbhandle=mysql_connect(localhost,$un,$pw) or die("Unable to connect!");      
-  $selected=mysql_select_db($db) or die("Unable to select!");
-?>
 <head>
 <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
 <link rel="stylesheet" type="text/css" href="style.css" />
@@ -37,86 +38,88 @@ Released   : 20081230
             <div class="link"><a href="schedule.php?w=0">Schedule</a></div>
             
       </div>
-      <?php
-        if ($_GET['w']==1){
-            #Set manual overrides for Heat, AC, and Fan
-            $hvac=mysql_real_escape_string($_POST["HVAC"]);
-            $fan=mysql_real_escape_string($_POST["fan"]);            
-            
-            if ($hvac=="heat"){
-              $heater=1;
-              $ac=0;
-            }
-            elseif ($hvac=="ac"){
-              $heater=0;
-              $ac=1;
-            }
-            $query = "UPDATE User_Req SET Heater=$heater, AC=$ac, Fan=$fan";
-            $result=mysql_query($query);
-        }
-        if ($_GET['w']==2){#reset temp to scheduled temp
-            $query = "UPDATE User_Req SET Temp=0";
-            $result=mysql_query($query);
-        }
-
-        if ($_GET['w']==3){#set manual override for temp
-            if(empty($_POST["Target"])){              
-              $target = 0;
-            } 
-            else {
-              $target = mysql_real_escape_string($_POST["Target"]);
-            }
-            $query = "UPDATE User_Req SET Temp=$target";
-            $result=mysql_query($query);
-        }
-      ?>
-
-        <div align="center" class="contentTitle"><h1>Current Status</h1></div>
+      <div align="center" class="contentTitle"><h1>Current Status</h1></div>
         
         <div class="contentText">
           <hr>
-            <?php
-              $query="SELECT * from User_Req";
-              $result=mysql_query($query);
-              #Build strings to display what is currently running. 
-              while($row=mysql_fetch_array($result)){
-                $ACrunning=$row{'AC'};
-                $Heatrunning=$row{'Heater'};
-                $Fanrunning=$row{'Fan'};
-
-                /*if($ACrunning==1)
-                  echo "Cool, ";
-                else if($Heatrunning==1)
-                  echo "Heat, ";
-                if($Fanrunning==0)
-                  echo "Auto <BR>";
-                else if($Fanrunning==1)
-                  echo "On <BR>";*/
+      <?php
+        if(login_check($mysqli) == true) {
+          if ($_GET['w']==1){
+              #Set manual overrides for Heat, AC, and Fan
+              $hvac=mysql_real_escape_string($_POST["HVAC"]);
+              $fan=mysql_real_escape_string($_POST["fan"]);            
+              
+              if ($hvac=="heat"){
+                $heater=1;
+                $ac=0;
               }
-
-              $query="SELECT * from Conditions";
-              $result=mysql_query($query);
-              while($row=mysql_fetch_array($result)){
-                echo "Currently: ".$row{'Temp'}."F<BR>";
-                $AC=$row{'AC'};
-                $Heat=$row{'Heat'};
-                $Fan=$row{'Fan'};
-                
-                #The below values will be used to trigger relays in server code and should reflect an accurate status
-                if($AC==1)
-                  echo "AC is running<BR>";
-                else if($Heat==1)
-                  echo "Heat is running<BR>";
-                else if($AC==0 && $Heat==0)
-                  echo "System is idle<BR>";
-                if ($Fan==1)
-                  echo "Fan is running<BR>";
-                else if ($Fan==0)
-                  echo "Fan is not running<BR>";                
-                $target=$row{'Target'};
-                //echo "Target: ".$target."F<BR>";
+              elseif ($hvac=="ac"){
+                $heater=0;
+                $ac=1;
               }
-            ?>
+              $query = "UPDATE User_Req SET Heater=$heater, AC=$ac, Fan=$fan";
+              $result=mysql_query($query);
+          }
+          if ($_GET['w']==2){#reset temp to scheduled temp
+              $query = "UPDATE User_Req SET Temp=0";
+              $result=mysql_query($query);
+          }
+
+          if ($_GET['w']==3){#set manual override for temp
+              if(empty($_POST["Target"])){              
+                $target = 0;
+              } 
+              else {
+                $target = mysql_real_escape_string($_POST["Target"]);
+              }
+              $query = "UPDATE User_Req SET Temp=$target";
+              $result=mysql_query($query);
+          }
+
+          $query="SELECT * from User_Req";
+          $result=mysql_query($query);
+          #Build strings to display what is currently running. 
+          while($row=mysql_fetch_array($result)){
+            $ACrunning=$row{'AC'};
+            $Heatrunning=$row{'Heater'};
+            $Fanrunning=$row{'Fan'};
+
+            /*if($ACrunning==1)
+              echo "Cool, ";
+            else if($Heatrunning==1)
+              echo "Heat, ";
+            if($Fanrunning==0)
+              echo "Auto <BR>";
+            else if($Fanrunning==1)
+              echo "On <BR>";*/
+          }
+
+          $query="SELECT * from Conditions";
+          $result=mysql_query($query);
+          while($row=mysql_fetch_array($result)){
+            echo "Currently: ".$row{'Temp'}."F<BR>";
+            $AC=$row{'AC'};
+            $Heat=$row{'Heat'};
+            $Fan=$row{'Fan'};
+            
+            #The below values will be used to trigger relays in server code and should reflect an accurate status
+            if($AC==1)
+              echo "AC is running<BR>";
+            else if($Heat==1)
+              echo "Heat is running<BR>";
+            else if($AC==0 && $Heat==0)
+              echo "System is idle<BR>";
+            if ($Fan==1)
+              echo "Fan is running<BR>";
+            else if ($Fan==0)
+              echo "Fan is not running<BR>";                
+            $target=$row{'Target'};
+            //echo "Target: ".$target."F<BR>";
+          }
+        } else {
+          echo 'You are not authorized to access this page, please login. <br/>';
+        }
+      ?>
   </div>
         <div align="center" class="contentTitle"><h1>Manual Settings</h1></div>
         
