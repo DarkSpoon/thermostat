@@ -94,6 +94,7 @@ float:left;
 height:55px;
 }
 
+}
 #bar .link:hover
 {
 background-image:url(images/linkrollover.png);
@@ -102,6 +103,21 @@ background-position:center;
 
 
 }
+
+#bar .logout
+{
+float:right;
+height:55px;
+}
+
+#bar .logout:hover
+{
+background-image:url(images/linkrollover.png);
+background-repeat:no-repeat;
+background-position:center;
+}
+
+
 
 
 #bar a
