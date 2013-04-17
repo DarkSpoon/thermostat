@@ -31,7 +31,6 @@ Released   : 20081230
   <div id="bar">
         	<div class="link"><a href="index.php?w=0">Home</a></div>
             <div class="link"><a href="schedule.php?w=0">Schedule</a></div>
-            <div class="link"><a href="pull.php">Pull</a></div>
             
       </div>
         <div align="center" class="contentTitle"><h1>Schedule</h1></div>
