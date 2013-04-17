@@ -179,7 +179,7 @@ Released   : 20081230
 					echo "<input type=\"text\" value=\"$stop\" name=\"Stop$pid\"> ";
 					echo "<input type=\"text\" value=\"$target\" name=\"SchedTarget$pid\"> ";
 					#echo "<input type=\"submit\" value=\"Save\"> ";
-					echo "<button type=\"submit\" name=\"Save\" value=\"Save\"> border=\"0\" <img src=\"images/save.png\" alt=\"Save\"></button>";
+					echo "<button type=\"submit\" name=\"Save\" value=\"Save\" border=\"0\"> <img src=\"images/save.png\" alt=\"Save\"></button>";
 					echo "<a href=\"schedule.php?d=$pid\"><img border=\"0\" src=\"images/delete.png\" align=\"absmiddle\" alt=\"Delete entry\" width=\"23\" height=\"20\"> </a>";
 					//echo "<a href=\"schedule.php?u=$pid\"><img border=\"0\" src=\"save.png\" align=\"absmiddle\" alt=\"Update entry\" width=\"23\" height=\"20\"> </a>";
 					echo "</form> ";
