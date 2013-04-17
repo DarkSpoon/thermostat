@@ -54,13 +54,13 @@ Released   : 20081230
                 $Fan=$row{'Fan'};
 
                 if($AC==1)
-                  $heatcool="Cool, ";
+                  echo "Cool, ";
                 else if($Heat==1)
-                  $heatcool="Heat, ";
+                  echo "Heat, ";
                 if($Fan==0)
-                  $fanauto="Auto <BR>";
+                  echo "Auto <BR>";
                 else if($Fan==1)
-                  $fanauto="On <BR>";
+                  echo "On <BR>";
               }
 
               $query="SELECT * from Conditions";
@@ -73,20 +73,20 @@ Released   : 20081230
                 
                 #The below values will be used to trigger relays in server code and should reflect an accurate status
                 if($AC==1)
-                  $running="AC is running<BR>";
+                  echo "AC is running<BR>";
                 else if($Heat==1)
-                  $running="Heat is running<BR>";
+                  echo "Heat is running<BR>";
                 else if($AC==0 && $Heat==0)
-                  $running="System is idle<BR>";
+                  echo "System is idle<BR>";
                 if ($Fan==1)
-                  $fanrunning="Fan is running<BR>";
+                  echo "Fan is running<BR>";
                 else if ($Fan==0)
-                  $fanrunning="Fan is on auto<BR>";                
-                $currenttarget="Target: ".$row{'Target'}."F<BR>"
+                  echo "Fan is on auto<BR>";                
+                echo "Target: ".$row{'Target'}."F<BR>"
               }
               #build output string
-              $output=$heatcool.$fanauto.$running.$fanrunning.$currenttarget;
-              echo $output;
+              #$output=$heatcool.$fanauto.$running.$fanrunning.$currenttarget;
+              #echo $output;
               //mysql_close($dbhandle);
 
             ?>
