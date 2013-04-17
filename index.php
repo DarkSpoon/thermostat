@@ -40,40 +40,40 @@ Released   : 20081230
         <div class="contentText">
           <hr>
             <?php
-        include("login.php");
-        $dbhandle=mysql_connect(localhost,$un,$pw) or die("Unable to connect!");  
-        $selected=mysql_select_db($db) or die("Unable to select!");
+              include("login.php");
+              $dbhandle=mysql_connect(localhost,$un,$pw) or die("Unable to connect!");  
+              $selected=mysql_select_db($db) or die("Unable to select!");
 
 
 
-        $query="SELECT * from Conditions";
-        $result=mysql_query($query);
+              $query="SELECT * from Conditions";
+              $result=mysql_query($query);
 
-        while($row=mysql_fetch_array($result)){
-        echo "Currently: ".$row{'Temp'}."F<BR>";
-        $AC=$row{'AC'};
-        $Heat=$row{'Heat'};
-        $Fan=$row{'Fan'};
-        
-        #Display what is currently running. 
-        #The below values will be used to trigger relays and should reflect an accurate status
-        if($AC==1)
-          echo "AC is running<BR>";
-        else if($Heat==1)
-          echo "Heat is running<BR>";
-        else if($AC==0 && $Heat==0)
-          echo "System is idle<BR>";
-        if ($Fan==1)
-          echo "Fan is running<BR>";
-        if ($Fan==0)
-          echo "Fan is on auto<BR>";
-        echo "Target: ".$row{'Target'}."F<BR>";
+              while($row=mysql_fetch_array($result)){
+              echo "Currently: ".$row{'Temp'}."F<BR>";
+              $AC=$row{'AC'};
+              $Heat=$row{'Heat'};
+              $Fan=$row{'Fan'};
+              
+              #Display what is currently running. 
+              #The below values will be used to trigger relays and should reflect an accurate status
+              if($AC==1)
+                echo "AC is running<BR>";
+              else if($Heat==1)
+                echo "Heat is running<BR>";
+              else if($AC==0 && $Heat==0)
+                echo "System is idle<BR>";
+              if ($Fan==1)
+                echo "Fan is running<BR>";
+              if ($Fan==0)
+                echo "Fan is on auto<BR>";
+              echo "Target: ".$row{'Target'}."F<BR>";
 
-        }
+              }
 
-        //mysql_close($dbhandle);
+              //mysql_close($dbhandle);
 
-      ?>
+            ?>
   </div>
         <div align="center" class="contentTitle"><h1>Manual Settings</h1></div>
         
@@ -88,8 +88,10 @@ Released   : 20081230
           <hr>
           <input type="radio" name="fan" value="1"> On<br>
           <input type="radio" name="fan" value="0" checked> Auto<br>
+          <input type="submit" value="Submit"></form>
           <h2>Temperature</h2>
           <hr>
+          <form method="post" action="index.php?w=1">
           <input type="text" name="Target">
           <input type="submit" value="Submit"></form><form method="post" action="index.php?w=2"><input type="submit" value="Reset"></form>
           
@@ -105,7 +107,13 @@ Released   : 20081230
         #Set manual overrides
         $hvac=mysql_real_escape_string($_POST["HVAC"]);
         $fan=mysql_real_escape_string($_POST["fan"]);
-        $target = mysql_real_escape_string($_POST["Target"]);
+        if(isset($_POST["Target"])){
+          $target = mysql_real_escape_string($_POST["Target"]);
+        } 
+        else {
+          $target=0;
+        }
+        
         if ($hvac=="heat"){
           $heater=1;
           $ac=0;
