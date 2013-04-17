@@ -136,7 +136,7 @@ Released   : 20081230
           <h2>Temperature</h2>
           <hr>
           <form method="post" action="index.php?w=3">
-          <input type="text" value=<?php echo $target; ?>name="Target">
+          <input type="text" value=<?php echo ."\"".$target."\""; ?>name="Target">
           <input type="submit" value="Submit"></form><form method="post" action="index.php?w=2"><input type="submit" value="Reset"></form>
           
   </div>        
