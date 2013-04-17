@@ -43,12 +43,13 @@ Released   : 20081230
             #Set manual overrides
             $hvac=mysql_real_escape_string($_POST["HVAC"]);
             $fan=mysql_real_escape_string($_POST["fan"]);
-            echo $_POST["Target"];
-            echo isset($_POST["Target"]);
-            if(isset($_POST["Target"])==1){
+            
+            if(isset($_POST["Target"])){
+              echo "was set<br>";
               $target = mysql_real_escape_string($_POST["Target"]);
             } 
             else {
+              echo "was not set<br>";
               $target=0;
             }
             
