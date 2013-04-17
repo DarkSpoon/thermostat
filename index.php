@@ -45,7 +45,7 @@ Released   : 20081230
             $fan=mysql_real_escape_string($_POST["fan"]);
             echo $_POST["Target"];
             echo isset($_POST["Target"]);
-            if(isset($_POST["Target"])){
+            if(isset($_POST["Target"])==1){
               $target = mysql_real_escape_string($_POST["Target"]);
             } 
             else {
