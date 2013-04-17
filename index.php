@@ -25,7 +25,7 @@ Released   : 20081230
     
         <div id="header">
           <h1>Thermostat</h1>
-            <h2>Control you HVAC with RaspberryPi</h2>
+            <h2>Control your heat and AC with RaspberryPi</h2>
             
       </div>
   <div id="bar">
