@@ -67,7 +67,7 @@ Released   : 20081230
             else {
               $target = mysql_real_escape_string($_POST["Target"]);
             }
-            $query = "UPDATE User_Req SET Temp=0";
+            $query = "UPDATE User_Req SET Temp=$target";
             $result=mysql_query($query);
         }
       ?>
