@@ -14,15 +14,17 @@ Released   : 20081230
 
 <!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd">
 <html xmlns="http://www.w3.org/1999/xhtml">
+<?php 
+  include("login.php");
+  $dbhandle=mysql_connect(localhost,$un,$pw) or die("Unable to connect!");      
+  $selected=mysql_select_db($db) or die("Unable to select!");
+?>
 <head>
 <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
 <link rel="stylesheet" type="text/css" href="style.css" />
 <title>Thermostat</title>
 </head>
 <?php
-  include("login.php");
-  $dbhandle=mysql_connect(localhost,$un,$pw) or die("Unable to connect!");      
-  $selected=mysql_select_db($db) or die("Unable to select!");
   if ($_GET['w']==1){
       #Set manual overrides
       $hvac=mysql_real_escape_string($_POST["HVAC"]);
@@ -44,14 +46,10 @@ Released   : 20081230
       }
       $query = "UPDATE User_Req SET Heater=$heater, AC=$ac, Fan=$fan, Temp=$target";
       $result=mysql_query($query);
-
-      mysql_close($dbhandle);
   }
   if ($_GET['w']==2){
       $query = "UPDATE User_Req SET Temp=0";
       $result=mysql_query($query);
-
-      //mysql_close($dbhandle);
   }
 ?>
 <body>
@@ -74,11 +72,6 @@ Released   : 20081230
         <div class="contentText">
           <hr>
             <?php
-              //include("login.php");
-              //$dbhandle=mysql_connect(localhost,$un,$pw) or die("Unable to connect!");  
-              //$selected=mysql_select_db($db) or die("Unable to select!");
-
-
               $query="SELECT * from User_Req";
               $result=mysql_query($query);
               #Build strings to display what is currently running. 
@@ -121,7 +114,7 @@ Released   : 20081230
               #build output string
               #$output=$heatcool.$fanauto.$running.$fanrunning.$currenttarget;
               #echo $output;
-              mysql_close($dbhandle);
+              
 
             ?>
   </div>
@@ -149,4 +142,5 @@ Released   : 20081230
 </div>
         <div id="footer"></div>
 </body>
+<?php mysql_close($dbhandle);?>
 </html>
