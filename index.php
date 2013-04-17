@@ -76,17 +76,17 @@ Released   : 20081230
               $result=mysql_query($query);
               #Build strings to display what is currently running. 
               while($row=mysql_fetch_array($result)){
-                $AC=$row{'AC'};
-                $Heat=$row{'Heater'};
-                $Fan=$row{'Fan'};
+                $ACrunning=$row{'AC'};
+                $Heatrunning=$row{'Heater'};
+                $Fanrunning=$row{'Fan'};
 
-                if($AC==1)
+                if($ACrunning==1)
                   echo "Cool, ";
-                else if($Heat==1)
+                else if($Heatrunning==1)
                   echo "Heat, ";
-                if($Fan==0)
+                if($Fanrunning==0)
                   echo "Auto <BR>";
-                else if($Fan==1)
+                else if($Fanrunning==1)
                   echo "On <BR>";
               }
 
@@ -111,11 +111,6 @@ Released   : 20081230
                   echo "Fan is not running<BR>";                
                 echo "Target: ".$row{'Target'}."F<BR>";
               }
-              #build output string
-              #$output=$heatcool.$fanauto.$running.$fanrunning.$currenttarget;
-              #echo $output;
-              
-
             ?>
   </div>
         <div align="center" class="contentTitle"><h1>Manual Settings</h1></div>
@@ -125,12 +120,12 @@ Released   : 20081230
           <h2>HVAC</h2>
           <hr>
           <form method="post" action="index.php?w=1">
-          <input type="radio" name="HVAC" value="heat"> Heater<br>
-          <input type="radio" name="HVAC" value="ac" checked> AC<br>
+          <input type="radio" name="HVAC" value="heat"<?php if($Heatrunning) echo "checked";?> > Heater<br>
+          <input type="radio" name="HVAC" value="ac" <?php if($ACrunning) echo "checked";?> > AC<br>
           <h2>Fan</h2>
           <hr>
-          <input type="radio" name="fan" value="1"> On<br>
-          <input type="radio" name="fan" value="0" checked> Auto<br>
+          <input type="radio" name="fan" value="1"<?php if($Fanrunning==1) echo "checked";?> > On<br>
+          <input type="radio" name="fan" value="0" <?php if($Fanrunning==0) echo "checked";?> > Auto<br>
           <input type="submit" value="Submit"></form>
           <h2>Temperature</h2>
           <hr>
