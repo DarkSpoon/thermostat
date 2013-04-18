@@ -48,8 +48,7 @@ Released   : 20081230
               ?>
             
       </div>
-      <div align="center" class="contentTitle"><h1>Login</h1></div>
-        
+      <div align="center" class="contentTitle"><h1>Login</h1></div>        
         <div class="contentText">
           <hr>
             <form action="process_login.php" method="post" name="login_form">
@@ -57,8 +56,34 @@ Released   : 20081230
                Password: <input type="password" name="password" id="password"/><br />
                <input type="button" value="Login" onclick="formhash(this.form, this.form.password);" />
             </form>          
-  </div>        
-</div>
+        </div> 
+        <br>
+        <div align="center" class="contentTitle"><h1>Register</h1></div>
+          <div class="contentText">       
+            <hr>
+            <form action="secure/sec_reg.php" method="post" name="registration_form">
+              Username: <input type="text" id="username" name="username">
+              Email: <input type="text" id="email" name="email">
+              Password:  <input type="password" name="password" id="password">
+              <input type="hidden" name="p" id="p" value="">
+              <button type="submit" class="btn" onclick="formhash(this.form, this.form.password, this.form.p);">Register</button>
+
+              <!-- If registration successfull show everything ok info -->
+              <?php if(isset($_GET['success'])) {?>
+              <div class="alert alert-success fade in" id="success">
+              <button type="button" class="close" data-dismiss="alert">x</button>
+              <strong>Registration done! <br>Please log in...</strong>
+              </div>
+              <?php }?>
+
+              <!-- if registration error show this -->
+              <?php if(isset($_GET['registrationfailed'])) {?>
+              <div class="alert alert-error fade in error" >
+              <button type="button" class="close" data-dismiss="alert">x</button>
+              <strong>Ups! Something went wrong...</strong>
+              </div>
+              <?php }?> 
+          </div>
         <div id="footer"></div>
 </body>
 <?php mysql_close($dbhandle);?>
