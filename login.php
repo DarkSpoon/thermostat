@@ -54,7 +54,14 @@ Released   : 20081230
             <form action="process_login.php" method="post" name="login_form">
                Email: <input type="text" name="email" /><br />
                Password: <input type="password" name="password" id="password"/><br />
-               <input type="button" value="Login" onclick="formhash(this.form, this.form.password);" />
+               <button type="submit" class="btn" onclick="formhash(this.form, this.form.password);">Sign in</button>
+                <!-- if login failed show this -->
+                <?php if(isset($_GET['error'])) {?>
+                <div class="alert alert-error fade in error">
+                <button type="button" class="close" data-dismiss="alert">x</button>
+                <strong>Ups! That wasn't correct...</strong>
+                </div>
+                <?php }?> 
             </form>          
         </div> 
         <br>
