@@ -59,7 +59,7 @@ Released   : 20081230
                 <?php if(isset($_GET['error'])) {?>
                 <div class="alert alert-error fade in error">
                 <button type="button" class="close" data-dismiss="alert">x</button>
-                <strong>Ups! That wasn't correct...</strong>
+                <strong>Incorrect login...</strong>
                 </div>
                 <?php }?> 
             </form>          
