@@ -53,7 +53,7 @@ Released   : 20081230
           <script type="text/javascript" src="sha512.js"></script>
           <script type="text/javascript" src="forms.js"></script>
           <?php###############################################
-          echo isset($_GET['error']);
+          echo isset($_GET["error"]);
             #if(isset($_GET['error'])) { 
             #   echo "Error Logging In!";
             #}
