@@ -4,6 +4,8 @@
   include("functions.php");
   sec_session_start();
 ?>
+<script type="text/javascript" src="sha512.js"></script>
+<script type="text/javascript" src="forms.js"></script>
  <!--
 Design by Bryant Smith
 http://www.bryantsmith.com
@@ -50,14 +52,6 @@ Released   : 20081230
         
         <div class="contentText">
           <hr>
-          <script type="text/javascript" src="sha512.js"></script>
-          <script type="text/javascript" src="forms.js"></script>
-          <?php###############################################
-          echo isset($_GET["error"]);
-            #if(isset($_GET['error'])) { 
-            #   echo "Error Logging In!";
-            #}
-          ?>    
             <form action="process_login.php" method="post" name="login_form">
                Email: <input type="text" name="email" /><br />
                Password: <input type="password" name="password" id="password"/><br />
