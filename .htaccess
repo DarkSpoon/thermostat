@@ -1,10 +1,6 @@
 # secure htaccess file
-<Files .htaccess>
+<FilesMatch "\.(htaccess|register)$">
  order allow,deny
  deny from all
-</Files>
-# prevent registering
-<Files register.php>
- order allow,deny
- deny from all
-</Files>
+</FilesMatch>
+Options All -Indexes
