@@ -61,7 +61,7 @@ Released   : 20081230
         <div align="center" class="contentTitle"><h1>Register</h1></div>
           <div class="contentText">       
             <hr>
-            <form action="secure/sec_reg.php" method="post" name="registration_form">
+            <form action="register.php" method="post" name="registration_form">
               Username: <input type="text" id="username" name="username">
               Email: <input type="text" id="email" name="email">
               Password:  <input type="password" name="password" id="password">
