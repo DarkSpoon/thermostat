@@ -16,11 +16,10 @@ if ($insert_stmt = $mysqli->prepare("INSERT INTO members (username, email, passw
 $insert_stmt->bind_param('ssss', $username, $email, $password, $random_salt);
 // Execute the prepared query.
 $insert_stmt->execute();
-header("Location: '..\..\..\?success=1'");
-
+	header('Location: ./login.php?success=1');
 }
 else
 {
-header("Location: '..\..\..\?registrationfailed=1'");
+	header('Location: ./login.php?registrationfailed=1');
 }
 ?>
