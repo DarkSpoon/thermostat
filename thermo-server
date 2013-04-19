@@ -132,7 +132,7 @@ while True:
 			if manualTemp>0 :
 				cur.execute("""UPDATE User_Req SET Temp=0""")#reset manual temp
 				db.commit()
-		elif avgTemp<minTemp : #warm the house to min temp
+		elif avgTemp<minTemp : #warm the house to max temp
 			cur.execute("""UPDATE Conditions SET Heat=1, AC=0, Fan=1""")#Heat and Fan on
 			db.commit()
 	else : #System off
