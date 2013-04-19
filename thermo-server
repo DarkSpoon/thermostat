@@ -112,12 +112,12 @@ while True:
 				cur.execute("""UPDATE Conditions SET Heat=0, AC=0, Fan=0""")#turn all devices off
 				db.commit()
 			else : #User wants fan on
-				cur.execute("""UPDATE Conditions SET Heat=0, AC=0, Fan=1""")#turn all devices except fan
+				cur.execute("""UPDATE Conditions SET Heat=0, AC=0, Fan=1""")#turn all devices off except fan
 				db.commit()
 			if manualTemp>0 :
 				cur.execute("""UPDATE User_Req SET Temp=0""")#reset manual temp
 				db.commit()
-		else : #continue cooling house to min temp
+		elif avgTemp>maxTemp : #continue cooling house to min temp
 			cur.execute("""UPDATE Conditions SET Heat=0, AC=1, Fan=1""")#AC and Fan on
 			db.commit()	
 
@@ -127,12 +127,12 @@ while True:
 				cur.execute("""UPDATE Conditions SET Heat=0, AC=0, Fan=0""")#turn all devices off
 				db.commit()
 			else : #User wants fan on
-				cur.execute("""UPDATE Conditions SET Heat=0, AC=0, Fan=1""")#turn all devices except fan
+				cur.execute("""UPDATE Conditions SET Heat=0, AC=0, Fan=1""")#turn all devices off except fan
 				db.commit()
 			if manualTemp>0 :
 				cur.execute("""UPDATE User_Req SET Temp=0""")#reset manual temp
 				db.commit()
-		else : #continue warming house to min temp
+		elif avgTemp<minTemp : #warm the house to min temp
 			cur.execute("""UPDATE Conditions SET Heat=1, AC=0, Fan=1""")#Heat and Fan on
 			db.commit()
 	else : #System off
