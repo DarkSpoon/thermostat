@@ -137,10 +137,10 @@ while True:
 			db.commit()
 	else : #System off
 		if userReqFan==0 :#Auto fan
-				cur.execute("""UPDATE Conditions SET Heat=0, AC=0, Fan=0""")#turn all devices off
-				db.commit()
-			else : #User wants fan on
-				cur.execute("""UPDATE Conditions SET Heat=0, AC=0, Fan=1""")#turn all devices except fan
-				db.commit()
+			cur.execute("""UPDATE Conditions SET Heat=0, AC=0, Fan=0""")#turn all devices off
+			db.commit()
+		else : #User wants fan on
+			cur.execute("""UPDATE Conditions SET Heat=0, AC=0, Fan=1""")#turn all devices except fan
+			db.commit()
 
 	
