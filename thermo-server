@@ -216,7 +216,7 @@ while True:
 		if userReqAC==1 :
 			if row[3]==1 :
 				if userReqFan==0 :
-					output=(" "+str(row[0]+"F Cooling\n"+str(row[1])+"F cool, auto")
+					output=(" "+str(row[0])+"F Cooling\n"+str(row[1])+"F cool, auto")
 					print (output)
 					lcd.message(output) 
 				else :
