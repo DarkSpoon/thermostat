@@ -212,6 +212,7 @@ while True:
 			db.commit()
 	cur.execute("SELECT * FROM Conditions")
 	db.commit()
+	output=""
 	for row in cur.fetchall() :
 		if userReqAC==1 :
 			if row[3]==1 :
