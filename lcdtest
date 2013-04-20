@@ -69,7 +69,4 @@ class HD44780:
 if __name__ == '__main__':  
   
     lcd = HD44780()  
-    lcd.message(" Raspberry Pi\n  Take a byte!")  
-    sleep(2)
-    lcd.clear()
-    lcd.message(" Hello Jase!\nWhat's up?")
+    lcd.message(" Hello\n  world!")  
