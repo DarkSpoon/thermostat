@@ -212,7 +212,7 @@ while True:
 			db.commit()
 	cur.execute("SELECT * FROM Conditions")
 	db.commit()
-	output=""
+
 	for row in cur.fetchall() :
 		if userReqAC==1 :
 			if row[3]==1 :
@@ -220,7 +220,8 @@ while True:
 					output=(" "+str(row[0])+"F Cooling\n"+str(row[1])+"F cool, auto")
 					print (output)
 					lcd.clear()
-					lcd.message(output) 
+					lcd.message(output)
+					time.sleep(1) 
 				else :
 					output=(" "+str(row[0])+"F Cooling\n"+str(row[1])+"F cool, on")
 					print (output)
