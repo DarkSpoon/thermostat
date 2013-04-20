@@ -69,4 +69,5 @@ class HD44780:
 if __name__ == '__main__':  
   
     lcd = HD44780()  
+    lcd.clear()
     lcd.message("Hello\n  world!")  
