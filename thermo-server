@@ -216,48 +216,48 @@ while True:
 		if userReqAC==1 :
 			if row[3]==1 :
 				if userReqFan==0 :
-					output=(" %sF Cooling\n%s cool, auto",(row[0], row[1]))
+					output=(" "+str(row[0]+"F Cooling\n"+str(row[1])+"F cool, auto")
 					print (output)
-					#lcd.message(" %sF Cooling\n%s cool, auto",row[0], row[1]) 
+					lcd.message(output) 
 				else :
-					output=(" %sF Cooling\n%s cool, on",(row[0], row[1])
+					output=(" "+str(row[0])+"F Cooling\n"+str(row[1])+"F cool, on",(row[0], row[1])
 					print (output)
-					#lcd.message(" %sF Cooling\n%s cool, on",row[0], row[1])
+					#lcd.message(" "+str(row[0])+"F Cooling\n"+str(row[1])+"F cool, on",row[0], row[1])
 			else :
 				if userReqFan==0 :
-					output=(" %sF Idle\n%s cool, auto",(row[0], row[1]))
+					output=(" "+str(row[0])+"F Idle\n"+str(row[1])+"F cool, auto",(row[0], row[1]))
 					print (output)
-					#lcd.message(" %sF Idle\n%s cool, auto",row[0], row[1]) 
+					#lcd.message(" "+str(row[0])+"F Idle\n"+str(row[1])+"F cool, auto",row[0], row[1]) 
 				else :
-					output=("  %sF Idle\n%s cool, on",row[0], row[1]))
+					output=("  %sF Idle\n"+str(row[1])+"F cool, on",row[0], row[1]))
 					print (output)
-					#lcd.message("  %sF Idle\n%s cool, on",row[0], row[1]))
+					#lcd.message("  %sF Idle\n"+str(row[1])+"F cool, on",row[0], row[1]))
 		elif userReqHeat==1 :
 			if row[5]==1 :
 				if userReqFan==0 :
-					output=(" %sF Heating\n%s heat, auto",(row[0], row[1])) 
+					output=(" "+str(row[0])+"F Heating\n"+str(row[1])+"F heat, auto",(row[0], row[1])) 
 					print (output)
-					#lcd.message(" %sF Heating\n%s heat, auto",(row[0], row[1])) 
+					#lcd.message(" "+str(row[0])+"F Heating\n"+str(row[1])+"F heat, auto",(row[0], row[1])) 
 				else :
-					output=(" %sF Heating\n%s heat, on",(row[0], row[1]))
+					output=(" "+str(row[0])+"F Heating\n"+str(row[1])+"F heat, on",(row[0], row[1]))
 					print (output)
-					#lcd.message(" %sF Heating\n%s heat, on",(row[0], row[1]))
+					#lcd.message(" "+str(row[0])+"F Heating\n"+str(row[1])+"F heat, on",(row[0], row[1]))
 			else :
 				if userReqFan==0 :
-					output=(" %sF Idle\n%s heat, auto",(row[0], row[1])) 
+					output=(" "+str(row[0])+"F Idle\n"+str(row[1])+"F heat, auto",(row[0], row[1])) 
 					print (output)
-					#lcd.message(" %sF Idle\n%s heat, auto",(row[0], row[1])) 
+					#lcd.message(" "+str(row[0])+"F Idle\n"+str(row[1])+"F heat, auto",(row[0], row[1])) 
 				else :
-					output=("  %sF Idle\n%s heat, on",(row[0], row[1]))
+					output=("  %sF Idle\n"+str(row[1])+"F heat, on",(row[0], row[1]))
 					print (output)
-					#lcd.message("  %sF Idle\n%s heat, on",(row[0], row[1]))
+					#lcd.message("  %sF Idle\n"+str(row[1])+"F heat, on",(row[0], row[1]))
 		else :
 			if userReqFan==0 :
-				output=(" %sF Idle\n%s off, auto",(row[0], row[1])) 
+				output=(" "+str(row[0])+"F Idle\n"+str(row[1])+"F off, auto",(row[0], row[1])) 
 				print (output)
-				#lcd.message(" %sF Idle\n%s off, auto",(row[0], row[1])) 
+				#lcd.message(" "+str(row[0])+"F Idle\n"+str(row[1])+"F off, auto",(row[0], row[1])) 
 			else :
-				output=(" %sF Idle\n%s off, on",(row[0], row[1]))
+				output=(" "+str(row[0])+"F Idle\n"+str(row[1])+"F off, on",(row[0], row[1]))
 				print (output)
-				#lcd.message(" %sF Idle\n%s off, on",(row[0], row[1]))
+				#lcd.message(" "+str(row[0])+"F Idle\n"+str(row[1])+"F off, on",(row[0], row[1]))
 		
