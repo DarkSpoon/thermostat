@@ -66,9 +66,9 @@ class HD44780:
             else:  
                 self.cmd(ord(char),True)  
   
-if __name__ == '__main__':  
+#if __name__ == '__main__':  
   
-    lcd = HD44780()  
-    lcd.message(" Hello\n  world!")  
- 
+#    lcd = HD44780()  
+#    lcd.message(" Hello\n  world!")  
+
 
