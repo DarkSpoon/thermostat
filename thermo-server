@@ -216,28 +216,48 @@ while True:
 		if userReqAC==1 :
 			if row[3]==1 :
 				if userReqFan==0 :
-					lcd.message(" %sF Cooling\n%s cool, auto",(row[0], row[1])) 
+					output=(" %sF Cooling\n%s cool, auto",(row[0], row[1]))
+					print(output)
+					#lcd.message(" %sF Cooling\n%s cool, auto",row[0], row[1]) 
 				else :
-					lcd.message(" %sF Cooling\n%s cool, on",(row[0], row[1]))
+					output=(" %sF Cooling\n%s cool, on",(row[0], row[1])
+					print(output)
+					#lcd.message(" %sF Cooling\n%s cool, on",row[0], row[1])
 			else :
 				if userReqFan==0 :
-					lcd.message(" %sF Idle\n%s cool, auto",(row[0], row[1])) 
+					output=(" %sF Idle\n%s cool, auto",(row[0], row[1]))
+					print(output)
+					#lcd.message(" %sF Idle\n%s cool, auto",row[0], row[1]) 
 				else :
-					lcd.message("  %sF Idle\n%s cool, on",(row[0], row[1]))
+					output=("  %sF Idle\n%s cool, on",row[0], row[1]))
+					print(output)
+					#lcd.message("  %sF Idle\n%s cool, on",row[0], row[1]))
 		elif userReqHeat==1 :
 			if row[5]==1 :
 				if userReqFan==0 :
-					lcd.message(" %sF Heating\n%s heat, auto",(row[0], row[1])) 
+					output=(" %sF Heating\n%s heat, auto",(row[0], row[1])) 
+					print(output)
+					#lcd.message(" %sF Heating\n%s heat, auto",(row[0], row[1])) 
 				else :
-					lcd.message(" %sF Heating\n%s heat, on",(row[0], row[1]))
+					output=(" %sF Heating\n%s heat, on",(row[0], row[1]))
+					print(output)
+					#lcd.message(" %sF Heating\n%s heat, on",(row[0], row[1]))
 			else :
 				if userReqFan==0 :
-					lcd.message(" %sF Idle\n%s heat, auto",(row[0], row[1])) 
+					output=(" %sF Idle\n%s heat, auto",(row[0], row[1])) 
+					print(output)
+					#lcd.message(" %sF Idle\n%s heat, auto",(row[0], row[1])) 
 				else :
-					lcd.message("  %sF Idle\n%s heat, on",(row[0], row[1]))
+					output=("  %sF Idle\n%s heat, on",(row[0], row[1]))
+					print(output)
+					#lcd.message("  %sF Idle\n%s heat, on",(row[0], row[1]))
 		else :
 			if userReqFan==0 :
-				lcd.message(" %sF Idle\n%s off, auto",(row[0], row[1])) 
+				output=(" %sF Idle\n%s off, auto",(row[0], row[1])) 
+				print(output)
+				#lcd.message(" %sF Idle\n%s off, auto",(row[0], row[1])) 
 			else :
-				lcd.message(" %sF Idle\n%s off, on",(row[0], row[1]))
+				output=(" %sF Idle\n%s off, on",(row[0], row[1]))
+				print(output)
+				#lcd.message(" %sF Idle\n%s off, on",(row[0], row[1]))
 		
