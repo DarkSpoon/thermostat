@@ -75,5 +75,6 @@ if __name__ == '__main__':
         b=75+i  
         output=(" "+str(a)+"F Idle\n"+str(b)+"F off, on")
         lcd.message(output)
+        sleep(2)
 
 
