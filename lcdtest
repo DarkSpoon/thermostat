@@ -69,6 +69,10 @@ class HD44780:
 if __name__ == '__main__':  
   
     lcd = HD44780()  
-    lcd.message(" Hello\n  world!")  
- 
+    #lcd.message(" Hello\n  world!")
+    a=72
+    b=75  
+    output=(" "+str(a)+"F Idle\n"+str(b)+"F off, on")
+    lcd.message(output)
+
 
