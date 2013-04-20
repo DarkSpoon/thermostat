@@ -237,7 +237,7 @@ while True:
 					lcd.message("  %sF Idle\n%s heat, on",(row[0], row[1]))
 		else :
 			if userReqFan==0 :
-					lcd.message(" %sF Idle\n%s off, auto",(row[0], row[1])) 
-				else :
-					lcd.message(" %sF Idle\n%s off, on",(row[0], row[1]))
+				lcd.message(" %sF Idle\n%s off, auto",(row[0], row[1])) 
+			else :
+				lcd.message(" %sF Idle\n%s off, on",(row[0], row[1]))
 		
