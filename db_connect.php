@@ -5,8 +5,9 @@ define("PASSWORD", "raspberry"); // The database password.
 define("DATABASE", "secure_login"); // The database name.
 define("DATABASE2", "thermostat")
 
-$mysqli = new mysqli(HOST, USER, PASSWORD, DATABASE);
-$selected = new mysqli(HOST, USER, PASSWORD, DATABASE2);
+$con = new mysqli(HOST, USER, PASSWORD);
+$mysqli = mysqli_select_db($con, DATABASE);
+$selected = mysqli_select_db($con, DATABASE2);
 
 if(mysqli_connect_errno()) {
       echo "Connection Failed: " . mysqli_connect_errno();
