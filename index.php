@@ -76,7 +76,7 @@ Released   : 20081230
           }
 
 
-
+          */
           if ($_GET['w']==2){#reset temp to scheduled temp
               //$query = "UPDATE User_Req SET Temp=0";
               //$result=mysql_query($query);
@@ -88,7 +88,7 @@ Released   : 20081230
           }
 
 
-          */
+          
           if ($_GET['w']==3){#set manual override for temp
               if(empty($_POST["Target"])){              
                 $target = 0;
