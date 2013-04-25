@@ -142,10 +142,10 @@ Released   : 20081230
           //}
 
           //$query="SELECT * from Conditions";
-         if($statment = $selected->prepare("SELECT AC, Heat, Fan, Target from Conditions")){
+         if($statment = $selected->prepare("SELECT Target, AC, Heat, Fan from Conditions")){
           //$result=mysql_query($query);
           $statement->execute();
-          if($statement->bind_result($AC, $Heat, $Fan, $target)){
+          if($statement->bind_result($target, $AC, $Heat, $Fan)){
             echo "result bound";
           } else echo "not bound";
           $statement->fetch();
