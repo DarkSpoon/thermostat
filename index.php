@@ -101,8 +101,8 @@ Released   : 20081230
           //$query="SELECT * from User_Req";
           //echo $mysqli->host_info . "\n";
           //echo $selected->host_info . "\n";
-          //if ($statment = $selected->prepare("SELECT AC, Heat, Fan from User_Req")){
-          $statment = $selected->prepare("SELECT AC, Heat, Fan from User_Req")
+          if (!($statment = $selected->prepare("SELECT AC, Heat, Fan from User_Req"))){
+          //$statment = $selected->prepare("SELECT AC, Heat, Fan from User_Req")
             $statement->execute();
             //$result=mysql_query($query);
             $ACrunning=NULL;
@@ -167,9 +167,9 @@ Released   : 20081230
             /*$target=$row{'Target'};
           }*/
 
-        //} else {
-          //echo 'You are not authorized to access this page, please login. <br/>';
-        //}
+        } else {
+          echo 'You are not authorized to access this page, please login. <br/>';
+        }
       ?>
   </div>
         <div align="center" class="contentTitle"><h1>Manual Settings</h1></div>
