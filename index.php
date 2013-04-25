@@ -101,12 +101,12 @@ Released   : 20081230
           //$query="SELECT * from User_Req";
           echo $mysqli->host_info . "\n";
           echo $selected->host_info . "\n";
-          if($selected->connect_error){
+          /*if($selected->connect_error){
              echo "Not connected, error: ".$selected->connect_error;
           }
           else{
              echo "Connected.";
-          }
+          }*/
           if ($statment = $selected->prepare("SELECT AC, Heat, Fan from User_Req")){
             $statement->execute();
             //$result=mysql_query($query);
