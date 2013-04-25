@@ -107,7 +107,7 @@ Released   : 20081230
              echo "Connected.";
           }
           //if ($statment = $selected->prepare("SELECT AC, Heat, Fan from User_Req")){
-          $statment = $selected->prepare("SELECT AC, Heat, Fan from User_Req"
+          $statment = $selected->prepare("SELECT AC, Heat, Fan from User_Req");
             $statement->execute();
             //$result=mysql_query($query);
             $ACrunning=NULL;
