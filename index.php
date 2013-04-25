@@ -106,7 +106,7 @@ Released   : 20081230
           }else{
              echo "Connected.";
           }
-          /*if ($statment = $selected->prepare("SELECT AC, Heat, Fan from User_Req")){
+          if ($statment = $selected->prepare("SELECT AC, Heat, Fan from User_Req")){
             $statement->execute();
             //$result=mysql_query($query);
             $ACrunning=NULL;
@@ -123,7 +123,7 @@ Released   : 20081230
             else if($Fanrunning==1)
               echo "On <BR>";
             $statement->close();
-          } else echo "No query ran: $statement";*/
+          } else echo "No query ran: $statement";
           #Build strings to display what is currently running. 
           /*while($row=mysql_fetch_array($result)){
             $ACrunning=$row{'AC'};
