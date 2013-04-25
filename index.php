@@ -98,7 +98,7 @@ Released   : 20081230
           }*/
 
 
-          /*//$query="SELECT * from User_Req";
+          //$query="SELECT * from User_Req";
           $statment = $selected->prepare("SELECT `AC`,`Heat`,`Fan` from `User_Req`");
           $statement->execute();
           //$result=mysql_query($query);
@@ -106,21 +106,21 @@ Released   : 20081230
           $Heatrunning=NULL;
           $Fanrunning=NULL;
           $statement->bind_result($ACrunning, $Heatrunning, $Fanrunning);
-          $statement->close();*/
+          $statement->close();
           #Build strings to display what is currently running. 
           /*while($row=mysql_fetch_array($result)){
             $ACrunning=$row{'AC'};
             $Heatrunning=$row{'Heater'};
-            $Fanrunning=$row{'Fan'};
+            $Fanrunning=$row{'Fan'};*/
 
-            /*if($ACrunning==1)
+            if($ACrunning==1)
               echo "Cool, ";
             else if($Heatrunning==1)
               echo "Heat, ";
             if($Fanrunning==0)
               echo "Auto <BR>";
             else if($Fanrunning==1)
-              echo "On <BR>";*/
+              echo "On <BR>";
           /*}*/
 
           //$query="SELECT * from Conditions";
