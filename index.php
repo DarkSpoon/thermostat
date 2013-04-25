@@ -166,7 +166,7 @@ Released   : 20081230
               echo "Fan is not running<BR>";              
             //$target=$row{'Target'};
             echo $AC;
-            echo $Heat
+            echo $Heat;
             echo $Fan;
             echo $target;
             $statement->close();
