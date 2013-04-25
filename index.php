@@ -46,7 +46,7 @@ Released   : 20081230
           <hr>
       <?php
         if(login_check($mysqli) == true) {
-         /* if ($_GET['w']==1){
+          if ($_GET['w']==1){
               #Set manual overrides for Heat, AC, and Fan
               $hvac=mysqli_real_escape_string($selected, $_POST["HVAC"]);
               $fan=mysqli_real_escape_string($selected, $_POST["fan"]);
@@ -63,23 +63,25 @@ Released   : 20081230
               }
               //$query = "UPDATE User_Req SET Heater=$heater, AC=$ac, Fan=$fan";
               //$result=mysql_query($query);
-              $statment = $selected->prepare("UPDATE `User_Req` SET `Heater`=?, `AC`=?, `Fan`=?");
-              $statement->bind_param("iii", $heater, $AC, $fan);
-              $statement->execute();
-              //$statement-> bind_result($result);//can echo $result
-              //$statement->fetch();
-              $statement->close();
-          }*/
-          /*if ($_GET['w']==2){#reset temp to scheduled temp
+              if($statment = $selected->prepare("UPDATE User_Req SET Heater=?, AC=?, Fan=?")){
+                $statement->bind_param("iii", $heater, $AC, $fan);
+                $statement->execute();
+                //$statement-> bind_result($result);//can echo $result
+                //$statement->fetch();
+                $statement->close();
+              }
+          }
+          if ($_GET['w']==2){#reset temp to scheduled temp
               //$query = "UPDATE User_Req SET Temp=0";
               //$result=mysql_query($query);
-              $statment = $selected->prepare("UPDATE `User_Req` SET `Temp`=?");
-              $statement->bind_param("i", 0);
-              $statement->execute();
-              $statement->close();
-          }*/
+              if($statment = $selected->prepare("UPDATE User_Req SET Temp=?")_{
+                $statement->bind_param("i", 0);
+                $statement->execute();
+                $statement->close();
+              }
+          }
 
-          /*if ($_GET['w']==3){#set manual override for temp
+          if ($_GET['w']==3){#set manual override for temp
               if(empty($_POST["Target"])){              
                 $target = 0;
               } 
@@ -90,30 +92,15 @@ Released   : 20081230
               //$query = "UPDATE User_Req SET Temp=$target";
               //$result=mysql_query($query);
 
-              $statment = $selected->prepare("UPDATE `User_Req` SET `Temp` = ?");
-              $statement->bind_param('f', $target);
-              $statement->execute();
-              $statement->close();
-              
-          }*/
+              if($statment = $selected->prepare("UPDATE `User_Req` SET `Temp` = ?")){
+                $statement->bind_param('f', $target);
+                $statement->execute();
+                $statement->close();
+              }
+          }
 
 
           //$query="SELECT * from User_Req";
-          //echo $mysqli->host_info . "\n";
-          echo $selected->host_info . "\n";
-          if($selected->connect_error){
-             echo "Not connected, error";
-          }else{
-             echo "Connected.";
-          }
-          if ($stmt = $mysqli->prepare("SELECT id, username, password, salt FROM members WHERE email = 'demo' LIMIT 1")) { 
-            $stmt->execute();
-            $stmt->bind_result($id, $un, $pw, $salt);
-            $stmt->fetch();
-            echo $id; echo $un; echo $pw; echo $salt;
-            $stmt->close();
-          }
-          echo "2nd statement start";
           if ($statement = $selected->prepare("SELECT AC, Heater, Fan from User_Req")) { 
           //$statment = $selected->prepare("SELECT AC, Heat, Fan from User_Req");
             $statement->execute();
@@ -147,22 +134,18 @@ Released   : 20081230
           }*/
 
           //$query="SELECT * from Conditions";
-         /* $statment = $selected->prepare("SELECT `AC`,`Heat`,`Fan`,`Target` from `Conditions`");
+         if($statment = $selected->prepare("SELECT `AC`,`Heat`,`Fan`,`Target` from `Conditions`")){
           //$result=mysql_query($query);
           $statement->execute();
-          $AC=NULL;
-          $Heat=NULL:
-          $Fan=NULL;
-          $Target=NULL;
           $statement->bind_result($AC, $Heat, $Fan, $Target);
-          $statement->close();*/
+          $statement->close();
           /*while($row=mysql_fetch_array($result)){
             echo "Currently: ".$row{'Temp'}."F<BR>";
             $AC=$row{'AC'};
             $Heat=$row{'Heat'};
             $Fan=$row{'Fan'};*/
             
-            /*#The below values will be used to trigger relays in server code and should reflect an accurate status
+            #The below values will be used to trigger relays in server code and should reflect an accurate status
             if($AC==1)
               echo "AC is running<BR>";
             else if($Heat==1)
@@ -173,8 +156,8 @@ Released   : 20081230
               echo "Fan is running<BR>";
             else if ($Fan==0)
               echo "Fan is not running<BR>";  */              
-            /*$target=$row{'Target'};
-          }*/
+            //$target=$row{'Target'};
+          } else echo "No query ran";
 
         } else {
           echo 'You are not authorized to access this page, please login. <br/>';
