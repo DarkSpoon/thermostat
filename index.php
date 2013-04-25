@@ -163,7 +163,7 @@ Released   : 20081230
             if ($Fan==1)
               echo "Fan is running<BR>";
             else if ($Fan==0)
-              echo "Fan is not running<BR>";  */              
+              echo "Fan is not running<BR>";              
             //$target=$row{'Target'};
             $statement->close();
           } else echo "No query ran";
