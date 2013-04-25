@@ -165,7 +165,7 @@ Released   : 20081230
             else if ($Fan==0)
               echo "Fan is not running<BR>";              
             //$target=$row{'Target'};
-            echo "test vars:"
+            echo "test vars:";
             echo $AC;
             echo $Heat;
             echo $Fan;
