@@ -145,7 +145,7 @@ Released   : 20081230
          if($statment = $selected->prepare("SELECT AC, Heat, Fan, Target from Conditions")){
           //$result=mysql_query($query);
           $statement->execute();
-          $statement->bind_result($AC, $Heat, $Fan, $Target);
+          $statement->bind_result($AC, $Heat, $Fan, $target);
           $statement->fetch();
           //while($row=mysql_fetch_array($result)){
             //echo "Currently: ".$row{'Temp'}."F<BR>";
