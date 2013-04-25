@@ -46,6 +46,7 @@ Released   : 20081230
           <hr>
       <?php
         if(login_check($mysqli) == true) {
+          $mysqli=mysqli_select_db($con, "thermostat")
          /* if ($_GET['w']==1){
               #Set manual overrides for Heat, AC, and Fan
               $hvac=mysqli_real_escape_string($selected, $_POST["HVAC"]);
@@ -99,7 +100,7 @@ Released   : 20081230
 
 
           //$query="SELECT * from User_Req";
-          if ($statment = $selected->prepare("SELECT AC, Heat, Fan from User_Req")){
+          if ($statment = $mysqli->prepare("SELECT AC, Heat, Fan from User_Req")){
             $statement->execute();
             //$result=mysql_query($query);
             $ACrunning=NULL;
@@ -193,5 +194,6 @@ Released   : 20081230
         <div id="footer"></div>
 </body>
 <?php /*mysql_close($dbhandle);*/
-//$selected->close();?>
+//$selected->close();
+$mysql_close($con);?>
 </html>
