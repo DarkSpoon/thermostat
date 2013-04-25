@@ -45,7 +45,7 @@ Released   : 20081230
         <div class="contentText">
           <hr>
       <?php
-        /*if(login_check($mysqli) == true) {
+        if(login_check($mysqli) == true) {echo "logged in";/*
           if ($_GET['w']==1){
               #Set manual overrides for Heat, AC, and Fan
               $hvac=mysqli_real_escape_string($selected, $_POST["HVAC"]);
@@ -153,9 +153,9 @@ Released   : 20081230
             /*$target=$row{'Target'};
           }*/
 
-        /*} else {
+        } else {
           echo 'You are not authorized to access this page, please login. <br/>';
-        }*/
+        }
       ?>
   </div>
         <div align="center" class="contentTitle"><h1>Manual Settings</h1></div>
