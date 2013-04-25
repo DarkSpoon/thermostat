@@ -144,7 +144,9 @@ Released   : 20081230
           //$query="SELECT * from Conditions";
          if($statment = $selected->prepare("SELECT Target, AC, Heat, Fan from Conditions")){
           //$result=mysql_query($query);
-          $statement->execute();
+          if($statement->execute()){
+            echo "executed";
+          } else echo "not executed";
           if($statement->bind_result($target, $AC, $Heat, $Fan)){
             echo "result bound";
           } else echo "not bound";
