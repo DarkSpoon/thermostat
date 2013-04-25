@@ -1,9 +1,9 @@
 <?php 
   //include("includes.php"); 
-  include("db_connect.php");
-  include("functions.php");
-  sec_session_start();
-  if(login_check($mysqli) != true) {header('Location: ./login.php?');}
+  //include("db_connect.php");
+  //include("functions.php");
+  //sec_session_start();
+  //if(login_check($mysqli) != true) {header('Location: ./login.php?');}
 ?>
  <!--
 Design by Bryant Smith
@@ -45,8 +45,8 @@ Released   : 20081230
         <div class="contentText">
           <hr>
       <?php
-        if(login_check($mysqli) == true) {
-          /*if ($_GET['w']==1){
+        /*if(login_check($mysqli) == true) {
+          if ($_GET['w']==1){
               #Set manual overrides for Heat, AC, and Fan
               $hvac=mysqli_real_escape_string($selected, $_POST["HVAC"]);
               $fan=mysqli_real_escape_string($selected, $_POST["fan"]);
