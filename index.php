@@ -114,24 +114,22 @@ Released   : 20081230
             $stmt->close();
           }
           echo "2nd statement start";
-          $statment = $selected->prepare("SELECT AC, Heat, Fan from User_Req");
-          $statement->execute();
-          //$result=mysql_query($query);
-          $ACrunning=NULL;
-          $Heatrunning=NULL;
-          $Fanrunning=NULL;
-          $statement->bind_result($ACrunning, $Heatrunning, $Fanrunning);
-          $statement->fetch();
-          if($ACrunning==1)
-            echo "Cool, ";
-          else if($Heatrunning==1)
-            echo "Heat, ";
-          if($Fanrunning==0)
-            echo "Auto <BR>";
-          else if($Fanrunning==1)
-            echo "On <BR>";
-          $statement->close();
-          //} else echo "No query ran: $statement";
+          if ($statement = $selected->prepare("SELECT AC, Heat, Fan from User_Req")) { 
+          //$statment = $selected->prepare("SELECT AC, Heat, Fan from User_Req");
+            $statement->execute();
+            //$result=mysql_query($query);
+            $statement->bind_result($ACrunning, $Heatrunning, $Fanrunning);
+            $statement->fetch();
+            if($ACrunning==1)
+              echo "Cool, ";
+            else if($Heatrunning==1)
+              echo "Heat, ";
+            if($Fanrunning==0)
+              echo "Auto <BR>";
+            else if($Fanrunning==1)
+              echo "On <BR>";
+            $statement->close();
+          } else echo "No query ran";
           #Build strings to display what is currently running. 
           /*while($row=mysql_fetch_array($result)){
             $ACrunning=$row{'AC'};
