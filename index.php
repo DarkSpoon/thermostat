@@ -116,7 +116,7 @@ Released   : 20081230
             else if($Fanrunning==1)
               echo "On <BR>";
             $statement->close();
-          } else (echo "No query ran")
+          } else (echo "No query ran";)
           #Build strings to display what is currently running. 
           /*while($row=mysql_fetch_array($result)){
             $ACrunning=$row{'AC'};
