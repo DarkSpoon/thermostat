@@ -102,11 +102,10 @@ Released   : 20081230
           //echo $mysqli->host_info . "\n";
           //echo $selected->host_info . "\n";
           if($selected->connect_error){
-             echo "Not connected, error: ".$selected->connect_error;
-          }
+             echo "Not connected, error";
           else{
              echo "Connected.";
-          }
+          }/*
           if ($statment = $selected->prepare("SELECT AC, Heat, Fan from User_Req")){
             $statement->execute();
             //$result=mysql_query($query);
@@ -124,7 +123,7 @@ Released   : 20081230
             else if($Fanrunning==1)
               echo "On <BR>";
             $statement->close();
-          } else echo "No query ran: $statement";
+          } else echo "No query ran: $statement";*/
           #Build strings to display what is currently running. 
           /*while($row=mysql_fetch_array($result)){
             $ACrunning=$row{'AC'};
@@ -174,7 +173,6 @@ Released   : 20081230
         } else {
           echo 'You are not authorized to access this page, please login. <br/>';
         }
-      }
       ?>
   </div>
         <div align="center" class="contentTitle"><h1>Manual Settings</h1></div>
