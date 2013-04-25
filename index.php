@@ -108,14 +108,14 @@ Released   : 20081230
           $statement->bind_result($ACrunning, $Heatrunning, $Fanrunning);
           $statement->fetch();
           //$statement->close();
-          if($ACrunning==1)
+         /* if($ACrunning==1)
             echo "Cool, ";
           else if($Heatrunning==1)
             echo "Heat, ";
           if($Fanrunning==0)
             echo "Auto <BR>";
           else if($Fanrunning==1)
-            echo "On <BR>";
+            echo "On <BR>";*/
           #Build strings to display what is currently running. 
           /*while($row=mysql_fetch_array($result)){
             $ACrunning=$row{'AC'};
