@@ -2,7 +2,7 @@
   //include("includes.php"); 
   include("db_connect.php");
   include("functions.php");
-  //sec_session_start();
+  sec_session_start();
   //if(login_check($mysqli) != true) {header('Location: ./login.php?');}
 ?>
  <!--
