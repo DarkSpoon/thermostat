@@ -48,7 +48,7 @@ Released   : 20081230
         if(login_check($mysqli) == true) {
           
 
-
+          /*
           if ($_GET['w']==1){
               #Set manual overrides for Heat, AC, and Fan
               $hvac=mysqli_real_escape_string($selected, $_POST["HVAC"]);
@@ -107,7 +107,7 @@ Released   : 20081230
               }
           }
 
-
+          */
           //$query="SELECT * from User_Req";
           if ($statement = $selected->prepare("SELECT AC, Heater, Fan from User_Req")) { 
           //$statment = $selected->prepare("SELECT AC, Heat, Fan from User_Req");
@@ -126,20 +126,20 @@ Released   : 20081230
             $statement->close();
           } else echo "No query ran";
           #Build strings to display what is currently running. 
-          /*while($row=mysql_fetch_array($result)){
-            $ACrunning=$row{'AC'};
-            $Heatrunning=$row{'Heater'};
-            $Fanrunning=$row{'Fan'};
+          //while($row=mysql_fetch_array($result)){
+            //$ACrunning=$row{'AC'};
+            //$Heatrunning=$row{'Heater'};
+            //$Fanrunning=$row{'Fan'};
 
-            if($ACrunning==1)
-              echo "Cool, ";
-            else if($Heatrunning==1)
-              echo "Heat, ";
-            if($Fanrunning==0)
-              echo "Auto <BR>";
-            else if($Fanrunning==1)
-              echo "On <BR>";
-          }*/
+            //if($ACrunning==1)
+              //echo "Cool, ";
+            //else if($Heatrunning==1)
+              //echo "Heat, ";
+            //if($Fanrunning==0)
+              //echo "Auto <BR>";
+            //else if($Fanrunning==1)
+              //echo "On <BR>";
+          }
 
           //$query="SELECT * from Conditions";
          if($statment = $selected->prepare("SELECT `AC`,`Heat`,`Fan`,`Target` from `Conditions`")){
@@ -147,11 +147,11 @@ Released   : 20081230
           $statement->execute();
           $statement->bind_result($AC, $Heat, $Fan, $Target);
           $statement->close();
-          /*while($row=mysql_fetch_array($result)){
-            echo "Currently: ".$row{'Temp'}."F<BR>";
-            $AC=$row{'AC'};
-            $Heat=$row{'Heat'};
-            $Fan=$row{'Fan'};*/
+          //while($row=mysql_fetch_array($result)){
+            //echo "Currently: ".$row{'Temp'}."F<BR>";
+            //$AC=$row{'AC'};
+            //$Heat=$row{'Heat'};
+            //$Fan=$row{'Fan'};
             
             #The below values will be used to trigger relays in server code and should reflect an accurate status
             if($AC==1)
@@ -196,7 +196,8 @@ Released   : 20081230
 </div>
         <div id="footer"></div>
 </body>
-<?php /*mysql_close($dbhandle);*/
-$selected->close();
+<?php 
+  //mysql_close($dbhandle);
+  $selected->close();
 ?>
 </html>
