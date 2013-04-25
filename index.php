@@ -109,7 +109,7 @@ Released   : 20081230
             $Heatrunning=NULL;
             $Fanrunning=NULL;
             $statement->bind_result($ACrunning, $Heatrunning, $Fanrunning);
-            //$statement->fetch();
+            $statement->fetch();
             echo $ACrunning ." " . $Heatrunning ." " . $Fanrunning;
             if($ACrunning==1)
               echo "Cool, ";
@@ -167,9 +167,9 @@ Released   : 20081230
             /*$target=$row{'Target'};
           }*/
 
-        } else {
-          echo 'You are not authorized to access this page, please login. <br/>';
-        }
+        //} else {
+          //echo 'You are not authorized to access this page, please login. <br/>';
+        //}
       ?>
   </div>
         <div align="center" class="contentTitle"><h1>Manual Settings</h1></div>
