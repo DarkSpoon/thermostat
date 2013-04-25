@@ -46,7 +46,7 @@ Released   : 20081230
           <hr>
       <?php
         if(login_check($mysqli) == true) {
-          if ($_GET['w']==1){
+         /* if ($_GET['w']==1){
               #Set manual overrides for Heat, AC, and Fan
               $hvac=mysqli_real_escape_string($selected, $_POST["HVAC"]);
               $fan=mysqli_real_escape_string($selected, $_POST["fan"]);
@@ -69,7 +69,7 @@ Released   : 20081230
               //$statement-> bind_result($result);//can echo $result
               //$statement->fetch();
               $statement->close();
-          }
+          }*/
           /*if ($_GET['w']==2){#reset temp to scheduled temp
               //$query = "UPDATE User_Req SET Temp=0";
               //$result=mysql_query($query);
@@ -107,11 +107,19 @@ Released   : 20081230
           $Fanrunning=NULL;
           $statement->bind_result($ACrunning, $Heatrunning, $Fanrunning);
           $statement->close();
+          if($ACrunning==1)
+            echo "Cool, ";
+          else if($Heatrunning==1)
+            echo "Heat, ";
+          if($Fanrunning==0)
+            echo "Auto <BR>";
+          else if($Fanrunning==1)
+            echo "On <BR>";
           #Build strings to display what is currently running. 
           /*while($row=mysql_fetch_array($result)){
             $ACrunning=$row{'AC'};
             $Heatrunning=$row{'Heater'};
-            $Fanrunning=$row{'Fan'};*/
+            $Fanrunning=$row{'Fan'};
 
             if($ACrunning==1)
               echo "Cool, ";
@@ -121,7 +129,7 @@ Released   : 20081230
               echo "Auto <BR>";
             else if($Fanrunning==1)
               echo "On <BR>";
-          /*}*/
+          }*/
 
           //$query="SELECT * from Conditions";
          /* $statment = $selected->prepare("SELECT `AC`,`Heat`,`Fan`,`Target` from `Conditions`");
