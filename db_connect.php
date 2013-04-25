@@ -7,7 +7,7 @@ define("DATABASE2", "thermostat")*/
 
 $con = new mysqli("localhost", "pi", "raspberry");
 $mysqli = mysqli_select_db($con, "secure_login");
-$selected = mysqli_select_db($con, "thermostat");
+#$selected = mysqli_select_db($con, "thermostat");
 
 if(mysqli_connect_errno()) {
       echo "Connection Failed: " . mysqli_connect_errno();
