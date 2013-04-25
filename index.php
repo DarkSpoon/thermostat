@@ -195,5 +195,5 @@ Released   : 20081230
 </body>
 <?php /*mysql_close($dbhandle);*/
 //$selected->close();
-$mysql_close($con);?>
+$con->close();?>
 </html>
