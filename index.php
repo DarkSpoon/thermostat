@@ -114,7 +114,7 @@ Released   : 20081230
             $stmt->close();
           }
           echo "2nd statement start";
-          if ($statement = $selected->prepare("SELECT AC, Heat, Fan from User_Req")) { 
+          if ($statement = $selected->prepare("SELECT AC, Heater, Fan from User_Req")) { 
           //$statment = $selected->prepare("SELECT AC, Heat, Fan from User_Req");
             $statement->execute();
             //$result=mysql_query($query);
