@@ -99,9 +99,10 @@ Released   : 20081230
 
 
           //$query="SELECT * from User_Req";
-          echo $mysqli->host_info . "\n";
-          echo $selected->host_info . "\n";
-          if ($statment = $selected->prepare("SELECT AC, Heat, Fan from User_Req")){
+          //echo $mysqli->host_info . "\n";
+          //echo $selected->host_info . "\n";
+          //if ($statment = $selected->prepare("SELECT AC, Heat, Fan from User_Req")){
+          $statment = $selected->prepare("SELECT AC, Heat, Fan from User_Req")
             $statement->execute();
             //$result=mysql_query($query);
             $ACrunning=NULL;
@@ -109,6 +110,7 @@ Released   : 20081230
             $Fanrunning=NULL;
             $statement->bind_result($ACrunning, $Heatrunning, $Fanrunning);
             $statement->fetch();
+            echo $ACrunning $Heatrunning $Fanrunning;
             if($ACrunning==1)
               echo "Cool, ";
             else if($Heatrunning==1)
@@ -118,7 +120,7 @@ Released   : 20081230
             else if($Fanrunning==1)
               echo "On <BR>";
             $statement->close();
-          } else echo "No query ran: $statement";
+          //} else echo "No query ran: $statement";
           #Build strings to display what is currently running. 
           /*while($row=mysql_fetch_array($result)){
             $ACrunning=$row{'AC'};
