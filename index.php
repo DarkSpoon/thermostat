@@ -105,7 +105,7 @@ Released   : 20081230
              echo "Not connected, error: ".$selected->connect_error;
           }
           else{
-             echo "Connected."
+             echo "Connected.";
           }
           if ($statment = $selected->prepare("SELECT AC, Heat, Fan from User_Req")){
             $statement->execute();
