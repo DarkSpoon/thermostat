@@ -107,23 +107,29 @@ Released   : 20081230
              echo "Connected.";
           }
           //if ($statment = $selected->prepare("SELECT AC, Heat, Fan from User_Req")){
+          $stmt = $mysqli->prepare("SELECT id, username, password, salt FROM members WHERE email = demo LIMIT 1")
+          $stmt->execute();
+          $stmt->bind_result($id, $un, $pw, $salt);
+          $stmt->fetch();
+          echo $id; echo $un; echo $pw; echo $salt;
+          $stmt->close();
           $statment = $selected->prepare("SELECT AC, Heat, Fan from User_Req");
-            $statement->execute();
-            //$result=mysql_query($query);
-            $ACrunning=NULL;
-            $Heatrunning=NULL;
-            $Fanrunning=NULL;
-            $statement->bind_result($ACrunning, $Heatrunning, $Fanrunning);
-            $statement->fetch();
-            if($ACrunning==1)
-              echo "Cool, ";
-            else if($Heatrunning==1)
-              echo "Heat, ";
-            if($Fanrunning==0)
-              echo "Auto <BR>";
-            else if($Fanrunning==1)
-              echo "On <BR>";
-            $statement->close();
+          $statement->execute();
+          //$result=mysql_query($query);
+          $ACrunning=NULL;
+          $Heatrunning=NULL;
+          $Fanrunning=NULL;
+          $statement->bind_result($ACrunning, $Heatrunning, $Fanrunning);
+          $statement->fetch();
+          if($ACrunning==1)
+            echo "Cool, ";
+          else if($Heatrunning==1)
+            echo "Heat, ";
+          if($Fanrunning==0)
+            echo "Auto <BR>";
+          else if($Fanrunning==1)
+            echo "On <BR>";
+          $statement->close();
           //} else echo "No query ran: $statement";
           #Build strings to display what is currently running. 
           /*while($row=mysql_fetch_array($result)){
