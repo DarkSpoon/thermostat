@@ -226,7 +226,7 @@ Released   : 20081230
 					}
 					$statement->close();
 					//mysql_close($dbhandle);
-					$dbhandle->close();
+					$selected->close();
 				} else {
    					echo 'You are not authorized to access this page, please login. <br/>';
 				}

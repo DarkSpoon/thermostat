@@ -183,5 +183,5 @@ Released   : 20081230
         <div id="footer"></div>
 </body>
 <?php /*mysql_close($dbhandle);*/
-$dbhandle->close();?>
+$selected->close();?>
 </html>
