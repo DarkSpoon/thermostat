@@ -103,7 +103,7 @@ Released   : 20081230
           echo $selected->host_info . "\n";
           if($selected->connect_error){
              echo "Not connected, error";
-          else{
+          }else{
              echo "Connected.";
           }
           /*if ($statment = $selected->prepare("SELECT AC, Heat, Fan from User_Req")){
