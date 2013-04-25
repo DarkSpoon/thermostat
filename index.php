@@ -99,7 +99,7 @@ Released   : 20081230
 
 
           //$query="SELECT * from User_Req";
-          if ($statment = $selected->prepare("SELECT AC, Heat, Fan from User_Req")){
+          if ($statment = $selected->prepare("SELECT * from User_Req")){
             $statement->execute();
             //$result=mysql_query($query);
             $ACrunning=NULL;
