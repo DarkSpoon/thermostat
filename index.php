@@ -107,7 +107,7 @@ Released   : 20081230
              echo "Connected.";
           }
           //if ($statment = $selected->prepare("SELECT AC, Heat, Fan from User_Req")){
-          $stmt = $mysqli->prepare("SELECT id, username, password, salt FROM members WHERE email = demo LIMIT 1")
+          $stmt = $mysqli->prepare("SELECT id, username, password, salt FROM members WHERE email = demo LIMIT 1");
           $stmt->execute();
           $stmt->bind_result($id, $un, $pw, $salt);
           $stmt->fetch();
