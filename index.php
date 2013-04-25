@@ -72,7 +72,7 @@ Released   : 20081230
                 //$statement-> bind_result($result);//can echo $result
                 //$statement->fetch();
                 $statement->close();
-              }
+              }else echo "1, not prepared";
           }
 
 
@@ -80,11 +80,11 @@ Released   : 20081230
           if ($_GET['w']==2){#reset temp to scheduled temp
               //$query = "UPDATE User_Req SET Temp=0";
               //$result=mysql_query($query);
-              if($statement = $selected->prepare("UPDATE User_Req SET Temp=?")){
-                $statement->bind_param("i", 0);
+              if($statement = $selected->prepare("UPDATE User_Req SET Temp=0")){
+                //$statement->bind_param("i", 0);
                 $statement->execute();
                 $statement->close();
-              }
+              }else echo "2, not prepared";
           }
 
 
@@ -100,11 +100,11 @@ Released   : 20081230
               //$query = "UPDATE User_Req SET Temp=$target";
               //$result=mysql_query($query);
 
-              if($statement = $selected->prepare("UPDATE `User_Req` SET `Temp` = ?")){
+              if($statement = $selected->prepare("UPDATE User_Req SET Temp = ?")){
                 $statement->bind_param('f', $target);
                 $statement->execute();
                 $statement->close();
-              }
+              }else echo "3, not prepared";
           }
 
           
