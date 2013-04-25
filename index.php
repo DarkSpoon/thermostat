@@ -46,7 +46,7 @@ Released   : 20081230
           <hr>
       <?php
         if(login_check($mysqli) == true) {
-          if ($_GET['w']==1){
+          /*if ($_GET['w']==1){
               #Set manual overrides for Heat, AC, and Fan
               $hvac=mysqli_real_escape_string($selected, $_POST["HVAC"]);
               $fan=mysqli_real_escape_string($selected, $_POST["fan"]);
@@ -69,17 +69,17 @@ Released   : 20081230
               //$statement-> bind_result($result);//can echo $result
               //$statement->fetch();
               $statement->close();
-          }
-          if ($_GET['w']==2){#reset temp to scheduled temp
+          }*/
+          /*if ($_GET['w']==2){#reset temp to scheduled temp
               //$query = "UPDATE User_Req SET Temp=0";
               //$result=mysql_query($query);
               $statment = $selected->prepare("UPDATE `User_Req` SET `Temp`=?");
               $statement->bind_param("i", 0);
               $statement->execute();
               $statement->close();
-          }
+          }*/
 
-          if ($_GET['w']==3){#set manual override for temp
+          /*if ($_GET['w']==3){#set manual override for temp
               if(empty($_POST["Target"])){              
                 $target = 0;
               } 
@@ -95,10 +95,10 @@ Released   : 20081230
               $statement->execute();
               $statement->close();
               
-          }
+          }*/
 
 
-          //$query="SELECT * from User_Req";
+          /*//$query="SELECT * from User_Req";
           $statment = $selected->prepare("SELECT `AC`,`Heat`,`Fan` from `User_Req`");
           $statement->execute();
           //$result=mysql_query($query);
@@ -106,7 +106,7 @@ Released   : 20081230
           $Heatrunning=NULL;
           $Fanrunning=NULL;
           $statement->bind_result($ACrunning, $Heatrunning, $Fanrunning);
-          $statement->close();
+          $statement->close();*/
           #Build strings to display what is currently running. 
           /*while($row=mysql_fetch_array($result)){
             $ACrunning=$row{'AC'};
@@ -124,7 +124,7 @@ Released   : 20081230
           /*}*/
 
           //$query="SELECT * from Conditions";
-          $statment = $selected->prepare("SELECT `AC`,`Heat`,`Fan`,`Target` from `Conditions`");
+         /* $statment = $selected->prepare("SELECT `AC`,`Heat`,`Fan`,`Target` from `Conditions`");
           //$result=mysql_query($query);
           $statement->execute();
           $AC=NULL;
@@ -132,14 +132,14 @@ Released   : 20081230
           $Fan=NULL;
           $Target=NULL;
           $statement->bind_result($AC, $Heat, $Fan, $Target);
-          $statement->close();
+          $statement->close();*/
           /*while($row=mysql_fetch_array($result)){
             echo "Currently: ".$row{'Temp'}."F<BR>";
             $AC=$row{'AC'};
             $Heat=$row{'Heat'};
             $Fan=$row{'Fan'};*/
             
-            #The below values will be used to trigger relays in server code and should reflect an accurate status
+            /*#The below values will be used to trigger relays in server code and should reflect an accurate status
             if($AC==1)
               echo "AC is running<BR>";
             else if($Heat==1)
@@ -149,13 +149,13 @@ Released   : 20081230
             if ($Fan==1)
               echo "Fan is running<BR>";
             else if ($Fan==0)
-              echo "Fan is not running<BR>";                
+              echo "Fan is not running<BR>";  */              
             /*$target=$row{'Target'};
           }*/
 
-        } else {
+        /*} else {
           echo 'You are not authorized to access this page, please login. <br/>';
-        }
+        }*/
       ?>
   </div>
         <div align="center" class="contentTitle"><h1>Manual Settings</h1></div>
@@ -183,5 +183,5 @@ Released   : 20081230
         <div id="footer"></div>
 </body>
 <?php /*mysql_close($dbhandle);*/
-$selected->close();?>
+//$selected->close();?>
 </html>
