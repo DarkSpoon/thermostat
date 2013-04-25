@@ -45,7 +45,7 @@ Released   : 20081230
         <div class="contentText">
           <hr>
       <?php
-        if(login_check($mysqli) == true) {echo "logged in";/*
+        if(login_check($mysqli) == true) {
           if ($_GET['w']==1){
               #Set manual overrides for Heat, AC, and Fan
               $hvac=mysqli_real_escape_string($selected, $_POST["HVAC"]);
@@ -69,7 +69,7 @@ Released   : 20081230
               //$statement-> bind_result($result);//can echo $result
               //$statement->fetch();
               $statement->close();
-          }*/
+          }
           /*if ($_GET['w']==2){#reset temp to scheduled temp
               //$query = "UPDATE User_Req SET Temp=0";
               //$result=mysql_query($query);
