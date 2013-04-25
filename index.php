@@ -106,6 +106,7 @@ Released   : 20081230
           $Heatrunning=NULL;
           $Fanrunning=NULL;
           $statement->bind_result($ACrunning, $Heatrunning, $Fanrunning);
+          $statement->fetch();
           $statement->close();
           if($ACrunning==1)
             echo "Cool, ";
