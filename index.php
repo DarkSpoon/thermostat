@@ -106,13 +106,14 @@ Released   : 20081230
           }else{
              echo "Connected.";
           }
-          //if ($statment = $selected->prepare("SELECT AC, Heat, Fan from User_Req")){
-          $stmt = $mysqli->prepare("SELECT id, username, password, salt FROM members WHERE email = demo LIMIT 1");
-          $stmt->execute();
-          $stmt->bind_result($id, $un, $pw, $salt);
-          $stmt->fetch();
-          echo $id; echo $un; echo $pw; echo $salt;
-          $stmt->close();
+          if ($stmt = $mysqli->prepare("SELECT id, username, password, salt FROM members WHERE email = 'demo' LIMIT 1")) { 
+            $stmt->execute();
+            $stmt->bind_result($id, $un, $pw, $salt);
+            $stmt->fetch();
+            echo $id; echo $un; echo $pw; echo $salt;
+            $stmt->close();
+          }
+          echo "2nd statement start";
           $statment = $selected->prepare("SELECT AC, Heat, Fan from User_Req");
           $statement->execute();
           //$result=mysql_query($query);
