@@ -110,7 +110,7 @@ Released   : 20081230
             $Fanrunning=NULL;
             $statement->bind_result($ACrunning, $Heatrunning, $Fanrunning);
             $statement->fetch();
-            echo $ACrunning $Heatrunning $Fanrunning;
+            echo $ACrunning ." " . $Heatrunning ." " . $Fanrunning;
             if($ACrunning==1)
               echo "Cool, ";
             else if($Heatrunning==1)
