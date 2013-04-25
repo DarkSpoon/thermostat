@@ -142,14 +142,10 @@ Released   : 20081230
           //}
 
           //$query="SELECT * from Conditions";
-         if($statment = $selected->prepare("SELECT Target, AC, Heat, Fan from Conditions")){
+         if($statement = $selected->prepare("SELECT Target, AC, Heat, Fan from Conditions")){
           //$result=mysql_query($query);
-          if($statement->execute()){
-            echo "executed";
-          } else echo "not executed";
-          if($statement->bind_result($target, $AC, $Heat, $Fan)){
-            echo "result bound";
-          } else echo "not bound";
+          $statement->execute();
+          $statement->bind_result($target, $AC, $Heat, $Fan);
           $statement->fetch();
           //while($row=mysql_fetch_array($result)){
             //echo "Currently: ".$row{'Temp'}."F<BR>";
@@ -169,11 +165,6 @@ Released   : 20081230
             else if ($Fan==0)
               echo "Fan is not running<BR>";              
             //$target=$row{'Target'};
-            echo "test vars:";
-            echo $AC;
-            echo $Heat;
-            echo $Fan;
-            echo $target;
             $statement->close();
           } else echo "No query ran";
 
