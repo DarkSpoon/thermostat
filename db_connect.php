@@ -6,14 +6,7 @@ define("DATABASE", "secure_login"); // The database name.
 define("DATABASE2", "thermostat")
 
 $mysqli = new mysqli(HOST, USER, PASSWORD, DATABASE);
-if(mysqli_connect_errno()) {
-      echo "Connection Failed: " . mysqli_connect_errno();
-      exit();
-  	}
 
 $selected = new mysqli(HOST, USER, PASSWORD, DATABASE2);
-if(mysqli_connect_errno()) {
-      echo "Connection Failed: " . mysqli_connect_errno();
-      exit();
-  	}
+
 ?>
