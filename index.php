@@ -66,7 +66,7 @@ Released   : 20081230
               }
               //$query = "UPDATE User_Req SET Heater=$heater, AC=$ac, Fan=$fan";
               //$result=mysql_query($query);
-              if($statment = $selected->prepare("UPDATE User_Req SET Heater=?, AC=?, Fan=?")){
+              if($statement = $selected->prepare("UPDATE User_Req SET Heater=?, AC=?, Fan=?")){
                 $statement->bind_param("iii", $heater, $AC, $fan);
                 $statement->execute();
                 //$statement-> bind_result($result);//can echo $result
@@ -80,7 +80,7 @@ Released   : 20081230
           if ($_GET['w']==2){#reset temp to scheduled temp
               //$query = "UPDATE User_Req SET Temp=0";
               //$result=mysql_query($query);
-              if($statment = $selected->prepare("UPDATE User_Req SET Temp=?")){
+              if($statement = $selected->prepare("UPDATE User_Req SET Temp=?")){
                 $statement->bind_param("i", 0);
                 $statement->execute();
                 $statement->close();
@@ -100,7 +100,7 @@ Released   : 20081230
               //$query = "UPDATE User_Req SET Temp=$target";
               //$result=mysql_query($query);
 
-              if($statment = $selected->prepare("UPDATE `User_Req` SET `Temp` = ?")){
+              if($statement = $selected->prepare("UPDATE `User_Req` SET `Temp` = ?")){
                 $statement->bind_param('f', $target);
                 $statement->execute();
                 $statement->close();
@@ -110,7 +110,7 @@ Released   : 20081230
           
           //$query="SELECT * from User_Req";
           if ($statement = $selected->prepare("SELECT AC, Heater, Fan from User_Req")) { 
-          //$statment = $selected->prepare("SELECT AC, Heat, Fan from User_Req");
+          //$statement = $selected->prepare("SELECT AC, Heat, Fan from User_Req");
             $statement->execute();
             //$result=mysql_query($query);
             $statement->bind_result($ACrunning, $Heatrunning, $Fanrunning);
