@@ -8,6 +8,11 @@ define("DATABASE2", "thermostat")
 $mysqli = new mysqli(HOST, USER, PASSWORD, DATABASE);
 $selected = new mysqli(HOST, USER, PASSWORD, DATABASE2);
 
+if(mysqli_connect_errno()) {
+      echo "Connection Failed: " . mysqli_connect_errno();
+      exit();
+  	}
+
 /*define("HOST2", "localhost"); // The host you want to connect to.
 define("USER2", "pi"); // The database username.
 define("PASSWORD2", "raspberry"); // The database password. 
