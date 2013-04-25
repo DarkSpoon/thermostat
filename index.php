@@ -102,9 +102,9 @@ Released   : 20081230
           $statment = $selected->prepare("SELECT `AC`,`Heat`,`Fan` from `User_Req`");
           $statement->execute();
           //$result=mysql_query($query);
-          $ACrunning=NULL;
-          $Heatrunning=NULL;
-          $Fanrunning=NULL;
+          //$ACrunning=NULL;
+          //$Heatrunning=NULL;
+          //$Fanrunning=NULL;
           $statement->bind_result($ACrunning, $Heatrunning, $Fanrunning);
           $statement->fetch();
           //$statement->close();
