@@ -139,14 +139,14 @@ Released   : 20081230
               //echo "Auto <BR>";
             //else if($Fanrunning==1)
               //echo "On <BR>";
-          }
+          //}
 
           //$query="SELECT * from Conditions";
-         if($statment = $selected->prepare("SELECT `AC`,`Heat`,`Fan`,`Target` from `Conditions`")){
+         if($statment = $selected->prepare("SELECT AC, Heat, Fan, Target from Conditions")){
           //$result=mysql_query($query);
           $statement->execute();
           $statement->bind_result($AC, $Heat, $Fan, $Target);
-          $statement->close();
+          $statement->fetch();
           //while($row=mysql_fetch_array($result)){
             //echo "Currently: ".$row{'Temp'}."F<BR>";
             //$AC=$row{'AC'};
@@ -165,6 +165,7 @@ Released   : 20081230
             else if ($Fan==0)
               echo "Fan is not running<BR>";  */              
             //$target=$row{'Target'};
+            $statement->close();
           } else echo "No query ran";
 
         } else {
