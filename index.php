@@ -107,7 +107,7 @@ Released   : 20081230
           else{
              echo "Connected.";
           }*/
-          if ($statment = $selected->prepare("SELECT AC, Heat, Fan from User_Req")){
+          /*if ($statment = $selected->prepare("SELECT AC, Heat, Fan from User_Req")){
             $statement->execute();
             //$result=mysql_query($query);
             $ACrunning=NULL;
@@ -123,7 +123,7 @@ Released   : 20081230
               echo "Auto <BR>";
             else if($Fanrunning==1)
               echo "On <BR>";
-            $statement->close();
+            $statement->close();*/
           //} else echo "No query ran: $statement";
           #Build strings to display what is currently running. 
           /*while($row=mysql_fetch_array($result)){
@@ -171,9 +171,9 @@ Released   : 20081230
             /*$target=$row{'Target'};
           }*/
 
-        } else {
+        /*} else {
           echo 'You are not authorized to access this page, please login. <br/>';
-        }
+        }*/
       ?>
   </div>
         <div align="center" class="contentTitle"><h1>Manual Settings</h1></div>
