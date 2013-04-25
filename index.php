@@ -48,7 +48,7 @@ Released   : 20081230
         if(login_check($mysqli) == true) {
           
 
-          /*
+          
           if ($_GET['w']==1){
               #Set manual overrides for Heat, AC, and Fan
               $hvac=mysqli_real_escape_string($selected, $_POST["HVAC"]);
@@ -107,7 +107,7 @@ Released   : 20081230
               }
           }
 
-          */
+          
           //$query="SELECT * from User_Req";
           if ($statement = $selected->prepare("SELECT AC, Heater, Fan from User_Req")) { 
           //$statment = $selected->prepare("SELECT AC, Heat, Fan from User_Req");
