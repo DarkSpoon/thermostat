@@ -46,6 +46,9 @@ Released   : 20081230
           <hr>
       <?php
         if(login_check($mysqli) == true) {
+          
+
+
           if ($_GET['w']==1){
               #Set manual overrides for Heat, AC, and Fan
               $hvac=mysqli_real_escape_string($selected, $_POST["HVAC"]);
@@ -71,15 +74,20 @@ Released   : 20081230
                 $statement->close();
               }
           }
+
+
+
           if ($_GET['w']==2){#reset temp to scheduled temp
               //$query = "UPDATE User_Req SET Temp=0";
               //$result=mysql_query($query);
-              if($statment = $selected->prepare("UPDATE User_Req SET Temp=?")_{
+              if($statment = $selected->prepare("UPDATE User_Req SET Temp=?"){
                 $statement->bind_param("i", 0);
                 $statement->execute();
                 $statement->close();
               }
           }
+
+
 
           if ($_GET['w']==3){#set manual override for temp
               if(empty($_POST["Target"])){              
