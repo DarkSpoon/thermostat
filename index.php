@@ -54,7 +54,9 @@ Released   : 20081230
               $hvac=mysqli_real_escape_string($selected, $_POST["HVAC"]);
               $fan=mysqli_real_escape_string($selected, $_POST["fan"]);
               //$hvac=mysql_real_escape_string($_POST["HVAC"]);
-              //$fan=mysql_real_escape_string($_POST["fan"]);            
+              //$fan=mysql_real_escape_string($_POST["fan"]);   
+              echo $hvac;
+              echo $fan;         
               
               if ($hvac=="heat"){
                 $heater=1;
@@ -101,9 +103,7 @@ Released   : 20081230
               //$result=mysql_query($query);
 
               if($statement = $selected->prepare("UPDATE User_Req SET Temp = ?")){
-                if($statement->bind_param('s', $target)){
-                  echo "3, bound";
-                }else echo "3, not bound";
+                $statement->bind_param('s', $target);
                 $statement->execute();
                 $statement->close();
               }else echo "3, not prepared";
