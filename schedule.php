@@ -1,5 +1,4 @@
- <?php 
-  //include("includes.php"); 
+ <?php  
   include("db_connect.php");
   include("functions.php");
   sec_session_start();
@@ -72,11 +71,9 @@ Released   : 20081230
 						$pid=mysqli_real_escape_string($selected, $_GET['d']);
 						//$query="DELETE FROM Schedule WHERE PID=$pid";
 						//$result=mysql_query($query);
-						$statment = $selected->prepare("DELETE FROM Schedule WHERE `PID`=?");
+						$statement = $selected->prepare("DELETE FROM Schedule WHERE PID=?");
 			            $statement->bind_param("i", $pid);
 			            $statement->execute();
-			            //$statement-> bind_result($result);//can echo $result
-			            //$statement->fetch();
 			            $statement->close();
 					}
 
@@ -95,10 +92,10 @@ Released   : 20081230
 	        			$target=mysqli_real_escape_string($selected,$_POST["SchedTarget$pid"]);
 	        			$dow==mysqli_real_escape_string($selected,$_POST["day$pid"]);
 	        			$start=mysqli_real_escape_string($selected,$_POST["Start$pid"]);
-	        			$stop=mysqli_real_escape_string($selected,$_POST["Stop$pid"]);=mysqli_real_escape_string($selected,$_POST["SchedTarget$pid"]);
+	        			$stop=mysqli_real_escape_string($selected,$_POST["Stop$pid"]);
 	        			
-	        			$statment = $selected->prepare("UPDATE `Schedule` SET `DOW`=?,`Start`=?,`Stop`=?,`Target`=? WHERE `PID`=?");
-	        			$statement->bind_param("sssfi", $dow, $start, $stop, $target, $pid);
+	        			$statement = $selected->prepare("UPDATE Schedule SET DOW=?, Start=?, Stop=?, Target=? WHERE PID=?");
+	        			$statement->bind_param("ssssi", $dow, $start, $stop, $target, $pid);
 	        			$statement->execute();
 	        			$statement->close();
 
@@ -117,8 +114,8 @@ Released   : 20081230
 						#needs to check for overlaping schedules
 						/*$query = "INSERT INTO `Schedule` (`DOW`, `Start`, `Stop`, `Target`) VALUES ('$dow', '$start', '$stop', '$target');";
 						$result=mysql_query($query);*/
-						$statment = $selected->prepare("INSERT INTO `Schedule` (`DOW`, `Start`, `Stop`, `Target`) VALUES (?, ?, ?, ?)");
-	        			$statement->bind_param("sssf", $dow, $start, $stop, $target);
+						$statement = $selected->prepare("INSERT INTO Schedule (DOW, Start, Stop, Target) VALUES (?, ?, ?, ?)");
+	        			$statement->bind_param("ssss", $dow, $start, $stop, $target);
 	        			$statement->execute();
 	        			$statement->close();
 						
@@ -127,16 +124,11 @@ Released   : 20081230
 					#show schedule via dynamic html 
 					#$query="SELECT * from Schedule";
 					//$query="SELECT * from Schedule ORDER BY DOW, Start";
-					$statment = $selected->prepare("SELECT `PID`, `DOW`, `Start`, `Stop`, `Target` from Schedule ORDER BY DOW, Start");
+					$statement = $selected->prepare("SELECT PID, DOW, Start, Stop, Target from Schedule ORDER BY DOW, Start");
 					$statement->execute();
 					
 					//$result=mysql_query($query);
-					$pid=NULL;
-					$dow=NULL;
-					$start=NULL;
-					$stop=NULL;
-					$target=NULL;
-					$statement->bind_result($pid, $dow, $start, $stop, $target)
+					$statement->bind_result($pid, $dow, $start, $stop, $target);
 					while ($statement->fetch()) {
 					/*while($row=mysql_fetch_array($result)){
 						$pid=$row{'PID'};
