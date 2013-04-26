@@ -67,10 +67,7 @@ Released   : 20081230
 				if(login_check($mysqli) == true) {
 					#delete entry of passed PID
 					if ($_GET['d']){
-						//$pid=mysql_real_escape_string($_GET['d']);
 						$pid=mysqli_real_escape_string($selected, $_GET['d']);
-						//$query="DELETE FROM Schedule WHERE PID=$pid";
-						//$result=mysql_query($query);
 						$statement = $selected->prepare("DELETE FROM Schedule WHERE PID=?");
 			            $statement->bind_param("i", $pid);
 			            $statement->execute();
@@ -80,14 +77,6 @@ Released   : 20081230
 
 					#update entry of passed PID
 					if ($_GET['u']){
-						/*$pid=mysql_real_escape_string($_GET['u']);
-						$target = mysql_real_escape_string($_POST["SchedTarget$pid"]);
-						$dow = mysql_real_escape_string($_POST["Day$pid"]);
-						$start = mysql_real_escape_string($_POST["Start$pid"]);
-						$stop = mysql_real_escape_string($_POST["Stop$pid"]);
-
-						$query = "UPDATE `Schedule` SET `DOW`='$dow',`Start`='$start',`Stop`='$stop',`Target`='$target' WHERE `PID`='$pid'";
-	        			$result=mysql_query($query);*/
 	        			$pid=mysqli_real_escape_string($selected,$_GET['u']);
 	        			$target=mysqli_real_escape_string($selected,$_POST["SchedTarget$pid"]);
 	        			$dow==mysqli_real_escape_string($selected,$_POST["day$pid"]);
@@ -103,17 +92,11 @@ Released   : 20081230
 
 					#write the new entry
 					if ($_GET['w']){
-						/*$target = mysql_real_escape_string($_POST["SchedTarget"]);
-						$dow = mysql_real_escape_string($_POST["Day"]);
-						$start = mysql_real_escape_string($_POST["Start"]);
-						$stop = mysql_real_escape_string($_POST["Stop"]);*/
 						$target=mysqli_real_escape_string($selected,$_POST["SchedTarget"]);
 						$dow=mysqli_real_escape_string($selected,$_POST["dow"]);
 						$start=mysqli_real_escape_string($selected,$_POST["Start"]);
 						$stop=mysqli_real_escape_string($selected,$_POST["Stop"]);
 						#needs to check for overlaping schedules
-						/*$query = "INSERT INTO `Schedule` (`DOW`, `Start`, `Stop`, `Target`) VALUES ('$dow', '$start', '$stop', '$target');";
-						$result=mysql_query($query);*/
 						$statement = $selected->prepare("INSERT INTO Schedule (DOW, Start, Stop, Target) VALUES (?, ?, ?, ?)");
 	        			$statement->bind_param("ssss", $dow, $start, $stop, $target);
 	        			$statement->execute();
@@ -122,20 +105,10 @@ Released   : 20081230
 					}
 
 					#show schedule via dynamic html 
-					#$query="SELECT * from Schedule";
-					//$query="SELECT * from Schedule ORDER BY DOW, Start";
 					$statement = $selected->prepare("SELECT PID, DOW, Start, Stop, Target from Schedule ORDER BY DOW, Start");
 					$statement->execute();
-					
-					//$result=mysql_query($query);
 					$statement->bind_result($pid, $dow, $start, $stop, $target);
 					while ($statement->fetch()) {
-					/*while($row=mysql_fetch_array($result)){
-						$pid=$row{'PID'};
-						$dow=$row{'DOW'};
-						$start=$row{'Start'};
-						$stop=$row{'Stop'};
-						$target=$row{'Target'};*/
 
 						#echo html
 						echo "<form method=\"post\" action=\"schedule.php?u=$pid\"> ";
@@ -217,7 +190,6 @@ Released   : 20081230
 						//echo "<BR>";
 					}
 					$statement->close();
-					//mysql_close($dbhandle);
 					$selected->close();
 				} else {
    					echo 'You are not authorized to access this page, please login. <br/>';
