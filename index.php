@@ -55,8 +55,8 @@ Released   : 20081230
               $fan=mysqli_real_escape_string($selected, $_POST["fan"]);
               //$hvac=mysql_real_escape_string($_POST["HVAC"]);
               //$fan=mysql_real_escape_string($_POST["fan"]);   
-              echo $hvac;
-              echo $fan;         
+              //echo $hvac;
+              //echo $fan;         
               
               if ($hvac=="heat"){
                 $heater=1;
@@ -69,7 +69,7 @@ Released   : 20081230
               //$query = "UPDATE User_Req SET Heater=$heater, AC=$ac, Fan=$fan";
               //$result=mysql_query($query);
               if($statement = $selected->prepare("UPDATE User_Req SET Heater=?, AC=?, Fan=?")){
-                $statement->bind_param("iii", $heater, $AC, $fan);
+                $statement->bind_param("iii", $heater, $ac, $fan);
                 $statement->execute();
                 //$statement-> bind_result($result);//can echo $result
                 //$statement->fetch();
