@@ -101,6 +101,7 @@ Released   : 20081230
               //$result=mysql_query($query);
 
               if($statement = $selected->prepare("UPDATE User_Req SET Temp = ?")){
+                echo $target;
                 if($statement->bind_param('f', $target)){
                   echo "3, bound";
                 }else echo "3, not bound";
