@@ -116,6 +116,7 @@ Released   : 20081230
           $statement->bind_result($target, $AC, $Heat, $Fan);
           $statement->fetch();
             
+            echo "$target F<br>"
             #The below values will be used to trigger relays in server code and should reflect an accurate status
             if($AC==1)
               echo "AC is running<BR>";
