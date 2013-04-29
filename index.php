@@ -111,12 +111,12 @@ Released   : 20081230
             $statement->close();
           } else echo "No query ran";
 
-         if($statement = $selected->prepare("SELECT Target, AC, Heat, Fan from Conditions")){
+         if($statement = $selected->prepare("SELECT Temp, Target, AC, Heat, Fan from Conditions")){
           $statement->execute();
-          $statement->bind_result($target, $AC, $Heat, $Fan);
+          $statement->bind_result($temp, $target, $AC, $Heat, $Fan);
           $statement->fetch();
             
-            echo "$target F<br>";
+            echo "$temp F<br>";
             #The below values will be used to trigger relays in server code and should reflect an accurate status
             if($AC==1)
               echo "AC is running<BR>";
