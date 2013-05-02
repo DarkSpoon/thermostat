@@ -49,6 +49,7 @@ Released   : 20081230
 			<?php 
 				if(login_check($mysqli) == true) {
 					echo "result: $result <br>"; 
+					echo "token: $token <br>";
 					#delete entry of passed PID
 					if ($_GET['d']){
 						try{ 
@@ -110,6 +111,7 @@ Released   : 20081230
 		            	}						
 					}
 					$token = NoCSRF::generate( 'csrf_token' );
+					echo "new token: $token";
 				} else {
    					echo 'You are not authorized to access this page, please login. <br/>';
 				}
