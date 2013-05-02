@@ -54,6 +54,7 @@ Released   : 20081230
 					#delete entry of passed PID
 					$pid=$_GET['u'];
 					if ($_POST['savedelete$pid']=="Delete"){
+						echo "deleting <br>";
 						try{ 
 	          				NoCSRF::check( 'csrf_token', $_POST, true, 60*10, false );
 	          				$result = 'CSRF check passed. Form parsed.';
@@ -75,7 +76,7 @@ Released   : 20081230
 					#update entry of passed PID
 					elseif ($_POST["savedelete$pid"]=="Save"){
 						echo "saving <br>";
-						echo "$pid <BR>";
+						//echo "$pid <BR>";
 						try{ 
 	          				NoCSRF::check( 'csrf_token', $_POST, true, 60*10, false );
 	          				$result = 'CSRF check passed. Form parsed.';
