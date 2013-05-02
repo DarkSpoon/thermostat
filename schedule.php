@@ -137,7 +137,8 @@ Released   : 20081230
 
 						#echo html
 						echo "<form method=\"post\" action=\"schedule.php?u=$pid\"> ";
-						echo "<input type=\"hidden\" name=\"csrf_token\" value=\"<?php echo $token; ?>\">";
+						echo "<input type=\"hidden\" name=\"csrf_token\" value=\"$token\">";
+						//echo "<input type=\"hidden\" name=\"csrf_token\" value=\"$token\"> ";
 						echo "<select name=\"Day$pid\"> ";
 						#decide which is default selection
 						switch ($dow) {
