@@ -53,7 +53,7 @@ Released   : 20081230
 					echo "token: $testtoke <br>";
 					#delete entry of passed PID
 					$pid=$_GET['u'];
-					if ($_POST['savedelete$pid']=="Delete"){
+					if ($_POST["savedelete$pid"]=="Delete"){
 						echo "deleting <br>";
 						try{ 
 	          				NoCSRF::check( 'csrf_token', $_POST, true, 60*10, false );
