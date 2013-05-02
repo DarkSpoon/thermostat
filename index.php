@@ -156,8 +156,6 @@ Released   : 20081230
             $statement->close();
           } else echo "No query ran";
 
-          echo $result;
-
         } else {
           echo 'You are not authorized to access this page, please login. <br/>';
         }

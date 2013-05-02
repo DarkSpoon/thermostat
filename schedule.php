@@ -48,17 +48,14 @@ Released   : 20081230
 			<hr>
 			<?php 
 				if(login_check($mysqli) == true) {
-					echo "result: $result <br>"; 
-					$testtoke=$_POST['csrf_token'];
-					echo "token: $testtoke <br>";
 					#delete entry of passed PID
-					$pid=$_GET['u'];
+					$pid=mysqli_real_escape_string($selected, $_GET['u']);
 					if ($_POST["savedelete$pid"]=="Delete"){
 						echo "deleting <br>";
 						try{ 
 	          				NoCSRF::check( 'csrf_token', $_POST, true, 60*10, false );
 	          				$result = 'CSRF check passed. Form parsed.';
-							$pid=mysqli_real_escape_string($selected, $_GET['u']);
+							//$pid=mysqli_real_escape_string($selected, $_GET['u']);
 							$statement = $selected->prepare("DELETE FROM Schedule WHERE PID=?");
 				            $statement->bind_param("i", $pid);
 				            $statement->execute();
@@ -70,17 +67,12 @@ Released   : 20081230
 		            	}
 					}
 
-					//echo $pid;
-					//echo "savedelete$pid";
-					//echo $_GET["savedelete$pid"];
 					#update entry of passed PID
 					elseif ($_POST["savedelete$pid"]=="Save"){
-						echo "saving <br>";
-						//echo "$pid <BR>";
 						try{ 
 	          				NoCSRF::check( 'csrf_token', $_POST, true, 60*10, false );
 	          				$result = 'CSRF check passed. Form parsed.';
-		        			$pid=mysqli_real_escape_string($selected,$_GET['u']);
+		        			//$pid=mysqli_real_escape_string($selected,$_GET['u']);
 		        			$target=mysqli_real_escape_string($selected,$_POST["SchedTarget$pid"]);
 		        			$dow==mysqli_real_escape_string($selected,$_POST["day$pid"]);
 		        			$start=mysqli_real_escape_string($selected,$_POST["Start$pid"]);
@@ -118,7 +110,6 @@ Released   : 20081230
 		            	}						
 					}
 					$token = NoCSRF::generate( 'csrf_token' );
-					echo "new token: $token";
 				} else {
    					echo 'You are not authorized to access this page, please login. <br/>';
 				}
