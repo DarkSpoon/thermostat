@@ -49,7 +49,7 @@ Released   : 20081230
 			<?php 
 				if(login_check($mysqli) == true) {
 					echo "result: $result <br>"; 
-					echo "token: $token <br>";
+					echo "token: $_POST['csrf_token'] <br>";
 					#delete entry of passed PID
 					if ($_GET['d']){
 						try{ 
