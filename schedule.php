@@ -46,7 +46,9 @@ Released   : 20081230
         
         <div class="contentText">
 			<hr>
+			<?php echo $result; $token = NoCSRF::generate( 'csrf_token' );?>
 			<form method="post" action="schedule.php?w=1">
+			<input type="hidden" name="csrf_token" value="<?php echo $token; ?>">
 			<select name="Day">
 			<option value=1>Monday</option>
 			<option value=2>Tuesday</option>
@@ -127,7 +129,6 @@ Released   : 20081230
 		            	}						
 					}
 
-					$token = NoCSRF::generate( 'csrf_token' );
 					#show schedule via dynamic html 
 					$statement = $selected->prepare("SELECT PID, DOW, Start, Stop, Target from Schedule ORDER BY DOW, Start");
 					$statement->execute();
