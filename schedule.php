@@ -70,7 +70,7 @@ Released   : 20081230
 					}
 
 					echo $pid;
-					echo "savedelete$pid";
+					//echo "savedelete$pid";
 					//echo $_GET["savedelete$pid"];
 					#update entry of passed PID
 					elseif ($_GET["savedelete$pid"]=="Save"){
