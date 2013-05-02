@@ -72,9 +72,11 @@ Released   : 20081230
 					#update entry of passed PID
 					elseif ($_GET['savedelete']=="Save"){
 						try{ 
+							echo "saving <br>";
 	          				NoCSRF::check( 'csrf_token', $_POST, true, 60*10, false );
 	          				$result = 'CSRF check passed. Form parsed.';
 		        			$pid=mysqli_real_escape_string($selected,$_GET['u']);
+		        			echo "$pid <BR>";
 		        			$target=mysqli_real_escape_string($selected,$_POST["SchedTarget$pid"]);
 		        			$dow==mysqli_real_escape_string($selected,$_POST["day$pid"]);
 		        			$start=mysqli_real_escape_string($selected,$_POST["Start$pid"]);
