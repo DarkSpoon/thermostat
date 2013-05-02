@@ -147,6 +147,7 @@ Released   : 20081230
         } else {
           echo 'You are not authorized to access this page, please login. <br/>';
         }
+        $token = NoCSRF::generate( 'csrf_token' );
       ?>
   </div>
         <div align="center" class="contentTitle"><h1>Manual Settings</h1></div>
