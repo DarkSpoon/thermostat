@@ -46,7 +46,7 @@ Released   : 20081230
         
         <div class="contentText">
 			<hr>
-			<?php echo $result; $token = NoCSRF::generate( 'csrf_token' );?>
+			<?php echo "result: $result"; $token = NoCSRF::generate( 'csrf_token' );?>
 			<form method="post" action="schedule.php?w=1">
 			<input type="hidden" name="csrf_token" value="<?php echo $token; ?>">
 			<select name="Day">
