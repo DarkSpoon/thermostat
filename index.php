@@ -1,6 +1,10 @@
 <?php 
+  session_start();
+
   include("db_connect.php");
   include("functions.php");
+  include("nocsrf.php");
+
   sec_session_start();
   if(login_check($mysqli) != true) {header('Location: ./login.php?');}
 ?>
@@ -48,7 +52,9 @@ Released   : 20081230
           
 
           #Set manual overrides for Heat, AC, and Fan
-          if ($_GET['w']==1){              
+          if ($_GET['w']==1){
+            try{ 
+              NoCSRF::check( 'csrf_token', $_POST, true, 60*10, false );
               $hvac=mysqli_real_escape_string($selected, $_POST["HVAC"]);
               $fan=mysqli_real_escape_string($selected, $_POST["fan"]);       
               
@@ -66,6 +72,12 @@ Released   : 20081230
                 $statement->execute();
                 $statement->close();
               }else echo "1, not prepared";
+              $result = 'CSRF check passed. Form parsed.';
+            }
+            catch ( Exception $e ){
+              // CSRF attack detected
+              $result = $e->getMessage() . ' Form ignored.';
+            }
           }
 
 
@@ -149,12 +161,17 @@ Released   : 20081230
           <hr>
           <input type="radio" name="fan" value="1"<?php if($Fanrunning==1) echo "checked";?> > On<br>
           <input type="radio" name="fan" value="0" <?php if($Fanrunning==0) echo "checked";?> > Auto<br>
-          <input type="submit" value="Submit"></form>
+          <input type="submit" value="Submit">
+          <input type="hidden" name="csrf_token" value="<?php echo $token; ?>"></form>
           <h2>Temperature</h2>
           <hr>
           <form method="post" action="index.php?w=3">
           <input type="text" value=<?php echo $target." "; ?>name="Target">
-          <input type="submit" value="Submit"></form><form method="post" action="index.php?w=2"><input type="submit" value="Reset"></form>
+          <input type="submit" value="Submit">
+          <input type="hidden" name="csrf_token" value="<?php echo $token; ?>"></form>
+
+          <form method="post" action="index.php?w=2"><input type="submit" value="Reset">
+          <input type="hidden" name="csrf_token" value="<?php echo $token; ?>"></form>
           
   </div>        
 </div>
