@@ -72,12 +72,12 @@ Released   : 20081230
 					if ($_GET['d']){
 						try{ 
               				NoCSRF::check( 'csrf_token', $_POST, true, 60*10, false );
+              				$result = 'CSRF check passed. Form parsed.';
 							$pid=mysqli_real_escape_string($selected, $_GET['d']);
 							$statement = $selected->prepare("DELETE FROM Schedule WHERE PID=?");
 				            $statement->bind_param("i", $pid);
 				            $statement->execute();
 				            $statement->close();
-				            $result = 'CSRF check passed. Form parsed.';
 				        }
 		            	catch ( Exception $e ){
 		              		// CSRF attack detected
@@ -90,6 +90,7 @@ Released   : 20081230
 					if ($_GET['u']){
 						try{ 
               				NoCSRF::check( 'csrf_token', $_POST, true, 60*10, false );
+              				$result = 'CSRF check passed. Form parsed.';
 		        			$pid=mysqli_real_escape_string($selected,$_GET['u']);
 		        			$target=mysqli_real_escape_string($selected,$_POST["SchedTarget$pid"]);
 		        			$dow==mysqli_real_escape_string($selected,$_POST["day$pid"]);
@@ -100,7 +101,6 @@ Released   : 20081230
 		        			$statement->bind_param("ssssi", $dow, $start, $stop, $target, $pid);
 		        			$statement->execute();
 		        			$statement->close();
-		        			$result = 'CSRF check passed. Form parsed.';
 		        		}
 		            	catch ( Exception $e ){
 		              		// CSRF attack detected
@@ -112,6 +112,7 @@ Released   : 20081230
 					if ($_GET['w']){
 						try{ 
               				NoCSRF::check( 'csrf_token', $_POST, true, 60*10, false );
+              				$result = 'CSRF check passed. Form parsed.';
 							$target=mysqli_real_escape_string($selected,$_POST["SchedTarget"]);
 							$dow=mysqli_real_escape_string($selected,$_POST["dow"]);
 							$start=mysqli_real_escape_string($selected,$_POST["Start"]);
@@ -121,7 +122,6 @@ Released   : 20081230
 		        			$statement->bind_param("ssss", $dow, $start, $stop, $target);
 		        			$statement->execute();
 		        			$statement->close();
-		        			$result = 'CSRF check passed. Form parsed.';
 		        		}
 		            	catch ( Exception $e ){
 		              		// CSRF attack detected
