@@ -68,9 +68,9 @@ Released   : 20081230
 		            	}
 					}
 
-
+					$pid=$_GET['u'];
 					#update entry of passed PID
-					elseif ($_GET['savedelete']=="Save"){
+					elseif ($_GET['savedelete$pid']=="Save"){
 						try{ 
 							echo "saving <br>";
 	          				NoCSRF::check( 'csrf_token', $_POST, true, 60*10, false );
@@ -222,8 +222,8 @@ Released   : 20081230
 						echo "<input type=\"text\" value=\"$start\" name=\"Start$pid\"> \n";
 						echo "<input type=\"text\" value=\"$stop\" name=\"Stop$pid\"> \n";
 						echo "<input type=\"text\" value=\"$target\" name=\"SchedTarget$pid\"> \n";
-						echo "<input type=\"submit\" name=\"savedelete\" value=\"Save\"> \n";
-						echo "<input type=\"submit\" name=\"savedelete\" value=\"Delete\"> \n";
+						echo "<input type=\"submit\" name=\"savedelete$pid\" value=\"Save\"> \n";
+						echo "<input type=\"submit\" name=\"savedelete$pid\" value=\"Delete\"> \n";
 						#echo "<button type=\"submit\" name=\"Save\" value=\"Save\" border=\"0\"> <img src=\"images/save.png\" alt=\"Save\"></button>";
 						#echo "<a href=\"schedule.php?d=$pid\"><img border=\"0\" src=\"images/delete.png\" align=\"absmiddle\" alt=\"Delete entry\" width=\"23\" height=\"20\"> </a>\n";
 						echo "</form> \n";
