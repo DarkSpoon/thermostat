@@ -36,7 +36,7 @@ p {text-align: left;}
 {
   margin: 0 auto 0 auto; 
   margin-top:25px;
-  display: block; 
+  display: inline-block; 
   height:auto;
   position: relative; 
   overflow: hidden; 

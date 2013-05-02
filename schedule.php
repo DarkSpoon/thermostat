@@ -52,11 +52,11 @@ Released   : 20081230
 					$testtoke=$_POST['csrf_token'];
 					echo "token: $testtoke <br>";
 					#delete entry of passed PID
-					if ($_GET['d']){
+					if ($_GET['savedelete']==delete){
 						try{ 
 	          				NoCSRF::check( 'csrf_token', $_POST, true, 60*10, false );
 	          				$result = 'CSRF check passed. Form parsed.';
-							$pid=mysqli_real_escape_string($selected, $_GET['d']);
+							$pid=mysqli_real_escape_string($selected, $_GET['u']);
 							$statement = $selected->prepare("DELETE FROM Schedule WHERE PID=?");
 				            $statement->bind_param("i", $pid);
 				            $statement->execute();
@@ -70,7 +70,7 @@ Released   : 20081230
 
 
 					#update entry of passed PID
-					if ($_GET['u']){
+					elseif ($_GET['savedelete']=="save"){
 						try{ 
 	          				NoCSRF::check( 'csrf_token', $_POST, true, 60*10, false );
 	          				$result = 'CSRF check passed. Form parsed.';
@@ -220,9 +220,10 @@ Released   : 20081230
 						echo "<input type=\"text\" value=\"$start\" name=\"Start$pid\"> \n";
 						echo "<input type=\"text\" value=\"$stop\" name=\"Stop$pid\"> \n";
 						echo "<input type=\"text\" value=\"$target\" name=\"SchedTarget$pid\"> \n";
-						echo "<input type=\"submit\" value=\"Save\"> \n";
+						echo "<input type=\"submit\" name=\"savedelete\" value=\"Save\"> \n";
+						echo "<input type=\"submit\" name=\"savedelete\" value=\"Delete\"> \n";
 						#echo "<button type=\"submit\" name=\"Save\" value=\"Save\" border=\"0\"> <img src=\"images/save.png\" alt=\"Save\"></button>";
-						echo "<a href=\"schedule.php?d=$pid\"><img border=\"0\" src=\"images/delete.png\" align=\"absmiddle\" alt=\"Delete entry\" width=\"23\" height=\"20\"> </a>\n";
+						#echo "<a href=\"schedule.php?d=$pid\"><img border=\"0\" src=\"images/delete.png\" align=\"absmiddle\" alt=\"Delete entry\" width=\"23\" height=\"20\"> </a>\n";
 						echo "</form> \n";
 						//echo "<BR>";
 					}
