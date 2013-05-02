@@ -46,7 +46,69 @@ Released   : 20081230
         
         <div class="contentText">
 			<hr>
-			<?php echo "result: $result"; $token = NoCSRF::generate( 'csrf_token' );?>
+			<?php echo "result: $result"; 
+				#delete entry of passed PID
+				if ($_GET['d']){
+					try{ 
+          				NoCSRF::check( 'csrf_token', $_POST, true, 60*10, false );
+          				$result = 'CSRF check passed. Form parsed.';
+						$pid=mysqli_real_escape_string($selected, $_GET['d']);
+						$statement = $selected->prepare("DELETE FROM Schedule WHERE PID=?");
+			            $statement->bind_param("i", $pid);
+			            $statement->execute();
+			            $statement->close();
+			        }
+	            	catch ( Exception $e ){
+	              		// CSRF attack detected
+	              		$result = $e->getMessage() . ' Form ignored.';
+	            	}
+				}
+
+
+				#update entry of passed PID
+				if ($_GET['u']){
+					try{ 
+          				NoCSRF::check( 'csrf_token', $_POST, true, 60*10, false );
+          				$result = 'CSRF check passed. Form parsed.';
+	        			$pid=mysqli_real_escape_string($selected,$_GET['u']);
+	        			$target=mysqli_real_escape_string($selected,$_POST["SchedTarget$pid"]);
+	        			$dow==mysqli_real_escape_string($selected,$_POST["day$pid"]);
+	        			$start=mysqli_real_escape_string($selected,$_POST["Start$pid"]);
+	        			$stop=mysqli_real_escape_string($selected,$_POST["Stop$pid"]);
+	        			
+	        			$statement = $selected->prepare("UPDATE Schedule SET DOW=?, Start=?, Stop=?, Target=? WHERE PID=?");
+	        			$statement->bind_param("ssssi", $dow, $start, $stop, $target, $pid);
+	        			$statement->execute();
+	        			$statement->close();
+	        		}
+	            	catch ( Exception $e ){
+	              		// CSRF attack detected
+	              		$result = $e->getMessage() . ' Form ignored.';
+	            	}
+        		}
+
+				#write the new entry
+				if ($_GET['w']){
+					try{ 
+          				NoCSRF::check( 'csrf_token', $_POST, true, 60*10, false );
+          				$result = 'CSRF check passed. Form parsed.';
+						$target=mysqli_real_escape_string($selected,$_POST["SchedTarget"]);
+						$dow=mysqli_real_escape_string($selected,$_POST["dow"]);
+						$start=mysqli_real_escape_string($selected,$_POST["Start"]);
+						$stop=mysqli_real_escape_string($selected,$_POST["Stop"]);
+						#needs to check for overlaping schedules
+						$statement = $selected->prepare("INSERT INTO Schedule (DOW, Start, Stop, Target) VALUES (?, ?, ?, ?)");
+	        			$statement->bind_param("ssss", $dow, $start, $stop, $target);
+	        			$statement->execute();
+	        			$statement->close();
+	        		}
+	            	catch ( Exception $e ){
+	              		// CSRF attack detected
+	              		$result = $e->getMessage() . ' Form ignored.';
+	            	}						
+				}
+				$token = NoCSRF::generate( 'csrf_token' );
+			?>
 			<form method="post" action="schedule.php?w=1">
 			<input type="hidden" name="csrf_token" value="<?php echo $token; ?>">
 			<select name="Day">
@@ -68,67 +130,7 @@ Released   : 20081230
 			<hr>
 			<?php
 				if(login_check($mysqli) == true) {
-					#delete entry of passed PID
-					if ($_GET['d']){
-						try{ 
-              				NoCSRF::check( 'csrf_token', $_POST, true, 60*10, false );
-              				$result = 'CSRF check passed. Form parsed.';
-							$pid=mysqli_real_escape_string($selected, $_GET['d']);
-							$statement = $selected->prepare("DELETE FROM Schedule WHERE PID=?");
-				            $statement->bind_param("i", $pid);
-				            $statement->execute();
-				            $statement->close();
-				        }
-		            	catch ( Exception $e ){
-		              		// CSRF attack detected
-		              		$result = $e->getMessage() . ' Form ignored.';
-		            	}
-					}
-
-
-					#update entry of passed PID
-					if ($_GET['u']){
-						try{ 
-              				NoCSRF::check( 'csrf_token', $_POST, true, 60*10, false );
-              				$result = 'CSRF check passed. Form parsed.';
-		        			$pid=mysqli_real_escape_string($selected,$_GET['u']);
-		        			$target=mysqli_real_escape_string($selected,$_POST["SchedTarget$pid"]);
-		        			$dow==mysqli_real_escape_string($selected,$_POST["day$pid"]);
-		        			$start=mysqli_real_escape_string($selected,$_POST["Start$pid"]);
-		        			$stop=mysqli_real_escape_string($selected,$_POST["Stop$pid"]);
-		        			
-		        			$statement = $selected->prepare("UPDATE Schedule SET DOW=?, Start=?, Stop=?, Target=? WHERE PID=?");
-		        			$statement->bind_param("ssssi", $dow, $start, $stop, $target, $pid);
-		        			$statement->execute();
-		        			$statement->close();
-		        		}
-		            	catch ( Exception $e ){
-		              		// CSRF attack detected
-		              		$result = $e->getMessage() . ' Form ignored.';
-		            	}
-	        		}
-
-					#write the new entry
-					if ($_GET['w']){
-						try{ 
-              				NoCSRF::check( 'csrf_token', $_POST, true, 60*10, false );
-              				$result = 'CSRF check passed. Form parsed.';
-							$target=mysqli_real_escape_string($selected,$_POST["SchedTarget"]);
-							$dow=mysqli_real_escape_string($selected,$_POST["dow"]);
-							$start=mysqli_real_escape_string($selected,$_POST["Start"]);
-							$stop=mysqli_real_escape_string($selected,$_POST["Stop"]);
-							#needs to check for overlaping schedules
-							$statement = $selected->prepare("INSERT INTO Schedule (DOW, Start, Stop, Target) VALUES (?, ?, ?, ?)");
-		        			$statement->bind_param("ssss", $dow, $start, $stop, $target);
-		        			$statement->execute();
-		        			$statement->close();
-		        		}
-		            	catch ( Exception $e ){
-		              		// CSRF attack detected
-		              		$result = $e->getMessage() . ' Form ignored.';
-		            	}						
-					}
-
+					
 					#show schedule via dynamic html 
 					$statement = $selected->prepare("SELECT PID, DOW, Start, Stop, Target from Schedule ORDER BY DOW, Start");
 					$statement->execute();
