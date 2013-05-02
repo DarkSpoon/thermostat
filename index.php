@@ -82,16 +82,25 @@ Released   : 20081230
 
           #reset temp to scheduled temp
           if ($_GET['w']==2){
+            try{ 
+              NoCSRF::check( 'csrf_token', $_POST, true, 60*10, false );
               if($statement = $selected->prepare("UPDATE User_Req SET Temp=0")){
                 //$statement->bind_param("i", 0);
                 $statement->execute();
                 $statement->close();
               }else echo "2, not prepared";
+            }
+            catch ( Exception $e ){
+              // CSRF attack detected
+              $result = $e->getMessage() . ' Form ignored.';
+            }
           }
 
 
           #set manual override for temp         
           if ($_GET['w']==3){
+            try{ 
+              NoCSRF::check( 'csrf_token', $_POST, true, 60*10, false );
               if(empty($_POST["Target"])){              
                 $target = 0;
               } 
@@ -103,6 +112,11 @@ Released   : 20081230
                 $statement->execute();
                 $statement->close();
               }else echo "3, not prepared";
+            }
+            catch ( Exception $e ){
+              // CSRF attack detected
+              $result = $e->getMessage() . ' Form ignored.';
+            }
           }
 
 
