@@ -52,7 +52,7 @@ Released   : 20081230
 					$testtoke=$_POST['csrf_token'];
 					echo "token: $testtoke <br>";
 					#delete entry of passed PID
-					if ($_GET['savedelete']==delete){
+					if ($_GET['savedelete']=="Delete"){
 						try{ 
 	          				NoCSRF::check( 'csrf_token', $_POST, true, 60*10, false );
 	          				$result = 'CSRF check passed. Form parsed.';
@@ -70,7 +70,7 @@ Released   : 20081230
 
 
 					#update entry of passed PID
-					elseif ($_GET['savedelete']=="save"){
+					elseif ($_GET['savedelete']=="Save"){
 						try{ 
 	          				NoCSRF::check( 'csrf_token', $_POST, true, 60*10, false );
 	          				$result = 'CSRF check passed. Form parsed.';
