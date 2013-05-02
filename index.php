@@ -4,7 +4,7 @@
   include("nocsrf.php");
 
   sec_session_start();
-  session_start();
+  //session_start();
   if(login_check($mysqli) != true) {header('Location: ./login.php?');}
 ?>
  <!--
