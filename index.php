@@ -51,7 +51,7 @@ Released   : 20081230
           
 
           #Set manual overrides for Heat, AC, and Fan
-          if ($_GET['w']==1){
+          if ($_GET["update"]=="Submit"){
             try{ 
               NoCSRF::check( 'csrf_token', $_POST, true, 60*10, false );
               $hvac=mysqli_real_escape_string($selected, $_POST["HVAC"]);
@@ -81,7 +81,7 @@ Released   : 20081230
 
 
           #reset temp to scheduled temp
-          if ($_GET['w']==2){
+          if ($_GET["update"]=="Reset"){
             try{ 
               NoCSRF::check( 'csrf_token', $_POST, true, 60*10, false );
               if($statement = $selected->prepare("UPDATE User_Req SET Temp=0")){
@@ -98,7 +98,7 @@ Released   : 20081230
 
 
           #set manual override for temp         
-          if ($_GET['w']==3){
+          if ($_GET["update"]=="Save"){
             try{ 
               NoCSRF::check( 'csrf_token', $_POST, true, 60*10, false );
               if(empty($_POST["Target"])){              
@@ -168,23 +168,20 @@ Released   : 20081230
           <hr>
           <h2>HVAC</h2>
           <hr>
-          <form method="post" action="index.php?w=1">
+          <form method="post" action="index.php">
           <input type="radio" name="HVAC" value="heat"<?php if($Heatrunning) echo "checked";?> > Heater<br>
           <input type="radio" name="HVAC" value="ac" <?php if($ACrunning) echo "checked";?> > AC<br>
           <h2>Fan</h2>
           <hr>
           <input type="radio" name="fan" value="1"<?php if($Fanrunning==1) echo "checked";?> > On<br>
           <input type="radio" name="fan" value="0" <?php if($Fanrunning==0) echo "checked";?> > Auto<br>
-          <input type="submit" value="Submit">
-          <input type="hidden" name="csrf_token" value="<?php echo $token; ?>"></form>
+          <input type="submit" name="update" value="Submit">
           <h2>Temperature</h2>
           <hr>
-          <form method="post" action="index.php?w=3">
           <input type="text" value=<?php echo $target." "; ?>name="Target">
-          <input type="submit" value="Submit">
-          <input type="hidden" name="csrf_token" value="<?php echo $token; ?>"></form>
+          <input type="submit" name="update" value="Save">
 
-          <form method="post" action="index.php?w=2"><input type="submit" value="Reset">
+          <input type="submit" name="update" value="Reset">
           <input type="hidden" name="csrf_token" value="<?php echo $token; ?>"></form>
           
   </div>        
