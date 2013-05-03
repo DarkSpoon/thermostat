@@ -186,7 +186,6 @@ Released   : 20081230
           
   </div>        
 </div>
-        <div id="bar"></div>
         <div id="footer"></div>
 </body>
 <?php 
