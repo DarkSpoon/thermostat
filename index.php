@@ -51,7 +51,7 @@ Released   : 20081230
           
 
           #Set manual overrides for Heat, AC, and Fan
-          if ($_GET["update"]=="Submit"){
+          if ($_POST["update"]=="Submit"){
             try{ 
               NoCSRF::check( 'csrf_token', $_POST, true, 60*10, false );
               $hvac=mysqli_real_escape_string($selected, $_POST["HVAC"]);
@@ -81,7 +81,7 @@ Released   : 20081230
 
 
           #reset temp to scheduled temp
-          if ($_GET["update"]=="Reset"){
+          if ($_POST["update"]=="Reset"){
             try{ 
               NoCSRF::check( 'csrf_token', $_POST, true, 60*10, false );
               if($statement = $selected->prepare("UPDATE User_Req SET Temp=0")){
@@ -98,7 +98,7 @@ Released   : 20081230
 
 
           #set manual override for temp         
-          if ($_GET["update"]=="Save"){
+          if ($_POST["update"]=="Save"){
             try{ 
               NoCSRF::check( 'csrf_token', $_POST, true, 60*10, false );
               if(empty($_POST["Target"])){              
