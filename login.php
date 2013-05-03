@@ -93,5 +93,4 @@ Released   : 20081230
         </div>
         <div id="footer"></div>
 </body>
-<?php mysql_close($dbhandle);?>
 </html>
