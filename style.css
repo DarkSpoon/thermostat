@@ -189,10 +189,13 @@ color:#8F8F8F;
 border-bottom:1px dotted #2A2A2A;
 }
 
-#footer
-{
-background-image:url(images/footer.png);
-background-repeat:no-repeat;
-height:111px;
-width:738px;
+
+#footer {
+width: 738px;
+height:53px;
+background: url(images/footer.png) no-repeat;
+text-align:center;
+font-size:9px;
+color:#2A2A2A;
+padding-top:25px;
 }
