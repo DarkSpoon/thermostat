@@ -19,12 +19,13 @@
 
 # PATH should only include /usr/* if it runs after the mountnfs.sh script
 PATH=/sbin:/usr/sbin:/bin:/usr/bin
-DESC="Description of the service"
-NAME=daemonexecutablename
-DAEMON=/usr/sbin/$NAME
-DAEMON_ARGS="--options args"
+DESC="Raspberry Pi Powered HVAC Thermostat"
+NAME=thermo-server
+#DAEMON=/usr/sbin/$NAME
+DAEMON=/var/www/$NAME
+DAEMON_ARGS=""
 PIDFILE=/var/run/$NAME.pid
-SCRIPTNAME=/etc/init.d/$NAME
+SCRIPTNAME=/etc/init.d/thermostat
 
 # Exit if the package is not installed
 [ -x "$DAEMON" ] || exit 0
